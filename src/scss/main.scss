@@ -1,0 +1,316 @@
+@import '_custom';
+@import '_config';
+@import '_navigation';
+
+.trending-carousel {
+    $carousel-height: 150px;
+    $arrow-width: 50px;
+
+    max-height: $carousel-height;
+    position: relative;
+    overflow: hidden;
+
+    &-container {
+        overflow: hidden;
+    }
+    
+    &-list {
+        overflow: hidden;
+        height: $carousel-height;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+
+        margin: 0;
+        padding: 0;
+
+        &-item {
+            display: inline-block;
+            // list-style: outside none none;
+            position: relative;
+            // vertical-align: top;
+        }
+    }
+
+    &-full {
+        height: 100%;
+    }
+
+    &-item {
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        min-height: $carousel-height;
+
+        img {
+            @include easeOut;
+            max-height: $carousel-height;
+            transform: scale(1);
+        }
+
+        &-info {
+            @include easeOut;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            padding: 0.5rem;
+            
+            @include gradientBg(to top, black, rgba(black, 0));
+
+            transform: translateY(200px);
+
+            pointer-events: none;
+
+            white-space: normal;
+
+            p {
+                position: relative;
+                color: white;
+                z-index: 2;
+                margin: 0;
+            }
+        }
+
+        &:hover {
+            > .trending-carousel-item {
+                
+                &-info {
+                    transform: translateY(0);
+                }
+            }
+
+            img {
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    &-arrow {
+        position: absolute;
+        z-index: 100;
+        height: 100%;
+
+        cursor: pointer;
+        
+        display: none;
+        align-items: center;
+
+        padding: 0.5rem;
+
+        img {
+            width: 50px;
+        }
+
+        &-prev {
+            left: 15px;
+            @include gradientBg(to right, black, rgba(black, 0));
+
+            img {
+                transform: rotateY(180deg);
+            }
+        }
+
+        &-next {
+            right: 15px;
+            @include gradientBg(to left, black, rgba(black, 0));
+        }
+
+        &.active {
+            @include easeOut;
+            opacity: 0.6;
+
+            display: flex;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &::before {
+        @include easeOut;
+        content: "";
+        display: block;
+        position: absolute;
+        background: radial-gradient(ellipse farthest-corner, rgba(black, 0), rgba(black, 0) 10%, rgba(black, 1) 200%, rgba(black, 0));
+        width: calc(100% - 30px);
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 0.8;
+        }
+    }
+}
+
+.daily-feed {
+
+    &-container {
+        padding: 10px;
+    }
+
+    &-item {
+        $card-height: 6px;
+        --card-color: 0, 0, 0;
+
+        @for $x from 1 through 5 {
+            &.card-color-#{$x} {
+                --card-color: var(--card-color-#{$x});
+            }
+        }
+
+        display: flex;
+        flex-direction: column;
+        
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+
+        padding: 0;
+        margin: 0;
+
+        background-clip: padding-box;
+        border: 0.5rem solid transparent;
+
+        img {
+            @include easeOut;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        &-content {
+            position: relative;
+            overflow: hidden;
+        }
+
+        &-info {
+            @include easeOut;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 2rem 1rem 1rem 1rem;
+
+            @include gradientBg(to top, RGBA(var(--card-color), 1), RGBA(var(--card-color), 0));
+
+            h4 {
+                color: white;
+                font-weight: 600;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            &-desc {
+                transition: max-height 0.3s ease-out;
+                max-height: 0;
+
+                visibility: hidden;
+                color: white;
+            }
+
+            &-date {
+                color: grey;
+            }
+        }
+
+        &-card {
+            width: 100%;
+            height: $card-height;
+
+            background: RGB(var(--card-color));
+
+            @for $x from 1 through 4 {
+                &-#{$x} {
+                    width: calc(100% - ((#{$x} - 1) * 10px));
+                    z-index: calc(4 - #{$x});
+                    opacity: calc(1 - (#{$x} * 0.15));
+                    box-shadow: 1px 1px rgba(black, calc(#{$x} * 0.15));
+                }
+            }
+        }
+
+        &:hover {
+            .daily-feed-item {
+                &-info {
+                    &-desc {
+                        max-height: 90px;
+                        visibility: visible;
+                    }
+                }
+            }
+
+            img {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+.loading-animation {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+
+    display: none;
+
+    &-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    &-spacer,
+    &-symbol {
+        flex-grow: 0;
+        position: relative;
+    }
+
+    &-spacer {
+        @include easeOut;
+        animation: loading 2s;
+        animation-iteration-count: infinite;
+
+        @keyframes loading {
+            0% {
+                flex-grow: 0;
+            }
+
+            50% {
+                flex-grow: 1;
+            }
+
+            100% {
+                flex-grow: 0;
+            }
+        }
+    }
+
+    &-symbol {
+        width: 30px;
+        height: 30px;
+
+        @include gradientBg(to top right, blue, magenta);
+    }
+
+    &.active {
+        display: block;
+    }
+}
+
+@import '_search';
+
+@import '_mobile';

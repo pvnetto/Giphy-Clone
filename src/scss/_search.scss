@@ -1,0 +1,199 @@
+.search {
+    &-header {
+
+        margin-bottom: 2rem;
+
+        &-tags {
+            .tag {
+                margin-left: 0.5rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+                font-weight: 600;
+
+                color: white;
+                background: black;
+                border-radius: 10px;
+                text-decoration: none;
+            }
+        }
+
+        &-options {
+            margin-bottom: 0.8rem;
+
+            .btn {
+                padding: 0rem 1.5rem;
+            }
+
+            &-type {
+                color: white;
+            }
+
+            &-sort {
+                margin-right: 2rem;
+                a {
+                    text-decoration: none;
+                    margin-left: 0.8rem;
+                    color: grey;
+
+                    .active {
+                        color: white;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            &-autoplay {
+
+                i {
+                    @include easeOut;
+                    padding: 0.5rem 0.8rem;
+                    border-radius: 6px;
+                    background: black;
+                    cursor: pointer;
+
+                    opacity: 0.4;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+
+                .play-btn {
+                    margin-right: 0.2rem;
+                }
+            }
+        }
+    }
+
+    &-results {
+        %gradient-info {
+            @include easeOut(0.5s);
+            
+            position: absolute;
+            
+            width: 100%;
+        }
+
+        %gradient-info-top {
+            @extend %gradient-info;
+            @include gradientBg(to bottom, rgba(black, 0.9), rgba(black, 0));
+            top: 0;
+        }
+
+        %gradient-info-bottom {
+            @extend %gradient-info;
+            @include gradientBg(to top, rgba(black, 0.9), rgba(black, 0));
+            bottom: 0;
+        }
+
+        &-tv {
+            display: none;
+            width: 100%;
+
+            .img-fluid {
+                width: 100%;
+                height: 340px;
+                object-fit: cover;
+            }
+
+            &-header {
+                @extend %gradient-info-top;
+                transform: translateY(-90px);
+                padding: 1rem 1.5rem;
+
+                h2 {
+                    font-weight: 600;
+                }
+
+                i {
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    margin-left: 1rem;
+                }
+            }
+
+            &-carousel {
+                @extend %gradient-info-bottom;
+                transform: translateY(90px);
+                padding: 1rem 1.2rem;
+            }
+
+            &-prev {
+                transform: rotateZ(180deg);
+            }
+
+            &-autoplay {
+                i {
+                    display: none;
+
+                    font-size: 1.5rem;
+                    &.active {
+                        display: inline;
+                    }
+                }
+            }
+
+            &-btn {
+                @include easeOut;
+                cursor: pointer;
+                opacity: 0.6;
+
+                img {
+                    width: 50px;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        
+            &.active {
+                display: block;
+            }
+        }
+
+        &-item {
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+
+            padding: 0;
+            margin: 0;
+    
+            background-clip: padding-box;
+            border-right: 0.6rem solid transparent;
+            border-bottom: 0.6rem solid transparent;
+
+            .img-fluid {
+                width: 100%;
+            }
+
+            &:hover {
+                %gradient-info {
+                    transform: translateY(0);
+                }
+            }
+
+            &-share {
+                @extend %gradient-info-top;
+                transform: translateY(-60px);
+                padding: 0.6rem;
+
+                i {
+                    margin: 0 0.3rem;
+                    cursor: pointer;
+                }
+            }
+
+            &-info {
+                @extend %gradient-info-bottom;
+                transform: translateY(60px);
+                padding: 0.6rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "geephy-site",
+  "version": "1.0.0",
+  "description": "A redesign of the Giphy website using their API to fetch GIFs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Giphy",
+    "Redesign",
+    "Bootstrap",
+    "SASS",
+    "HTML",
+    "CSS",
+    "Paiva"
+  ],
+  "author": "Paiva",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  }
+}

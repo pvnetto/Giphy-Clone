@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Cantarell&display=swap');
+
+$logo-width: 3rem;
+
+* {
+    padding: 0;
+    margin: 0;
+
+    --card-color-1: 223, 41, 53;
+    --card-color-2: 55, 114, 255;
+    --card-color-3: 55, 255, 139;
+    --card-color-4: 202, 31, 123;
+    --card-color-5: 253, 202, 64;
+}
+
+body {
+    background: rgba($primary, 1);
+    color: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 3rem 0;
+}
+
+p, h2 {
+    margin: 0;
+}
+
+.logo {
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+        font-size: 2.5rem;
+        font-weight: 700;
+        
+        text-decoration: none;
+        color: white;
+
+        overflow: hidden;
+
+        font-family: 'Cantarell', sans-serif !important;
+
+        img {
+            max-width: $logo-width;
+        }
+    }
+}
+
+.weekday {
+    font-weight: 600;
+}
+
+.alt-text {
+    color: #B9B9B9;
+}
+
+@mixin easeOut($time: 0.3s) {
+    transition: all $time ease-out;
+}
+
+@mixin gradientBg($direction, $border-color-1, $border-color-2) {
+    @include easeOut();
+    background-image: linear-gradient($direction, $border-color-1, $border-color-2 90%);
+    background-position: bottom;
+    background-repeat: no-repeat;
+}

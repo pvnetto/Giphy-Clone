@@ -1,0 +1,31 @@
+HOME PAGE:
+	> Responsiveness
+	> When done:
+		- Navbar sections
+		- Theme colors
+
+
+SEARCH PAGE:
+	> Clickable images. They should redirect to their own page
+	> Gif options:
+		- Copy to clipboard
+		- Share on facebook/twitter
+	> Search options:
+		- GIFs or Stickers
+		- Relevance or date
+	> Messages:
+		- All share options should display a message on the top of the screen when successful
+		- No search input
+		- Search input didn't find anything
+	> Responsiveness
+
+
+REACTIONS/ENTERTAINMENT/ARTISTS ETC:
+	> Load images from Giphy API
+
+
+REFACTOR:
+	> Refactor JS functions to allow them to be reused across multiple different JS files					DONE
+	> Refactor gradient backgrounds from trending, search page items, include them in a separate class
+	> Translate animations should have a mixin
+	> In general, avoid over specific styling, and try to do more generic classes

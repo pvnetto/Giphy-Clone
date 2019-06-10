@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+// Colors
+$primary: #111111;
+$success: rgb(55, 255, 139);
+$danger: rgb(223, 41, 53);
+
+// Fonts
+$font-family-base: 'Lato', sans-serif;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.navbar {
+    padding: 1rem 0;
+
+    .nav-item {
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            margin: 0 0.2rem;
+            color: white;
+        }
+    }
+}

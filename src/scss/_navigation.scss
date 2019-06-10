@@ -1,0 +1,141 @@
+nav {
+    background-color: $primary;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+
+    .navbar-nav {
+        .nav-link {
+            transition: background-size 0.3s ease-out;
+
+            background-image: linear-gradient(to right, RGB(var(--card-color-1)), RGB(var(--card-color-2)), RGB(var(--card-color-3)), RGB(var(--card-color-4)));
+            background-size: 1000% 4px;
+            background-repeat: no-repeat;
+        
+            &:hover {
+                background-size: 1000% 100%;
+                
+            }
+        
+            &.active {
+                background-size: 1000% 100%;
+            }
+        }
+
+        @for $x from 1 through 7 {
+            .nav-item:nth-of-type(#{$x}) {
+                .nav-link {
+                    background-position: calc((#{$x} - 2) * 10%) 100%;
+                }
+            }
+        }
+    }
+
+    .menu-dropdown {
+        @include easeOut;
+
+        width: 600px;
+        height: 300px;
+        position: absolute;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 50px 100px rgba(50, 50, 93, .1), 0 15px 35px rgba(50, 50, 93, .15), 0 5px 15px rgba(0, 0, 0, .1);
+        transition: all 0.3s, opacity 0.1s, transform 0.2s;
+        transform-origin: 50% 50%;
+        justify-content: center;
+        opacity: 0;
+
+        z-index: 300;
+        display: flex;
+        pointer-events: none;
+
+        .arrow {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            display: block;
+            background: white;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        &.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    .theme-colors {
+        display: flex;
+        flex-direction: row;
+
+        &-item {
+            margin: 0 0.6rem;
+
+            border: 3px solid white;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            cursor: pointer;
+        
+            &-primary {
+                background-color: $primary;
+            }
+            
+            &-secondary {
+                background-color: beige;
+            }
+        }
+    }
+
+    .navbar {
+        &-search {
+            .logo {
+                @include easeOut;
+                max-width: 0;
+            }
+
+            input, .btn {
+                min-height: 90%;
+            }
+
+            .btn {
+                @include easeOut;
+                border: none;
+                background: linear-gradient(to top right, RGB(var(--card-color-1)), RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+                background-size: 500% 500%;
+                
+                animation: colorchange 8s ease infinite;
+
+                opacity: 0.9;
+                transform: scale(1);
+                
+                @keyframes colorchange {
+                    0%{background-position:0% 50%}
+                    50%{background-position:100% 51%}
+                    100%{background-position:0% 50%}
+                }
+
+                &:hover {
+                    opacity: 1;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+    &.fixed-nav {
+        position: sticky;
+        top: 0;
+        z-index: 101;
+
+        .navbar {
+            &-main {
+                display: none;
+            }
+            &-search {
+                .logo {
+                    max-width: 300px;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+}
