@@ -19,7 +19,8 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.0.2",
+    "webpack-stream": "^5.2.1"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",

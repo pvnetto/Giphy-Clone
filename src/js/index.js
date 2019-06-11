@@ -1,5 +1,11 @@
 const SEARCH_THEME = 'cats';
 
+
+// Modules
+const giphy = require('./giphy_api.js');
+const scrollLoading = require('./scroll_loading.js');
+const utils = require('./utils.js');
+
 // Trending parameters
 const trendingSection = document.querySelector('.trending-carousel');
 const trendingList = document.querySelector('.trending-carousel-list');
@@ -9,6 +15,7 @@ const trendingNext = document.querySelector('.trending-carousel-arrow-next');
 
 const TRENDING_SIZE = trendingItems.length;
 const TRENDING_RATING = 'G';
+
 
 trendingSection.addEventListener('mouseover', () => ToggleTrendingArrows(true));
 trendingSection.addEventListener('mouseout', () => ToggleTrendingArrows(false));
@@ -79,10 +86,8 @@ function ScrollTrendingHorizontal(add) {
 }
 
 async function PopulateHomeFeed() {
-    ToggleLoading(true);
-
     let fetchSize = DAILY_FEED_SIZE * dailyFeedContainers.length;
-    let data = await FetchSearch(SEARCH_THEME, fetchSize, searchOffset);
+    let data = await giphy.FetchSearch(SEARCH_THEME, fetchSize, searchOffset);
 
     for (let i = 0; i < dailyFeedContainers.length; i++) {
         let currentFeed = dailyFeedContainers[i];
@@ -93,8 +98,6 @@ async function PopulateHomeFeed() {
     }
 
     searchOffset += data.length;
-
-    ToggleLoading(false);
 }
 
 function PopulateFeed(feed, gifList, feedDate) {
@@ -129,14 +132,14 @@ function PopulateFeed(feed, gifList, feedDate) {
         items[i].href = `item?id=${currentGif.id}`;
 
         // Adding a random color to the current item
-        color_index = RandomInt(1, 5);
+        color_index = utils.RandomInt(1, 5);
         color_class = "card-color-" + color_index;
         items[i].classList.add(color_class);
     }
 }
 
 function LoadNewFeed() {
-    return FetchSearch(SEARCH_THEME, DAILY_FEED_SIZE, searchOffset)
+    return giphy.FetchSearch(SEARCH_THEME, DAILY_FEED_SIZE, searchOffset)
         .then(data => {
             PopulateFeed(CreateFeedItem(), data, scrollDate);
             searchOffset += DAILY_FEED_SIZE;
@@ -153,14 +156,14 @@ function CreateFeedItem() {
 }
 
 async function Init() {
-    feedItemHTML = await LoadComponent("components/feed.html");
+    feedItemHTML = await utils.LoadComponent("components/feed.html");
 
     PopulateHomeFeed();
 
-    let trending_data = await FetchTrending(TRENDING_SIZE, TRENDING_RATING)
+    let trending_data = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING)
     PopulateTrendingSection(trending_data);
 
-    loadingPromise = LoadNewFeed;
+    scrollLoading.SetLoadingPromise(LoadNewFeed);
 }
 
 Init();

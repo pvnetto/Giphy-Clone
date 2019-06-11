@@ -1,5 +1,10 @@
-let gulp = require('gulp')
-let sass = require('gulp-sass')
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+
+let compiler = require('webpack');
+let webpack = require('webpack-stream');
+
+/* SASS TASKS */
 
 // Compiles all bootstrap SASS/SASS files and injects them into the src/css folder
 gulp.task('sass', function () {
@@ -16,10 +21,20 @@ gulp.task('js', function () {
         .pipe(gulp.dest('src/js'));
 });
 
+/* WEBPACK TASKS */
+gulp.task('compile-js', function () {
+    return gulp.src(['src/js/index.js', 'src/js/search.js'])
+        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(gulp.dest('src/js/dist/'));
+});
+
+
 // Receives a task name and a series with all functions/tasks that are executed along with this task
 gulp.task('watch', gulp.series(['sass'], function () {
     // Receives the files we want to watch and a series with tasks that are run whenever the watched files are modified
     gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/*.scss'], gulp.series('sass'));
+    gulp.watch(['src/js/*.js'], gulp.series('compile-js'));
 }));
+
 
 gulp.task('default', gulp.series(['js', 'watch']));

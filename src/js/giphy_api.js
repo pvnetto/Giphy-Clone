@@ -5,14 +5,14 @@ const SEARCH_PATH = '/v1/gifs/search';
 // key, limit (max num of records), offset, rating, format (json)
 const TRENDING_PATH = '/v1/gifs/trending';
 
-function FetchSearch(search_txt, limit, offset) {
+exports.FetchSearch = function (search_txt, limit, offset) {
     const requestURL = giphy_host + SEARCH_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
     return fetch(requestURL)
         .then(res => res.json())
         .then(jsonData => jsonData.data);
 }
 
-function FetchTrending(trendingSize, trendingRating) {
+exports.FetchTrending = function (trendingSize, trendingRating) {
     const requestURL = giphy_host + TRENDING_PATH + `?api_key=${API_KEY}&limit=${trendingSize}&rating=${trendingRating}`;
 
     return fetch(requestURL)
@@ -20,7 +20,7 @@ function FetchTrending(trendingSize, trendingRating) {
         .then(gifs => gifs.data);
 }
 
-async function AsyncSearch(search_txt, limit, offset) {
+exports.AsyncSearch = async function (search_txt, limit, offset) {
     const requestURL = giphy_host + SEARCH_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
     const searchResponse = await fetch(requestURL);
     const searchJSON = await searchResponse.json();

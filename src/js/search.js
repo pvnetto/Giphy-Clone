@@ -1,3 +1,9 @@
+// Modules
+const giphy = require('./giphy_api.js');
+const scrollLoading = require('./scroll_loading.js');
+const utils = require('./utils.js');
+
+
 // HTML DOM objects
 const searchResultsCols = document.querySelectorAll('.search-results-col');
 let colHeights = [0, 0, 342, 342];
@@ -90,7 +96,7 @@ function LoadPage() {
 
 function ToggleResultsTV() {
     if (!isTVPlaying) {
-        tvDataIdx = RandomInt(0, tvData.length);
+        tvDataIdx = utils.RandomInt(0, tvData.length);
         autoplayInterval = setInterval(() => RefreshTV(1), autoplayRate);
 
         tvPlayBtn.classList.remove('active');
@@ -107,21 +113,21 @@ function ToggleResultsTV() {
 }
 
 function RefreshTV(val) {
-    tvDataIdx = LoopIndex(tvDataIdx + val, tvData.length);
+    tvDataIdx = utils.LoopIndex(tvDataIdx + val, tvData.length);
     current_tv_img = tvData[tvDataIdx];
     tvImg.src = current_tv_img.images.fixed_height.url;
 }
 
 async function Init() {
-    ToggleLoading(true);
+    scrollLoading.ToggleLoading(true);
 
-    searchItemHTML = await LoadComponent("components/item.html");
+    searchItemHTML = await utils.LoadComponent("components/item.html");
 
     if (searchTerm) {
         searchHeaderTitle.textContent = searchTerm;
-        tvTitle.textContent = "#" + CapitalizeFirstLetter(searchTerm) + " TV";
+        tvTitle.textContent = "#" + utils.CapitalizeFirstLetter(searchTerm) + " TV";
 
-        let data = await FetchSearch(searchTerm, 99999, searchOffset);
+        let data = await giphy.FetchSearch(searchTerm, 99999, searchOffset);
 
         if (data.length >= 1000) {
             searchHeaderResultCount.textContent = data.length + "+ GIFs";
@@ -139,7 +145,7 @@ async function Init() {
         tvData = data.slice(0, searchOffset);
 
         PopulatePage(data);
-        ToggleLoading(false);
+        scrollLoading.ToggleLoading(false);
         ToggleResultsTV();
         loadingPromise = LoadPage;
     }

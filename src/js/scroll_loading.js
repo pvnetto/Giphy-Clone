@@ -17,6 +17,10 @@ async function LoadOnScroll() {
     }
 }
 
+exports.ToggleLoading = function (val) {
+    ToggleLoading(val);
+}
+
 function ToggleLoading(val) {
     ToggleLoadingAnimation(val);
     isLoading = val;
@@ -39,4 +43,12 @@ function ToggleLoadingAnimation(val) {
             console.log("> No loading animation found...");
         }
     }
+}
+
+exports.GetLoadingPromise = function () {
+    return loadingPromise;
+}
+
+exports.SetLoadingPromise = function (newPromise) {
+    loadingPromise = newPromise;
 }
