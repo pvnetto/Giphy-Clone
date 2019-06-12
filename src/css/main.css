@@ -53,7 +53,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -4149,7 +4149,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -4234,7 +4234,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7066,11 +7066,14 @@ p, h2 {
   .logo a img {
     max-width: 3rem; }
 
-.weekday {
+.weekday, .bold {
   font-weight: 600; }
 
 .alt-text {
-  color: #B9B9B9; }
+  color: darkgrey; }
+
+.upper {
+  text-transform: uppercase; }
 
 nav {
   background-color: #111111;
@@ -7187,8 +7190,6 @@ nav {
     .trending-carousel-list-item {
       display: inline-block;
       position: relative; }
-  .trending-carousel-full {
-    height: 100%; }
   .trending-carousel-item {
     display: inline-block;
     overflow: hidden;

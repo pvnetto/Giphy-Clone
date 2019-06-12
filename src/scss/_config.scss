@@ -50,12 +50,16 @@ p, h2 {
     }
 }
 
-.weekday {
+.weekday, .bold {
     font-weight: 600;
 }
 
 .alt-text {
-    color: #B9B9B9;
+    color: darkgrey;
+}
+
+.upper {
+    text-transform: uppercase;
 }
 
 @mixin easeOut($time: 0.3s) {
@@ -67,4 +71,10 @@ p, h2 {
     background-image: linear-gradient($direction, $border-color-1, $border-color-2 90%);
     background-position: bottom;
     background-repeat: no-repeat;
+}
+
+@mixin imgCover($fixed-width: 100%, $fixed-height: 100%) {
+    width: $fixed-width;
+    height: $fixed-height;
+    object-fit: cover;
 }

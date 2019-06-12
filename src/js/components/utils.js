@@ -23,3 +23,17 @@ exports.LoadComponent = function (component_url) {
             console.warn(error);
         });
 }
+
+exports.GetQueryVariable = function (variable) {
+    // window.location is the URL for the current page
+    let query = window.location.search.substring(1);
+
+    // Splits URL variables into multiple strings
+    let vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+        let pair = vars[i].split("=");
+        if (pair[0] === variable) {
+            return decodeURIComponent(pair[1].replace(/\+/g, "%20"));
+        }
+    }
+}

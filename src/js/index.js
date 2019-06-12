@@ -2,28 +2,14 @@ const SEARCH_THEME = 'cats';
 
 
 // Modules
-const giphy = require('./giphy_api.js');
-const scrollLoading = require('./scroll_loading.js');
-const utils = require('./utils.js');
+const giphy = require('./components/giphy_api.js');
+const scrollLoading = require('./components/scroll_loading.js');
+const utils = require('./components/utils.js');
+const trending = require('./components/trending.js');
+
 
 // Trending parameters
-const trendingSection = document.querySelector('.trending-carousel');
-const trendingList = document.querySelector('.trending-carousel-list');
-const trendingItems = document.querySelectorAll('.trending-carousel-item');
-const trendingPrev = document.querySelector('.trending-carousel-arrow-prev');
-const trendingNext = document.querySelector('.trending-carousel-arrow-next');
-
-const TRENDING_SIZE = trendingItems.length;
 const TRENDING_RATING = 'G';
-
-
-trendingSection.addEventListener('mouseover', () => ToggleTrendingArrows(true));
-trendingSection.addEventListener('mouseout', () => ToggleTrendingArrows(false));
-
-trendingList.addEventListener('scroll', () => ToggleTrendingArrows(true));
-
-trendingNext.addEventListener('click', () => ScrollTrendingHorizontal(true));
-trendingPrev.addEventListener('click', () => ScrollTrendingHorizontal(false));
 
 
 // Daily feed parameters
@@ -38,52 +24,6 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const todayDate = new Date();
 let scrollDate = new Date();
 
-
-function PopulateTrendingSection(data) {
-    for (let i = 0; i < trendingItems.length; i++) {
-        let img = trendingItems[i].querySelector('img');
-        let desc = trendingItems[i].querySelector('p');
-        img.src = data[i].images.fixed_height.url;
-        desc.textContent = data[i].title;
-    }
-}
-
-function ToggleTrendingArrows(on) {
-    if (on) {
-        let max_scroll = trendingList.scrollWidth - trendingList.clientWidth;
-
-        if (trendingList.scrollLeft > 0) {
-            trendingPrev.classList.add('active');
-        }
-        else {
-            trendingPrev.classList.remove('active');
-        }
-
-        if (trendingList.scrollLeft < max_scroll) {
-            trendingNext.classList.add('active');
-        }
-        else {
-            trendingNext.classList.remove('active');
-        }
-    }
-    else {
-        trendingPrev.classList.remove('active');
-        trendingNext.classList.remove('active');
-    }
-}
-
-function ScrollTrendingHorizontal(add) {
-    let scrollSize = trendingList.clientWidth;
-
-    if (add) {
-        trendingList.scrollLeft += scrollSize;
-    }
-    else {
-        trendingList.scrollLeft -= scrollSize;
-    }
-
-    ToggleTrendingArrows(true);
-}
 
 async function PopulateHomeFeed() {
     let fetchSize = DAILY_FEED_SIZE * dailyFeedContainers.length;
@@ -132,9 +72,9 @@ function PopulateFeed(feed, gifList, feedDate) {
         items[i].href = `item?id=${currentGif.id}`;
 
         // Adding a random color to the current item
-        color_index = utils.RandomInt(1, 5);
-        color_class = "card-color-" + color_index;
-        items[i].classList.add(color_class);
+        let colorIndex = utils.RandomInt(1, 5);
+        let colorClass = "card-color-" + colorIndex;
+        items[i].classList.add(colorClass);
     }
 }
 
@@ -160,9 +100,7 @@ async function Init() {
 
     PopulateHomeFeed();
 
-    let trending_data = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING)
-    PopulateTrendingSection(trending_data);
-
+    trending.InitializeTrending();
     scrollLoading.SetLoadingPromise(LoadNewFeed);
 }
 

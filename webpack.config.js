@@ -4,7 +4,8 @@ module.exports = {
     mode: "development",
     entry: {
         index: './src/js/index.js',
-        search: './src/js/search.js'
+        search: './src/js/search.js',
+        gallery: './src/js/gallery.js'
     },
     output: {
         filename: '[name].js',

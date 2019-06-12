@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Geephy - Search</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="menu-dropdown">
+            <span class="arrow"></span>
+        </div>
+        <div class="container-fluid">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse flex-column" id="navbarNav">
+                    <ul class="navbar-main navbar-nav w-100 flex-row justify-content-start align-items-center">
+                        <li class="nav-item">
+                            <div class="logo navbar-brand">
+                                <a href="index.html">
+                                    <img class="img-fluid" src="assets/document.png" alt=""> GEEPHY
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html?category=reactions" class="nav-link">Reactions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html?category=entertainment" class="nav-link">Entertainment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html?category=sports" class="nav-link">Sports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="stickers.html" class="nav-link">Stickers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html?category=artists" class="nav-link">Artists</a>
+                        </li>
+                        <li class="nav-item nav-item-trigger">
+                            <a href="#" class="nav-link">...</a>
+                        </li>
+
+                        <li class="nav-item ml-auto">
+                            <div class="theme-colors">
+                                <div class="theme-colors-item theme-colors-item-primary"></div>
+                                <div class="theme-colors-item theme-colors-item-secondary"></div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav flex-row w-100">
+                        <li class="nav-item w-100">
+                            <form action="search.html" method="GET">
+                                <div class="row navbar-search">
+                                    <div class="col-10 d-flex flex-row align-items-center">
+                                        <div class="logo">
+                                            <a href="#">
+                                                <img class="img-fluid" src="assets/document.png" alt=""> GEEPHY
+                                            </a>
+                                        </div>
+                                        <input placeholder="Search all the GIFs and Stickers" type="search" class="form-control" aria-label="Search" name="q">
+                                    </div>
+                                    <div class="col-2 d-flex flex-row justify-content-end align-items-center">
+                                        <button class="btn btn-danger w-100" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <section>
+                        <div class="d-flex flex-column">
+                            <img class="img-fluid" src="https://media3.giphy.com/media/ic0iE4NVz0vGiNpxjd/200.gif" alt="">
+                            <p class="mt-2 alt-text">Our collection of reactions</p>
+                            <h5 class="alt-text bold mt-4">Follow us on:</h5>
+
+                            <div class="d-flex flex-row">
+                                <i class="fab fa-facebook-f"></i>
+                                <i class="fab fa-twitter"></i>
+                                <i class="fab fa-instagram"></i>
+                            </div>
+
+                            <hr style="background-color: white;">
+
+                            <p class="alt-text bold upper">Trending now</p>
+
+                            <div class="d-flex flex-column">
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                                <p>#trending</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-9">
+                    <section>
+                        <div class="container-fluid gallery-header">
+                            <div class="container">
+                                <div class="d-inline-block">
+                                    <h2 class="display-4 gallery-header-title bold">Gallery GIFs</h2>
+                                    <div class="d-flex flex-row mt-2">
+                                        <p class="alt-text bold">@Gallery</p>
+                                        <div class="ml-auto gallery-header-media">
+                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-twitter"></i>
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Trending section -->
+                    <section>
+                        <div class="container-fluid">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="alt-text">TRENDING GIFs</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 trending-carousel">
+                                        <div class="trending-carousel-arrow trending-carousel-arrow-prev">
+                                            <img src="assets/white-arrow.png" alt="">
+                                        </div>
+                                        <div class="trending-carousel-arrow trending-carousel-arrow-next">
+                                            <img src="assets/white-arrow.png" alt="">
+                                        </div>
+                                        <div class="trending-carousel-container">
+                                            <ul class="trending-carousel-list">
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Featured section -->
+                    <section>
+                        <div class="container-fluid">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="alt-text">FEATURED REACTIONS</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 trending-carousel">
+                                        <div class="trending-carousel-arrow trending-carousel-arrow-prev">
+                                            <img src="assets/white-arrow.png" alt="">
+                                        </div>
+                                        <div class="trending-carousel-arrow trending-carousel-arrow-next">
+                                            <img src="assets/white-arrow.png" alt="">
+                                        </div>
+
+                                        <div class="trending-carousel-container">
+                                            <ul class="trending-carousel-list">
+                                                <li class="trending-carousel-list-item col-4">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item col-4">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="trending-carousel-list-item col-4">
+                                                    <a class="trending-carousel-item" href="">
+                                                        <img src="" alt="">
+                                                        <div class="trending-carousel-item-info">
+                                                            <p>#hashtag</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Search results -->
+                    <section class="pt-4">
+                        <div class="container-fluid">
+                            <div class="container">
+                                <h6 class="alt-text">ALL THE GALLERY GIFs</h6>
+                                <div class="row search-results px-3">
+                                    <div class="col-3 p-0 search-results-col">
+
+                                    </div>
+                                    <div class="col-3 p-0 search-results-col">
+
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <div class="row m-0">
+                                            <div class="col-12 p-0">
+                                                <div class="search-results-item search-results-tv">
+                                                    <a href="">
+                                                        <img src="" alt="" class="img-fluid">
+                                                    </a>
+                                                    <div class="search-results-tv-header d-flex flex-row align-items-center justify-content-start">
+                                                        <h2>#Subject TV</h2>
+                                                        <div class="search-results-tv-header-media ml-auto">
+                                                            <i class="fas fa-link"></i>
+                                                            <i class="fab fa-facebook-f"></i>
+                                                            <i class="fab fa-twitter"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="search-results-tv-carousel d-flex flex-row align-items-center justify-content-end">
+                                                        <div class="search-results-tv-btn search-results-tv-prev">
+                                                            <img src="assets/white-arrow.png" alt="">
+                                                        </div>
+                                                        <div class="search-results-tv-btn search-results-tv-autoplay">
+                                                            <i class="fas fa-play"></i>
+                                                            <i class="fas fa-pause active"></i>
+                                                        </div>
+                                                        <div class="search-results-tv-btn search-results-tv-forward">
+                                                            <img src="assets/white-arrow.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 p-0 search-results-col">
+
+                                            </div>
+                                            <div class="col-6 p-0 search-results-col">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-animation">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 loading-animation-wrapper">
+                        <div class="loading-animation-spacer"></div>
+                        <div class="loading-animation-symbol"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/fix_navbar.js"></script>
+    <script src="js/dist/gallery.js"></script>
+</body>
+
+</html>
