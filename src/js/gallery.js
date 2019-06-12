@@ -5,12 +5,14 @@ const utils = require('./components/utils.js');
 const trending = require('./components/trending.js');
 const resultsTV = require('./components/results_tv.js');
 const searchResults = require('./components/search_results.js');
+const carousel = require('./components/carousel.js');
 
 // Trending parameters
 const TRENDING_RATING = 'G';
 
 
 async function Init() {
+    carousel.Init();
     // Initializing trending section
     trending.InitializeTrending();
 

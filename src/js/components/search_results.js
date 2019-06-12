@@ -1,10 +1,12 @@
+// Displays search results in columns of the same size
+
 // Modules
 const giphy = require('./giphy_api.js');
 const utils = require('./utils.js');
 
 // HTML DOM objects
 const searchResultsCols = document.querySelectorAll('.search-results-col');
-let colHeights = [...searchResultsCols].map(element => 0);  // Creates an element in the array for each column
+let colHeights = [...searchResultsCols].map(_ => 0);  // Creates an element in the array for each column
 
 // Search parameters
 let searchTerm;

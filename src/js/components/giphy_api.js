@@ -5,14 +5,14 @@ const SEARCH_PATH = '/v1/gifs/search';
 // key, limit (max num of records), offset, rating, format (json)
 const TRENDING_PATH = '/v1/gifs/trending';
 
-exports.FetchSearch = function (search_txt, limit, offset) {
+function FetchSearch(search_txt, limit, offset) {
     const requestURL = giphy_host + SEARCH_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
     return fetch(requestURL)
         .then(res => res.json())
         .then(jsonData => jsonData.data);
 }
 
-exports.FetchTrending = function (trendingSize, trendingRating) {
+function FetchTrending(trendingSize, trendingRating) {
     const requestURL = giphy_host + TRENDING_PATH + `?api_key=${API_KEY}&limit=${trendingSize}&rating=${trendingRating}`;
 
     return fetch(requestURL)
@@ -20,7 +20,7 @@ exports.FetchTrending = function (trendingSize, trendingRating) {
         .then(gifs => gifs.data);
 }
 
-exports.AsyncSearch = async function (search_txt, limit, offset) {
+async function AsyncSearch(search_txt, limit, offset) {
     const requestURL = giphy_host + SEARCH_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
     const searchResponse = await fetch(requestURL);
     const searchJSON = await searchResponse.json();
@@ -31,3 +31,7 @@ exports.AsyncSearch = async function (search_txt, limit, offset) {
 
     return await searchJSON.data;
 }
+
+exports.FetchSearch = FetchSearch;
+exports.FetchTrending = FetchTrending;
+exports.AsyncSearch = AsyncSearch;

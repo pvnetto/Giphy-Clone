@@ -2,13 +2,34 @@
 @import '_config';
 @import '_navigation';
 
-.trending-carousel {
-    $carousel-height: 150px;
-    $arrow-width: 50px;
+.custom-carousel {
 
-    max-height: $carousel-height;
-    position: relative;
-    overflow: hidden;
+    --carousel-height: 150px;
+
+    &-wrapper {
+        max-height: var(--carousel-height);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            @include easeOut;
+            content: "";
+            display: block;
+            position: absolute;
+            background: radial-gradient(ellipse farthest-corner, rgba(black, 0), rgba(black, 0) 10%, rgba(black, 1) 200%, rgba(black, 0));
+            width: calc(100% - 30px);
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+    
+        &:hover {
+            &::before {
+                opacity: 0.8;
+            }
+        }
+    }
 
     &-container {
         overflow: hidden;
@@ -16,7 +37,7 @@
     
     &-list {
         overflow: hidden;
-        height: $carousel-height;
+        height: var(--carousel-height);
         white-space: nowrap;
         scroll-behavior: smooth;
 
@@ -25,25 +46,21 @@
 
         &-item {
             display: inline-block;
-            // list-style: outside none none;
+            list-style: outside none none;
             position: relative;
-            // vertical-align: top;
+            vertical-align: top;
         }
     }
-
-    // &-full {
-    //     height: 100%;
-    // }
 
     &-item {
         display: inline-block;
         overflow: hidden;
         position: relative;
-        min-height: $carousel-height;
+        min-height: var(--carousel-height);
 
         img {
             @include easeOut;
-            max-height: $carousel-height;
+            max-height: var(--carousel-height);
             transform: scale(1);
         }
 
@@ -76,7 +93,7 @@
         }
 
         &:hover {
-            > .trending-carousel-item {
+            > .custom-carousel-item {
                 
                 &-info {
                     transform: translateY(0);
@@ -90,63 +107,15 @@
     }
 
     &-arrow {
-        position: absolute;
-        z-index: 100;
-        height: 100%;
-
-        cursor: pointer;
-        
-        display: none;
-        align-items: center;
-
-        padding: 0.5rem;
-
-        img {
-            width: 50px;
-        }
-
         &-prev {
-            left: 15px;
-            @include gradientBg(to right, black, rgba(black, 0));
-
             img {
                 transform: rotateY(180deg);
             }
         }
 
-        &-next {
-            right: 15px;
-            @include gradientBg(to left, black, rgba(black, 0));
-        }
-
         &.active {
             @include easeOut;
-            opacity: 0.6;
-
-            display: flex;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-
-    &::before {
-        @include easeOut;
-        content: "";
-        display: block;
-        position: absolute;
-        background: radial-gradient(ellipse farthest-corner, rgba(black, 0), rgba(black, 0) 10%, rgba(black, 1) 200%, rgba(black, 0));
-        width: calc(100% - 30px);
-        height: 100%;
-        opacity: 0;
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    &:hover {
-        &::before {
-            opacity: 0.8;
+            cursor: pointer;
         }
     }
 }
@@ -254,6 +223,92 @@
 
             img {
                 transform: scale(1.2);
+            }
+        }
+    }
+}
+
+.trending {
+    .custom-carousel {
+        &-arrow {
+            position: absolute;
+            z-index: 100;
+            height: 100%;
+            padding: 0.5rem;
+            
+            display: none;
+            align-items: center;
+
+            opacity: 0;
+    
+            img {
+                width: 50px;
+            }
+    
+            &-prev {
+                left: 15px;
+                @include gradientBg(to right, black, rgba(black, 0));
+            }
+    
+            &-next {
+                right: 15px;
+                @include gradientBg(to left, black, rgba(black, 0));
+            }
+    
+            &.active {
+                @include easeOut;
+                opacity: 0.6;
+    
+                display: flex;
+    
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+
+.featured {
+    &-header {
+        .custom-carousel {
+            &-arrow {
+                margin-left: 0.2rem;
+                padding: 0.2rem;
+                background: grey;
+                opacity: 0.3;
+
+                img {
+                    width: 20px;
+                    display: inline-block;
+                }
+
+                &-prev {
+                    img {
+                        transform: rotateY(180deg);
+                    }
+                }
+
+                &.active {
+                    opacity: 0.8;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    &-carousel {
+        --carousel-height: 200px;
+        &.custom-carousel-wrapper {
+            li {
+                width: 33%;
+            }
+            img {
+                @include imgCover(100%, var(--carousel-height));
             }
         }
     }
