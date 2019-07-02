@@ -1,124 +1,7 @@
 @import '_custom';
 @import '_config';
 @import '_navigation';
-
-.custom-carousel {
-
-    --carousel-height: 150px;
-
-    &-wrapper {
-        max-height: var(--carousel-height);
-        position: relative;
-        overflow: hidden;
-
-        &::before {
-            @include easeOut;
-            content: "";
-            display: block;
-            position: absolute;
-            background: radial-gradient(ellipse farthest-corner, rgba(black, 0), rgba(black, 0) 10%, rgba(black, 1) 200%, rgba(black, 0));
-            width: calc(100% - 30px);
-            height: 100%;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 2;
-        }
-    
-        &:hover {
-            &::before {
-                opacity: 0.8;
-            }
-        }
-    }
-
-    &-container {
-        overflow: hidden;
-    }
-    
-    &-list {
-        overflow: hidden;
-        height: var(--carousel-height);
-        white-space: nowrap;
-        scroll-behavior: smooth;
-
-        margin: 0;
-        padding: 0;
-
-        &-item {
-            display: inline-block;
-            list-style: outside none none;
-            position: relative;
-            vertical-align: top;
-        }
-    }
-
-    &-item {
-        display: inline-block;
-        overflow: hidden;
-        position: relative;
-        min-height: var(--carousel-height);
-
-        img {
-            @include easeOut;
-            max-height: var(--carousel-height);
-            transform: scale(1);
-        }
-
-        &-info {
-            @include easeOut;
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
-
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            padding: 0.5rem;
-            
-            @include gradientBg(to top, black, rgba(black, 0));
-
-            transform: translateY(200px);
-
-            pointer-events: none;
-
-            white-space: normal;
-
-            p {
-                position: relative;
-                color: white;
-                z-index: 2;
-                margin: 0;
-            }
-        }
-
-        &:hover {
-            > .custom-carousel-item {
-                
-                &-info {
-                    transform: translateY(0);
-                }
-            }
-
-            img {
-                transform: scale(1.3);
-            }
-        }
-    }
-
-    &-arrow {
-        &-prev {
-            img {
-                transform: rotateY(180deg);
-            }
-        }
-
-        &.active {
-            @include easeOut;
-            cursor: pointer;
-        }
-    }
-}
+@import '_carousel';
 
 .daily-feed {
 
@@ -305,10 +188,37 @@
         --carousel-height: 200px;
         &.custom-carousel-wrapper {
             li {
-                width: 33%;
+                width: 33.333%;
+
+                a {
+                    width: 100%;
+                }
+
+                img {
+                    @include imgCover(100%, var(--carousel-height));
+                }
             }
-            img {
-                @include imgCover(100%, var(--carousel-height));
+        }
+
+        &-item {
+            &-info {
+                color: white;
+                position: absolute;
+                background: RGB(var(--card-color-4));
+                bottom: 0;
+                width: 100%;
+                padding: 0.3rem 1rem;
+
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+        }
+
+        .custom-carousel-item {
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
             }
         }
     }
@@ -361,6 +271,41 @@
 
     &.active {
         display: block;
+    }
+}
+
+.gallery-sidenav {
+    &-trending {
+        margin-left: 0.3rem;
+        a {
+            margin: 0.4rem 0;
+            text-decoration: none;
+            color: white;
+        }
+    }
+
+    hr {
+        background-color: white;
+        opacity: 0.5;
+        margin: 2rem 0;
+    }
+}
+
+.gallery-media-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    i {
+        @include easeOut;
+        font-size: 1.5rem;
+        margin: 0 0.3rem;
+
+        &.fab {
+            &:hover {
+                color: white;
+            }
+        }
     }
 }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Geephy - Search</title>
+    <title>Geephy - Entertainment</title>
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
@@ -35,19 +35,19 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="gallery.html?category=reactions" class="nav-link">Reactions</a>
+                            <a href="reactions.html" class="nav-link">Reactions</a>
                         </li>
                         <li class="nav-item">
-                            <a href="gallery.html?category=entertainment" class="nav-link">Entertainment</a>
+                            <a href="entertainment.html" class="nav-link">Entertainment</a>
                         </li>
                         <li class="nav-item">
-                            <a href="gallery.html?category=sports" class="nav-link">Sports</a>
+                            <a href="sports.html" class="nav-link">Sports</a>
                         </li>
                         <li class="nav-item">
                             <a href="stickers.html" class="nav-link">Stickers</a>
                         </li>
                         <li class="nav-item">
-                            <a href="gallery.html?category=artists" class="nav-link">Artists</a>
+                            <a href="artists.html" class="nav-link">Artists</a>
                         </li>
                         <li class="nav-item nav-item-trigger">
                             <a href="#" class="nav-link">...</a>
@@ -90,48 +90,64 @@
             <div class="row">
                 <div class="col-3">
                     <section>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column gallery-sidenav">
                             <img class="img-fluid" src="https://media3.giphy.com/media/ic0iE4NVz0vGiNpxjd/200.gif" alt="">
                             <p class="mt-2 alt-text">Our collection of reactions</p>
-                            <h5 class="alt-text bold mt-4">Follow us on:</h5>
+                            <h5 class="alt-text bold mt-4 mb-3">Follow us on:</h5>
 
-                            <div class="d-flex flex-row">
-                                <i class="fab fa-facebook-f"></i>
-                                <i class="fab fa-twitter"></i>
-                                <i class="fab fa-instagram"></i>
+                            <div class="gallery-media-icons">
+                                <a href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
 
-                            <hr style="background-color: white;">
+                            <hr>
 
-                            <p class="alt-text bold upper">Trending now</p>
+                            <p class="alt-text bold upper mb-2">Trending now</p>
 
-                            <div class="d-flex flex-column">
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
-                                <p>#trending</p>
+                            <div class="d-flex flex-column gallery-sidenav-trending">
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
+                                <a href="">#trending</a>
                             </div>
+
+                            <hr>
                         </div>
                     </section>
                 </div>
                 <div class="col-9">
-                    <section>
-                        <div class="container-fluid gallery-header">
+                    <!-- Header section -->
+                    <section class="gallery-header pb-0">
+                        <div class="container-fluid">
                             <div class="container">
                                 <div class="d-inline-block">
-                                    <h2 class="display-4 gallery-header-title bold">Gallery GIFs</h2>
+                                    <h2 class="display-4 gallery-header-title bold"></h2>
                                     <div class="d-flex flex-row mt-2">
-                                        <p class="alt-text bold">@Gallery</p>
-                                        <div class="ml-auto gallery-header-media">
-                                            <i class="fab fa-facebook-f"></i>
-                                            <i class="fab fa-twitter"></i>
-                                            <i class="fab fa-instagram"></i>
+                                        <p class="gallery-header-category alt-text bold"></p>
+                                        <div class="ml-auto gallery-media-icons">
+                                            <a href="">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                            <a href="">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                            <a href="">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -324,74 +340,6 @@
                         </div>
                     </section>
 
-                    <!-- Featured section -->
-                    <section>
-                        <div class="container-fluid">
-                            <div class="container">
-                                <div class="row featured custom-carousel">
-                                    <div class="featured-header col-12 d-flex flex-row align-items-center mb-2">
-                                        <h6 class="alt-text bold">FEATURED GALLERY</h6>
-                                        <div class="ml-auto d-flex flex-row">
-                                            <div class="custom-carousel-arrow custom-carousel-arrow-prev">
-                                                <img src="assets/white-arrow.png" alt="">
-                                            </div>
-                                            <div class="custom-carousel-arrow custom-carousel-arrow-next active">
-                                                <img src="assets/white-arrow.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 featured-carousel custom-carousel-wrapper">
-                                        <div class="custom-carousel-container">
-                                            <ul class="custom-carousel-list">
-                                                <li class="custom-carousel-list-item">
-                                                    <a class="custom-carousel-item" href="">
-                                                        <img src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
-                                                        <div class="custom-carousel-item-info">
-                                                            <p>#hashtag</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="custom-carousel-list-item">
-                                                    <a class="custom-carousel-item" href="">
-                                                        <img src="assets/alcohol-architecture-bar-260922.jpg" alt="">
-                                                        <div class="custom-carousel-item-info">
-                                                            <p>#hashtag</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="custom-carousel-list-item">
-                                                    <a class="custom-carousel-item" href="">
-                                                        <img src="assets/chef-cooking-dinner-66639.jpg" alt="">
-                                                        <div class="custom-carousel-item-info">
-                                                            <p>#hashtag</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="custom-carousel-list-item">
-                                                    <a class="custom-carousel-item" href="">
-                                                        <img src="assets/chef-cooking-dinner-66639.jpg" alt="">
-                                                        <div class="custom-carousel-item-info">
-                                                            <p>#hashtag</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="custom-carousel-list-item">
-                                                    <a class="custom-carousel-item" href="">
-                                                        <img src="assets/alcohol-architecture-bar-260922.jpg" alt="">
-                                                        <div class="custom-carousel-item-info">
-                                                            <p>#hashtag</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
                     <!-- Search results -->
                     <section class="pt-4">
                         <div class="container-fluid">
@@ -469,7 +417,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script src="js/fix_navbar.js"></script>
-    <script src="js/dist/gallery.js"></script>
+    <script src="js/dist/entertainment.js"></script>
 </body>
 
 </html>

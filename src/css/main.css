@@ -7067,13 +7067,22 @@ p, h2, h6 {
     max-width: 3rem; }
 
 .weekday, .bold {
-  font-weight: 600; }
+  font-weight: 700; }
 
 .alt-text {
   color: darkgrey; }
 
 .upper {
   text-transform: uppercase; }
+
+.fa-facebook-f {
+  color: #3894fc; }
+
+.fa-twitter {
+  color: #00ccff; }
+
+.fa-instagram {
+  color: #c23c8d; }
 
 nav {
   background-color: #111111;
@@ -7382,11 +7391,24 @@ nav {
 .featured-carousel {
   --carousel-height: 200px; }
   .featured-carousel.custom-carousel-wrapper li {
-    width: 33%; }
-  .featured-carousel.custom-carousel-wrapper img {
+    width: 33.333%; }
+    .featured-carousel.custom-carousel-wrapper li a {
+      width: 100%; }
+    .featured-carousel.custom-carousel-wrapper li img {
+      width: 100%;
+      height: var(--carousel-height);
+      object-fit: cover; }
+  .featured-carousel-item-info {
+    color: white;
+    position: absolute;
+    background: RGB(var(--card-color-4));
+    bottom: 0;
     width: 100%;
-    height: var(--carousel-height);
-    object-fit: cover; }
+    padding: 0.3rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600; }
+  .featured-carousel .custom-carousel-item:hover img {
+    transform: scale(1.1); }
 
 .loading-animation {
   position: absolute;
@@ -7420,6 +7442,29 @@ nav {
     background-repeat: no-repeat; }
   .loading-animation.active {
     display: block; }
+
+.gallery-sidenav-trending {
+  margin-left: 0.3rem; }
+  .gallery-sidenav-trending a {
+    margin: 0.4rem 0;
+    text-decoration: none;
+    color: white; }
+
+.gallery-sidenav hr {
+  background-color: white;
+  opacity: 0.5;
+  margin: 2rem 0; }
+
+.gallery-media-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .gallery-media-icons i {
+    transition: all 0.3s ease-out;
+    font-size: 1.5rem;
+    margin: 0 0.3rem; }
+    .gallery-media-icons i.fab:hover {
+      color: white; }
 
 .search-header {
   margin-bottom: 2rem; }

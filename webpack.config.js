@@ -5,7 +5,10 @@ module.exports = {
     entry: {
         index: './src/js/index.js',
         search: './src/js/search.js',
-        gallery: './src/js/gallery.js'
+        reactions: './src/js/reactions.js',
+        entertainment: './src/js/entertainment.js',
+        sports: './src/js/sports.js',
+        artists: './src/js/artists.js'
     },
     output: {
         filename: '[name].js',

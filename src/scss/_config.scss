@@ -51,7 +51,7 @@ p, h2, h6 {
 }
 
 .weekday, .bold {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .alt-text {
@@ -60,6 +60,18 @@ p, h2, h6 {
 
 .upper {
     text-transform: uppercase;
+}
+
+.fa-facebook-f {
+    color: #3894fc;
+}
+
+.fa-twitter {
+    color: #00ccff;
+}
+
+.fa-instagram {
+    color: #c23c8d;
 }
 
 @mixin easeOut($time: 0.3s) {
