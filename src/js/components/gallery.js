@@ -10,6 +10,12 @@ const carousel = require('./carousel.js');
 const galleryHeaderTitle = document.querySelector('.gallery-header-title');
 const galleryHeaderCategory = document.querySelector('.gallery-header-category');
 
+// Page loader parameters
+let pageLoader;
+
+function LoadPage() {
+    return pageLoader.LoadPage();
+}
 
 async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "") {
     carousel.Init();
@@ -26,19 +32,15 @@ async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "
     let finalSearchTerm = channelSearchTerm;
     finalSearchTerm = extraTerm != undefined && extraTerm != "" ? finalSearchTerm + " " + extraTerm : finalSearchTerm;
 
-    let firstSearchData = await giphy.FetchSearch(finalSearchTerm, 99999, searchResults.GetSearchOffset(), searchStickers);
-    let initialOffset = searchResults.GetPageSize() >= firstSearchData.length ? firstSearchData.length : searchResults.GetPageSize();
+    pageLoader = new searchResults.SearchPageLoader(finalSearchTerm);
+    let firstSearchData = await pageLoader.InitLoader(pageLoader.pageSize);
 
-    searchResults.SetSearchTerm(finalSearchTerm);
-    searchResults.AddSearchOffset(initialOffset);
-    searchResults.PopulatePage(firstSearchData, searchStickers);
-
-    // Enabling results TV
-    if (firstSearchData.length >= 4) {
-        resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, initialOffset), searchStickers);
+    if (pageLoader.firstSearchResultSize >= 4) {
+        let tvContentSize = pageLoader.pageSize >= pageLoader.firstSearchResultSize ? pageLoader.firstSearchResultSize : pageLoader.pageSize;
+        resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, tvContentSize));
     }
 
-    scrollLoading.SetLoadingPromise(searchResults.LoadPage);
+    scrollLoading.SetLoadingPromise(LoadPage);
     scrollLoading.ToggleLoading(false);
 }
 

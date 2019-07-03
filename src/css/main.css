@@ -7475,6 +7475,18 @@ nav {
     .gallery-media-icons i.fab:hover {
       color: white; }
 
+.item-container-options a {
+  color: white;
+  text-decoration: none; }
+
+.item-container-options hr {
+  background: white;
+  opacity: 0.5; }
+
+.item-container-src {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .search-header {
   margin-bottom: 2rem; }
   .search-header-tags .tag {

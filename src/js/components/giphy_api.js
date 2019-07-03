@@ -1,5 +1,5 @@
 const API_KEY = 'YEq174exoFhVhmvEOqMka3RtRh2KKZe8';
-const giphy_host = 'https://api.giphy.com';
+const GIPHY_HOST = 'https://api.giphy.com';
 const SEARCH_GIFS_PATH = '/v1/gifs/search';
 const SEARCH_STICKERS_PATH = '/v1/stickers/search';
 
@@ -7,9 +7,18 @@ const SEARCH_STICKERS_PATH = '/v1/stickers/search';
 const TRENDING_GIFS_PATH = '/v1/gifs/trending';
 const TRENDING_STICKERS_PATH = '/v1/stickers/trending';
 
-function FetchSearch(search_txt, limit, offset, searchStickers = false) {
+function FetchItemByID(searchID) {
+    const gifByIdPath = `/v1/gifs/${searchID}`;
+    const requestURL = GIPHY_HOST + gifByIdPath + `?api_key=${API_KEY}&gif_id=${searchID}`;
+
+    return fetch(requestURL)
+        .then(res => res.json())
+        .then(jsonData => jsonData.data);
+}
+
+function FetchSearch(searchTxt, limit, offset, searchStickers = false) {
     let searchPath = searchStickers ? SEARCH_STICKERS_PATH : SEARCH_GIFS_PATH;
-    const requestURL = giphy_host + searchPath + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
+    const requestURL = GIPHY_HOST + searchPath + `?api_key=${API_KEY}&q=${searchTxt}&limit=${limit}&offset=${offset}`;
     return fetch(requestURL)
         .then(res => res.json())
         .then(jsonData => jsonData.data);
@@ -17,7 +26,7 @@ function FetchSearch(search_txt, limit, offset, searchStickers = false) {
 
 function FetchTrending(trendingSize, trendingRating, fetchStickers = false) {
     let trendingPath = fetchStickers ? TRENDING_STICKERS_PATH : TRENDING_GIFS_PATH;
-    const requestURL = giphy_host + trendingPath + `?api_key=${API_KEY}&limit=${trendingSize}&rating=${trendingRating}`;
+    const requestURL = GIPHY_HOST + trendingPath + `?api_key=${API_KEY}&limit=${trendingSize}&rating=${trendingRating}`;
 
     return fetch(requestURL)
         .then(res => res.json())
@@ -25,7 +34,7 @@ function FetchTrending(trendingSize, trendingRating, fetchStickers = false) {
 }
 
 async function AsyncSearch(search_txt, limit, offset) {
-    const requestURL = giphy_host + SEARCH_GIFS_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
+    const requestURL = GIPHY_HOST + SEARCH_GIFS_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
     const searchResponse = await fetch(requestURL);
     const searchJSON = await searchResponse.json();
 
@@ -36,6 +45,7 @@ async function AsyncSearch(search_txt, limit, offset) {
     return await searchJSON.data;
 }
 
+exports.FetchItemByID = FetchItemByID;
 exports.FetchSearch = FetchSearch;
 exports.FetchTrending = FetchTrending;
 exports.AsyncSearch = AsyncSearch;

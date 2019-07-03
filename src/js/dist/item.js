@@ -81,32 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/reactions.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/item.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./src/js/components/carousel.js":
-/*!***************************************!*\
-  !*** ./src/js/components/carousel.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("function InitCarousel(customCarousel) {\r\n    let carouselList = customCarousel.querySelector('.custom-carousel-list');\r\n    let carouselPrev = customCarousel.querySelector('.custom-carousel-arrow-prev');\r\n    let carouselNext = customCarousel.querySelector('.custom-carousel-arrow-next');\r\n\r\n    carouselList.addEventListener('scroll', ToggleTrendingArrows);\r\n    carouselNext.addEventListener('click', ScrollTrendingNext);\r\n    carouselPrev.addEventListener('click', ScrollTrendingPrev);\r\n}\r\n\r\nfunction DisableTrendingArrows() {\r\n    carousel = this.classList.contains('.custom-carousel') ? this : this.closest(\".custom-carousel\");\r\n    carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');\r\n    carouselNext = carousel.querySelector('.custom-carousel-arrow-next');\r\n\r\n    carouselPrev.classList.remove('active');\r\n    carouselNext.classList.remove('active');\r\n}\r\n\r\nfunction ToggleTrendingArrows() {\r\n    if (this.closest) {\r\n        carousel = this.classList.contains('.custom-carousel') ? this : this.closest(\".custom-carousel\");\r\n        carouselList = carousel.querySelector('.custom-carousel-list');\r\n        carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');\r\n        carouselNext = carousel.querySelector('.custom-carousel-arrow-next');\r\n\r\n        let max_scroll = carouselList.scrollWidth - carouselList.clientWidth;\r\n\r\n        if (carouselList.scrollLeft > 0) {\r\n            carouselPrev.classList.add('active');\r\n        }\r\n        else {\r\n            carouselPrev.classList.remove('active');\r\n        }\r\n\r\n        if (carouselList.scrollLeft < max_scroll) {\r\n            carouselNext.classList.add('active');\r\n        }\r\n        else {\r\n            carouselNext.classList.remove('active');\r\n        }\r\n    }\r\n}\r\n\r\nfunction ScrollTrendingNext() {\r\n    carousel = this.classList.contains('.custom-carousel') ? this : this.closest(\".custom-carousel\");\r\n    carouselList = carousel.querySelector('.custom-carousel-list');\r\n\r\n    let scrollSize = carouselList.clientWidth;\r\n    carouselList.scrollLeft += scrollSize;\r\n\r\n    ToggleTrendingArrows();\r\n}\r\n\r\nfunction ScrollTrendingPrev() {\r\n    carousel = this.classList.contains('.custom-carousel') ? this : this.closest(\".custom-carousel\");\r\n    carouselList = carousel.querySelector('.custom-carousel-list');\r\n\r\n    let scrollSize = carouselList.clientWidth;\r\n    carouselList.scrollLeft -= scrollSize;\r\n\r\n    ToggleTrendingArrows();\r\n}\r\n\r\nfunction Init() {\r\n    customCarousels = document.querySelectorAll('.custom-carousel');\r\n\r\n    [...customCarousels].forEach(customCarousel => {\r\n        InitCarousel(customCarousel);\r\n    });\r\n}\r\n\r\nexports.Init = Init;\r\nexports.ToggleTrendingArrows = ToggleTrendingArrows;\r\nexports.DisableTrendingArrows = DisableTrendingArrows;\n\n//# sourceURL=webpack:///./src/js/components/carousel.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/gallery.js":
-/*!**************************************!*\
-  !*** ./src/js/components/gallery.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Modules\r\nconst giphy = __webpack_require__(/*! ./giphy_api.js */ \"./src/js/components/giphy_api.js\");\r\nconst scrollLoading = __webpack_require__(/*! ./scroll_loading.js */ \"./src/js/components/scroll_loading.js\");\r\nconst trending = __webpack_require__(/*! ./trending.js */ \"./src/js/components/trending.js\");\r\nconst resultsTV = __webpack_require__(/*! ./results_tv.js */ \"./src/js/components/results_tv.js\");\r\nconst searchResults = __webpack_require__(/*! ./search_results.js */ \"./src/js/components/search_results.js\");\r\nconst carousel = __webpack_require__(/*! ./carousel.js */ \"./src/js/components/carousel.js\");\r\n\r\n// Gallery parameters\r\nconst galleryHeaderTitle = document.querySelector('.gallery-header-title');\r\nconst galleryHeaderCategory = document.querySelector('.gallery-header-category');\r\n\r\n// Page loader parameters\r\nlet pageLoader;\r\n\r\nfunction LoadPage() {\r\n    return pageLoader.LoadPage();\r\n}\r\n\r\nasync function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = \"\") {\r\n    carousel.Init();\r\n    // Initializing trending section\r\n    trending.InitializeTrending(searchStickers);\r\n\r\n    let channelSearchTerm = '@' + searchTerm;\r\n\r\n    // Initializing page header\r\n    galleryHeaderTitle.textContent = pageTitle;\r\n    galleryHeaderCategory.textContent = channelSearchTerm;\r\n\r\n    // Initializing search results\r\n    let finalSearchTerm = channelSearchTerm;\r\n    finalSearchTerm = extraTerm != undefined && extraTerm != \"\" ? finalSearchTerm + \" \" + extraTerm : finalSearchTerm;\r\n\r\n    pageLoader = new searchResults.SearchPageLoader(finalSearchTerm);\r\n    let firstSearchData = await pageLoader.InitLoader(pageLoader.pageSize);\r\n\r\n    if (pageLoader.firstSearchResultSize >= 4) {\r\n        let tvContentSize = pageLoader.pageSize >= pageLoader.firstSearchResultSize ? pageLoader.firstSearchResultSize : pageLoader.pageSize;\r\n        resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, tvContentSize));\r\n    }\r\n\r\n    scrollLoading.SetLoadingPromise(LoadPage);\r\n    scrollLoading.ToggleLoading(false);\r\n}\r\n\r\nexports.Init = Init;\n\n//# sourceURL=webpack:///./src/js/components/gallery.js?");
-
-/***/ }),
 
 /***/ "./src/js/components/giphy_api.js":
 /*!****************************************!*\
@@ -116,17 +94,6 @@ eval("// Modules\r\nconst giphy = __webpack_require__(/*! ./giphy_api.js */ \"./
 /***/ (function(module, exports) {
 
 eval("const API_KEY = 'YEq174exoFhVhmvEOqMka3RtRh2KKZe8';\r\nconst GIPHY_HOST = 'https://api.giphy.com';\r\nconst SEARCH_GIFS_PATH = '/v1/gifs/search';\r\nconst SEARCH_STICKERS_PATH = '/v1/stickers/search';\r\n\r\n// key, limit (max num of records), offset, rating, format (json)\r\nconst TRENDING_GIFS_PATH = '/v1/gifs/trending';\r\nconst TRENDING_STICKERS_PATH = '/v1/stickers/trending';\r\n\r\nfunction FetchItemByID(searchID) {\r\n    const gifByIdPath = `/v1/gifs/${searchID}`;\r\n    const requestURL = GIPHY_HOST + gifByIdPath + `?api_key=${API_KEY}&gif_id=${searchID}`;\r\n\r\n    return fetch(requestURL)\r\n        .then(res => res.json())\r\n        .then(jsonData => jsonData.data);\r\n}\r\n\r\nfunction FetchSearch(searchTxt, limit, offset, searchStickers = false) {\r\n    let searchPath = searchStickers ? SEARCH_STICKERS_PATH : SEARCH_GIFS_PATH;\r\n    const requestURL = GIPHY_HOST + searchPath + `?api_key=${API_KEY}&q=${searchTxt}&limit=${limit}&offset=${offset}`;\r\n    return fetch(requestURL)\r\n        .then(res => res.json())\r\n        .then(jsonData => jsonData.data);\r\n}\r\n\r\nfunction FetchTrending(trendingSize, trendingRating, fetchStickers = false) {\r\n    let trendingPath = fetchStickers ? TRENDING_STICKERS_PATH : TRENDING_GIFS_PATH;\r\n    const requestURL = GIPHY_HOST + trendingPath + `?api_key=${API_KEY}&limit=${trendingSize}&rating=${trendingRating}`;\r\n\r\n    return fetch(requestURL)\r\n        .then(res => res.json())\r\n        .then(gifs => gifs.data);\r\n}\r\n\r\nasync function AsyncSearch(search_txt, limit, offset) {\r\n    const requestURL = GIPHY_HOST + SEARCH_GIFS_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;\r\n    const searchResponse = await fetch(requestURL);\r\n    const searchJSON = await searchResponse.json();\r\n\r\n    if (searchResponse.status !== 200) {\r\n        throw Error(searchJSON.detail);\r\n    }\r\n\r\n    return await searchJSON.data;\r\n}\r\n\r\nexports.FetchItemByID = FetchItemByID;\r\nexports.FetchSearch = FetchSearch;\r\nexports.FetchTrending = FetchTrending;\r\nexports.AsyncSearch = AsyncSearch;\r\n\n\n//# sourceURL=webpack:///./src/js/components/giphy_api.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/results_tv.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/results_tv.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("const utils = __webpack_require__(/*! ./utils.js */ \"./src/js/components/utils.js\");\r\n\r\n// Results TV parameters\r\nconst tv = document.querySelector('.search-results-tv');\r\nconst tvImg = tv.querySelector('.img-fluid');\r\nconst tvTitle = tv.querySelector('.search-results-tv-header h2');\r\nconst tvPlayBtn = tv.querySelector('.fa-play');\r\nconst tvPauseBtn = tv.querySelector('.fa-pause');\r\nconst tvPrevBtn = tv.querySelector('.search-results-tv-prev');\r\nconst tvNextBtn = tv.querySelector('.search-results-tv-forward');\r\n\r\n// Results TV state variables\r\nlet isTVPlaying = false;\r\nlet tvData;\r\nlet tvDataIdx = 0;\r\nlet autoplayRate = 5000;    // Given in milliseconds\r\nlet autoplayInterval;\r\n\r\ntvPlayBtn.addEventListener('click', ToggleTVAutoplay);\r\ntvPauseBtn.addEventListener('click', ToggleTVAutoplay);\r\n\r\ntvPrevBtn.addEventListener('click', () => RefreshTV(-1));\r\ntvNextBtn.addEventListener('click', () => RefreshTV(1));\r\n\r\nexports.EnableTV = function (title, data, areResultsStickers = false) {\r\n    tv.classList.add('active');\r\n    tvTitle.textContent = \"#\" + utils.CapitalizeFirstLetter(title) + \" TV\";\r\n    tvData = data;\r\n\r\n    if (areResultsStickers) {\r\n        tvImg.classList.add('sticker');\r\n    }\r\n\r\n    ToggleTVAutoplay();\r\n}\r\n\r\nfunction ToggleTVAutoplay() {\r\n    if (!isTVPlaying) {\r\n        tvDataIdx = utils.RandomInt(0, tvData.length);\r\n        autoplayInterval = setInterval(() => RefreshTV(1), autoplayRate);\r\n\r\n        tvPlayBtn.classList.remove('active');\r\n        tvPauseBtn.classList.add('active');\r\n    }\r\n    else {\r\n        clearInterval(autoplayInterval);\r\n\r\n        tvPlayBtn.classList.add('active');\r\n        tvPauseBtn.classList.remove('active');\r\n    }\r\n\r\n    isTVPlaying = !isTVPlaying;\r\n}\r\n\r\nfunction RefreshTV(val) {\r\n    tvDataIdx = utils.LoopIndex(tvDataIdx + val, tvData.length);\r\n    current_tv_img = tvData[tvDataIdx];\r\n    tvImg.src = current_tv_img.images.fixed_height.url;\r\n}\n\n//# sourceURL=webpack:///./src/js/components/results_tv.js?");
 
 /***/ }),
 
@@ -152,17 +119,6 @@ eval("// Displays search results in columns of the same size\r\n\r\n// Modules\r
 
 /***/ }),
 
-/***/ "./src/js/components/trending.js":
-/*!***************************************!*\
-  !*** ./src/js/components/trending.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Modules\r\nconst giphy = __webpack_require__(/*! ./giphy_api.js */ \"./src/js/components/giphy_api.js\");\r\nconst carousel = __webpack_require__(/*! ./carousel.js */ \"./src/js/components/carousel.js\");\r\n\r\n// Trending parameters\r\nconst trendingSection = document.querySelector('.trending.custom-carousel');\r\nconst trendingItems = trendingSection.querySelectorAll('.custom-carousel-item');\r\n\r\n// Trending parameters\r\nconst TRENDING_RATING = 'G';\r\nconst TRENDING_SIZE = trendingItems.length;\r\n\r\nexports.InitializeTrending = async function (fetchStickers = false) {\r\n    let trendingData = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING, fetchStickers)\r\n    PopulateTrendingSection(trendingData);\r\n\r\n    if (fetchStickers) {\r\n        trendingItems.forEach(item => item.classList.add('sticker'));\r\n    }\r\n\r\n    trendingSection.addEventListener('mouseover', carousel.ToggleTrendingArrows);\r\n    trendingSection.addEventListener('mouseout', carousel.DisableTrendingArrows);\r\n}\r\n\r\nfunction PopulateTrendingSection(data) {\r\n    for (let i = 0; i < trendingItems.length; i++) {\r\n        let img = trendingItems[i].querySelector('img');\r\n        let desc = trendingItems[i].querySelector('p');\r\n        img.src = data[i].images.fixed_height.url;\r\n        desc.textContent = data[i].title;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/components/trending.js?");
-
-/***/ }),
-
 /***/ "./src/js/components/utils.js":
 /*!************************************!*\
   !*** ./src/js/components/utils.js ***!
@@ -174,14 +130,14 @@ eval("exports.CapitalizeFirstLetter = function (term) {\r\n    return term.charA
 
 /***/ }),
 
-/***/ "./src/js/reactions.js":
-/*!*****************************!*\
-  !*** ./src/js/reactions.js ***!
-  \*****************************/
+/***/ "./src/js/item.js":
+/*!************************!*\
+  !*** ./src/js/item.js ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const gallery = __webpack_require__(/*! ./components/gallery.js */ \"./src/js/components/gallery.js\");\r\nconst utils = __webpack_require__(/*! ./components/utils.js */ \"./src/js/components/utils.js\");\r\n\r\nlet searchTerm = 'reactions';\r\nlet featuredTerm = utils.GetQueryVariable('featured');\r\nlet pageTitle = featuredTerm != undefined ? utils.CapitalizeFirstLetter(featuredTerm) : 'Reaction GIFs';\r\n\r\ngallery.Init(searchTerm, pageTitle, false, featuredTerm);\n\n//# sourceURL=webpack:///./src/js/reactions.js?");
+eval("// Modules\r\nconst giphy = __webpack_require__(/*! ./components/giphy_api.js */ \"./src/js/components/giphy_api.js\");\r\nconst searchResults = __webpack_require__(/*! ./components/search_results.js */ \"./src/js/components/search_results.js\");\r\nconst utils = __webpack_require__(/*! ./components/utils.js */ \"./src/js/components/utils.js\");\r\nconst scrollLoading = __webpack_require__(/*! ./components/scroll_loading.js */ \"./src/js/components/scroll_loading.js\");\r\n\r\n// Gallery parameters\r\nconst galleryHeaderTitle = document.querySelector('.gallery-header-title');\r\nconst galleryHeaderCategory = document.querySelector('.gallery-header-category');\r\nconst itemImg = document.querySelector('.item-container-img');\r\nconst itemSource = document.querySelector('.item-container-src');\r\n\r\n// Search Loading parameters\r\nlet pageLoader;\r\n\r\n\r\nfunction SetPageData(itemData) {\r\n    itemImg.src = itemData.images.fixed_height.url;\r\n\r\n    // Initializing page header\r\n    galleryHeaderTitle.textContent = itemData.title;\r\n    galleryHeaderCategory.textContent = itemData.import_datetime;\r\n    itemSource.textContent = itemData.source;\r\n    itemSource.href = itemData.source;\r\n}\r\n\r\nfunction LoadPage() {\r\n    return pageLoader.LoadPage();\r\n}\r\n\r\nasync function Init(searchStickers = false) {\r\n\r\n    let searchID = utils.GetQueryVariable('id');\r\n\r\n    if (searchID != undefined) {\r\n        let itemData = await giphy.FetchItemByID(searchID);\r\n        console.log(itemData);\r\n        SetPageData(itemData);\r\n\r\n        let splitTitle = itemData.title.split(' ');\r\n        let relatedSearchTerm = splitTitle[1];\r\n\r\n        pageLoader = new searchResults.SearchPageLoader(relatedSearchTerm, searchStickers);\r\n        await pageLoader.InitLoader(pageLoader.pageSize);\r\n\r\n        // scrollLoading.SetLoadingPromise(LoadPage);\r\n        // scrollLoading.ToggleLoading(false);\r\n    }\r\n}\r\n\r\nInit();\r\n\n\n//# sourceURL=webpack:///./src/js/item.js?");
 
 /***/ })
 

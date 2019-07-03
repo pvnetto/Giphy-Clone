@@ -1,7 +1,7 @@
 HOME PAGE:
 	> Responsiveness
 	> When done:
-		- Navbar sections
+		- Navbar sections	DONE
 		- Theme colors
 
 
@@ -21,7 +21,7 @@ SEARCH PAGE:
 
 
 REACTIONS/ENTERTAINMENT/ARTISTS ETC:
-	> Load images from Giphy API
+	> Load images from Giphy API			DONE
 
 
 REFACTOR:

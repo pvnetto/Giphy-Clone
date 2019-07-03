@@ -309,6 +309,25 @@
     }
 }
 
+.item-container {
+    &-options {
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        hr {
+            background: white;
+            opacity: 0.5;
+        }
+    }
+
+    &-src {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
 @import '_search';
 
 @import '_mobile';

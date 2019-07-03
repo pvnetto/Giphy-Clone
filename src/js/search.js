@@ -11,35 +11,37 @@ const searchHeader = document.querySelector('.search-header');
 const searchHeaderTitle = searchHeader.querySelector('h1');
 const searchHeaderResultCount = searchHeader.querySelector('p');
 
+// Search page loading parameters
+let pageLoader;
+
+// pageLoader.LoadPage is wrapped inside a function to guarantee that 'this' context is correct
+function LoadPage() {
+    return pageLoader.LoadPage();
+}
 
 async function Init() {
     scrollLoading.ToggleLoading(true);
 
     let searchTerm = utils.GetQueryVariable("q");
     if (searchTerm) {
-        searchResults.SetSearchTerm(searchTerm);
-
         searchHeaderTitle.textContent = searchTerm;
 
-        let firstSearchData = await giphy.FetchSearch(searchTerm, 99999, searchResults.GetSearchOffset());
+        pageLoader = new searchResults.SearchPageLoader(searchTerm);
+        let firstSearchData = await pageLoader.InitLoader(2000);
 
-        if (firstSearchData.length >= 1000) {
+        if (pageLoader.firstSearchResultSize >= 1000) {
             searchHeaderResultCount.textContent = firstSearchData.length + "+ GIFs";
         }
         else {
             searchHeaderResultCount.textContent = firstSearchData.length + " GIFs";
         }
 
-        // Initializing search offset and TV data
-        let initialOffset = searchResults.GetPageSize() >= firstSearchData.length ? firstSearchData.length : searchResults.GetPageSize();
-        searchResults.AddSearchOffset(initialOffset);
-        searchResults.PopulatePage(firstSearchData);
-
-        if (firstSearchData.length >= 4) {
-            resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, initialOffset));
+        if (pageLoader.firstSearchResultSize >= 4) {
+            let tvContentSize = pageLoader.pageSize >= pageLoader.firstSearchResultSize ? pageLoader.firstSearchResultSize : pageLoader.pageSize;
+            resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, tvContentSize));
         }
 
-        scrollLoading.SetLoadingPromise(searchResults.LoadPage);
+        scrollLoading.SetLoadingPromise(LoadPage);
         scrollLoading.ToggleLoading(false);
     }
 }
