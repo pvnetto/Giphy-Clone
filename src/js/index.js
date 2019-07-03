@@ -2,6 +2,7 @@ const SEARCH_THEME = 'cats';
 
 
 // Modules
+const carousel = require('./components/carousel.js');
 const giphy = require('./components/giphy_api.js');
 const scrollLoading = require('./components/scroll_loading.js');
 const utils = require('./components/utils.js');
@@ -96,6 +97,7 @@ function CreateFeedItem() {
 }
 
 async function Init() {
+    carousel.Init();
     feedItemHTML = await utils.LoadComponent("components/feed.html");
 
     PopulateHomeFeed();

@@ -1,21 +1,21 @@
 // Fixed nav parameters
 const nav = document.querySelector('nav');
-const nav_search = nav.querySelector('.navbar-search');
-const dist_to_top = nav_search.offsetTop;
+const navSearch = nav.querySelector('.navbar-search');
+const distToTop = navSearch.offsetTop;
 
 window.addEventListener('scroll', FixNavBar);
 
 // Hovering window parameters
-const dropdown_trigger = document.querySelector('.nav-item-trigger');
-const dropdown_window = document.querySelector('.menu-dropdown');
+const dropdownTrigger = document.querySelector('.nav-item-trigger');
+const dropdownWindow = document.querySelector('.menu-dropdown');
 
-dropdown_trigger.addEventListener('mouseenter', HandleTriggerEnter);
-dropdown_trigger.addEventListener('mouseleave', HandleTriggerLeave);
+dropdownTrigger.addEventListener('mouseenter', HandleTriggerEnter);
+dropdownTrigger.addEventListener('mouseleave', HandleTriggerLeave);
 
 
 function FixNavBar() {
-    if (window.scrollY >= dist_to_top) {
-        document.body.style['padding-top'] = `${nav.offsetHeight - dist_to_top}px`;
+    if (window.scrollY >= distToTop) {
+        document.body.style['padding-top'] = `${nav.offsetHeight - distToTop}px`;
         nav.classList.add('fixed-nav');
     }
     else {
@@ -25,19 +25,23 @@ function FixNavBar() {
 }
 
 function HandleTriggerEnter(e) {
-    dropdown_window.classList.add('active');
+    dropdownWindow.classList.add('active');
 
-    let trigger_coords = this.getBoundingClientRect();
-    let nav_coords = nav.getBoundingClientRect();
+    let triggerCoords = this.getBoundingClientRect();
+    let navCoords = nav.getBoundingClientRect();
 
-    let coords = {
-        top: (dropdown_window.clientHeight / 2) + 10,
-        left: trigger_coords.left - nav_coords.left - (dropdown_window.clientWidth / 2) + (trigger_coords.width / 2)
-    };
+    let arrowXPos = (this.offsetLeft - dropdownWindow.clientWidth / 2) + (this.clientWidth / 2) - 13;
+    let arrow = dropdownWindow.querySelector('.arrow');
+    arrow.style.setProperty('transform', `translate(${arrowXPos}px, -50%) rotate(45deg)`);
 
-    dropdown_window.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+    // let coords = {
+    //     top: (dropdownWindow.clientHeight / 2) + 10,
+    //     left: triggerCoords.left - navCoords.left - (dropdownWindow.clientWidth / 2) + (triggerCoords.width / 2)
+    // };
+
+    // dropdownWindow.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
 }
 
 function HandleTriggerLeave(e) {
-    dropdown_window.classList.remove('active');
+    dropdownWindow.classList.remove('active');
 }

@@ -32,19 +32,20 @@ nav {
     .menu-dropdown {
         @include easeOut;
 
-        width: 600px;
-        height: 300px;
+        width: calc(100% - 1.8rem);
         position: absolute;
-        background: #fff;
+        z-index: 300;
+        display: flex;
+        transform-origin: 50% 50%;
+
+        background: linear-gradient(to right, RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+
         border-radius: 4px;
         box-shadow: 0 50px 100px rgba(50, 50, 93, .1), 0 15px 35px rgba(50, 50, 93, .15), 0 5px 15px rgba(0, 0, 0, .1);
         transition: all 0.3s, opacity 0.1s, transform 0.2s;
-        transform-origin: 50% 50%;
         justify-content: center;
         opacity: 0;
 
-        z-index: 300;
-        display: flex;
         pointer-events: none;
 
         .arrow {
@@ -52,8 +53,14 @@ nav {
             width: 20px;
             height: 20px;
             display: block;
-            background: white;
-            transform: translateY(-50%) rotate(45deg);
+
+            background: linear-gradient(to right, RGB(var(--card-color-3)), RGB(var(--card-color-2)));
+            background-size: 300% 300%;
+        }
+
+        &-body {
+            width: 100%;
+            padding: 2rem 1.6rem;
         }
 
         &.active {
@@ -137,5 +144,9 @@ nav {
                 }
             }
         }
+    }
+
+    .container {
+        position: relative;
     }
 }

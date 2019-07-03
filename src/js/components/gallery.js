@@ -11,22 +11,25 @@ const galleryHeaderTitle = document.querySelector('.gallery-header-title');
 const galleryHeaderCategory = document.querySelector('.gallery-header-category');
 
 
-async function Init(searchTerm, pageTitle, searchStickers = false) {
+async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "") {
     carousel.Init();
     // Initializing trending section
     trending.InitializeTrending(searchStickers);
 
-    let categorySearchTerm = '@' + searchTerm;
+    let channelSearchTerm = '@' + searchTerm;
 
     // Initializing page header
     galleryHeaderTitle.textContent = pageTitle;
-    galleryHeaderCategory.textContent = categorySearchTerm;
+    galleryHeaderCategory.textContent = channelSearchTerm;
 
     // Initializing search results
-    let firstSearchData = await giphy.FetchSearch(categorySearchTerm, 99999, searchResults.GetSearchOffset(), searchStickers);
+    let finalSearchTerm = channelSearchTerm;
+    finalSearchTerm = extraTerm != undefined && extraTerm != "" ? finalSearchTerm + " " + extraTerm : finalSearchTerm;
+
+    let firstSearchData = await giphy.FetchSearch(finalSearchTerm, 99999, searchResults.GetSearchOffset(), searchStickers);
     let initialOffset = searchResults.GetPageSize() >= firstSearchData.length ? firstSearchData.length : searchResults.GetPageSize();
 
-    searchResults.SetSearchTerm(categorySearchTerm);
+    searchResults.SetSearchTerm(finalSearchTerm);
     searchResults.AddSearchOffset(initialOffset);
     searchResults.PopulatePage(firstSearchData, searchStickers);
 

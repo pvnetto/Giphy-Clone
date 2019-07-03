@@ -13,9 +13,8 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="menu-dropdown">
-            <span class="arrow"></span>
-        </div>
+
+
         <div class="container-fluid">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -23,6 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Navigation bar -->
                 <div class="collapse navbar-collapse flex-column" id="navbarNav">
                     <ul class="navbar-main navbar-nav w-100 flex-row justify-content-start align-items-center">
                         <li class="nav-item">
@@ -77,22 +77,30 @@
                                 </div>
                             </form>
                         </li>
+
+                        <!-- Menu dropdown -->
+                        <div class="menu-dropdown">
+                            <span class="arrow"></span>
+                            <div class="menu-dropdown-body">
+                                <p class="bold"> Copyright © 2019 Paiva | All rights reserved | This website was developed by Paiva</p>
+                            </div>
+                        </div>
                     </ul>
                 </div>
+
             </div>
         </div>
     </nav>
 
+    <!-- Trending section -->
     <section>
         <div class="container-fluid">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h6 class="alt-text">TRENDING GIFs</h6>
+                <div class="row trending custom-carousel">
+                    <div class="col-12 pb-2">
+                        <h6 class="alt-text bold">TRENDING GIFs</h6>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 trending custom-carousel">
+                    <div class="col-12 custom-carousel-wrapper">
                         <div class="custom-carousel-arrow custom-carousel-arrow-prev">
                             <img src="assets/white-arrow.png" alt="">
                         </div>
