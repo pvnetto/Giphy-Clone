@@ -22,10 +22,14 @@ tvPauseBtn.addEventListener('click', ToggleTVAutoplay);
 tvPrevBtn.addEventListener('click', () => RefreshTV(-1));
 tvNextBtn.addEventListener('click', () => RefreshTV(1));
 
-exports.EnableTV = function (title, data) {
+exports.EnableTV = function (title, data, areResultsStickers = false) {
     tv.classList.add('active');
     tvTitle.textContent = "#" + utils.CapitalizeFirstLetter(title) + " TV";
     tvData = data;
+
+    if (areResultsStickers) {
+        tvImg.classList.add('sticker');
+    }
 
     ToggleTVAutoplay();
 }

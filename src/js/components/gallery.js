@@ -11,10 +11,10 @@ const galleryHeaderTitle = document.querySelector('.gallery-header-title');
 const galleryHeaderCategory = document.querySelector('.gallery-header-category');
 
 
-async function Init(searchTerm, pageTitle) {
+async function Init(searchTerm, pageTitle, searchStickers = false) {
     carousel.Init();
     // Initializing trending section
-    trending.InitializeTrending();
+    trending.InitializeTrending(searchStickers);
 
     let categorySearchTerm = '@' + searchTerm;
 
@@ -23,16 +23,16 @@ async function Init(searchTerm, pageTitle) {
     galleryHeaderCategory.textContent = categorySearchTerm;
 
     // Initializing search results
-    let firstSearchData = await giphy.FetchSearch(categorySearchTerm, 99999, searchResults.GetSearchOffset());
+    let firstSearchData = await giphy.FetchSearch(categorySearchTerm, 99999, searchResults.GetSearchOffset(), searchStickers);
     let initialOffset = searchResults.GetPageSize() >= firstSearchData.length ? firstSearchData.length : searchResults.GetPageSize();
 
     searchResults.SetSearchTerm(categorySearchTerm);
     searchResults.AddSearchOffset(initialOffset);
-    searchResults.PopulatePage(firstSearchData);
+    searchResults.PopulatePage(firstSearchData, searchStickers);
 
     // Enabling results TV
     if (firstSearchData.length >= 4) {
-        resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, initialOffset));
+        resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, initialOffset), searchStickers);
     }
 
     scrollLoading.SetLoadingPromise(searchResults.LoadPage);

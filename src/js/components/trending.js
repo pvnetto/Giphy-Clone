@@ -10,9 +10,13 @@ const trendingItems = trendingSection.querySelectorAll('.custom-carousel-item');
 const TRENDING_RATING = 'G';
 const TRENDING_SIZE = trendingItems.length;
 
-exports.InitializeTrending = async function () {
-    let trendingData = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING)
+exports.InitializeTrending = async function (fetchStickers = false) {
+    let trendingData = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING, fetchStickers)
     PopulateTrendingSection(trendingData);
+
+    if (fetchStickers) {
+        trendingItems.forEach(item => item.classList.add('sticker'));
+    }
 
     trendingSection.addEventListener('mouseover', carousel.ToggleTrendingArrows);
     trendingSection.addEventListener('mouseout', carousel.DisableTrendingArrows);

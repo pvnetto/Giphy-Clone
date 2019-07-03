@@ -34,8 +34,8 @@ exports.AddSearchOffset = function (offset) {
     searchOffset += offset;
 }
 
-exports.PopulatePage = async function (gifData) {
-    AddResultsToPage(gifData);
+exports.PopulatePage = async function (imgData, areResultsStickers = false) {
+    AddResultsToPage(imgData, areResultsStickers);
 }
 
 exports.LoadPage = function () {
@@ -46,12 +46,12 @@ exports.LoadPage = function () {
         });
 }
 
-async function AddResultsToPage(gifData) {
+async function AddResultsToPage(imgData, areResultsStickers = false) {
     if (searchItemHTML == undefined) {
         searchItemHTML = await utils.LoadComponent("./components/item.html");
     }
 
-    for (let i = 0; i < pageSize && i < gifData.length; i++) {
+    for (let i = 0; i < pageSize && i < imgData.length; i++) {
         let smallestIdx;
         let smallestCol;
         let lowestHeight = Infinity;
@@ -70,9 +70,13 @@ async function AddResultsToPage(gifData) {
         newItem.innerHTML = searchItemHTML;
 
         let img = newItem.querySelector('img');
-        img.src = gifData[i].images.fixed_height.url;
+        img.src = imgData[i].images.fixed_height.url;
 
-        colHeights[smallestIdx] += parseInt(gifData[i].images.original.height);
+        if (areResultsStickers) {
+            img.classList.add('sticker');
+        }
+
+        colHeights[smallestIdx] += parseInt(imgData[i].images.original.height);
         smallestCol.appendChild(newItem);
     }
 }

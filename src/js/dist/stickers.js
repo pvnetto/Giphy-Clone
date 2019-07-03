@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/reactions.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/stickers.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -174,14 +174,14 @@ eval("exports.CapitalizeFirstLetter = function (term) {\r\n    return term.charA
 
 /***/ }),
 
-/***/ "./src/js/reactions.js":
-/*!*****************************!*\
-  !*** ./src/js/reactions.js ***!
-  \*****************************/
+/***/ "./src/js/stickers.js":
+/*!****************************!*\
+  !*** ./src/js/stickers.js ***!
+  \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const gallery = __webpack_require__(/*! ./components/gallery.js */ \"./src/js/components/gallery.js\");\r\nconst utils = __webpack_require__(/*! ./components/utils.js */ \"./src/js/components/utils.js\");\r\n\r\nlet searchTerm = 'reactions';\r\nlet pageTitle = 'Reaction GIFs';\r\n\r\ngallery.Init(searchTerm, pageTitle);\n\n//# sourceURL=webpack:///./src/js/reactions.js?");
+eval("const gallery = __webpack_require__(/*! ./components/gallery.js */ \"./src/js/components/gallery.js\");\r\nconst utils = __webpack_require__(/*! ./components/utils.js */ \"./src/js/components/utils.js\");\r\n\r\nlet searchTerm = 'stickers';\r\nlet pageTitle = 'Stickers';\r\n\r\ngallery.Init(searchTerm, pageTitle, true);\n\n//# sourceURL=webpack:///./src/js/stickers.js?");
 
 /***/ })
 

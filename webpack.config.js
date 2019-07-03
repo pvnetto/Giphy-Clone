@@ -8,7 +8,8 @@ module.exports = {
         reactions: './src/js/reactions.js',
         entertainment: './src/js/entertainment.js',
         sports: './src/js/sports.js',
-        artists: './src/js/artists.js'
+        artists: './src/js/artists.js',
+        stickers: './src/js/stickers.js'
     },
     output: {
         filename: '[name].js',
