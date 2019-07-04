@@ -7095,6 +7095,10 @@ p, h2, h6 {
   padding-top: calc(100% * 2 / 3);
   background-color: RGB(var(--card-color-2)); }
 
+.hide-txt {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 nav {
   background-color: #111111;
   box-shadow: 0 5px rgba(0, 0, 0, 0.1); }
@@ -7512,9 +7516,12 @@ nav {
   background: white;
   opacity: 0.5; }
 
-.item-container-src {
-  overflow: hidden;
-  text-overflow: ellipsis; }
+.item-sidenav-user {
+  display: none; }
+  .item-sidenav-user img {
+    border-radius: 10%; }
+  .item-sidenav-user.active {
+    display: block; }
 
 .search-header {
   margin-bottom: 2rem; }

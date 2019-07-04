@@ -90,6 +90,11 @@ p, h2, h6 {
     }
 }
 
+.hide-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @mixin easeOut($time: 0.3s) {
     transition: all $time ease-out;
 }

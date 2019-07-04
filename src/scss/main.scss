@@ -350,10 +350,17 @@
             opacity: 0.5;
         }
     }
+}
 
-    &-src {
-        overflow: hidden;
-        text-overflow: ellipsis;
+.item-sidenav-user {
+    display: none;
+
+    img {
+        border-radius: 10%;
+    }
+
+    &.active {
+        display: block;
     }
 }
 

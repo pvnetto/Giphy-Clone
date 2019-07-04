@@ -8,7 +8,11 @@ const scrollLoading = require('./components/scroll_loading.js');
 const galleryHeaderTitle = document.querySelector('.gallery-header-title');
 const galleryHeaderCategory = document.querySelector('.gallery-header-category');
 const itemImg = document.querySelector('.item-container-img');
-const itemSource = document.querySelector('.item-container-src');
+const itemSources = document.querySelectorAll('.item-container-src');
+
+const sidenavUser = document.querySelector('.item-sidenav-user');
+const usernameLink = sidenavUser.querySelector('a');
+const userAvatarImg = sidenavUser.querySelector('img');
 
 // Search Loading parameters
 let pageLoader;
@@ -20,8 +24,17 @@ function SetPageData(itemData) {
     // Initializing page header
     galleryHeaderTitle.textContent = itemData.title;
     galleryHeaderCategory.textContent = itemData.import_datetime;
-    itemSource.textContent = itemData.source;
-    itemSource.href = itemData.source;
+
+    itemSources.forEach(itemSource => {
+        itemSource.textContent = itemData.source;
+        itemSource.href = itemData.source;
+    });
+
+    if (itemData.username != "") {
+        sidenavUser.classList.add('active');
+        usernameLink.textContent = "@" + itemData.username;
+        userAvatarImg.src = itemData.user.avatar_url;
+    }
 }
 
 function LoadPage() {
@@ -35,6 +48,8 @@ async function Init(searchStickers = false) {
     if (searchID != undefined) {
         let itemData = await giphy.FetchItemByID(searchID);
         SetPageData(itemData);
+
+        console.log(itemData);
 
         let splitTitle = itemData.title.split(' ');
         let relatedSearchTerm = splitTitle.length > 1 ? splitTitle[1] : splitTitle[0];
