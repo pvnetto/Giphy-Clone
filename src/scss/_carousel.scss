@@ -54,6 +54,13 @@
         position: relative;
         min-height: var(--carousel-height);
 
+        background-clip: padding-box;
+        border-right: 0.2rem solid transparent;
+
+        a {
+            position: relative;
+        }
+
         img {
             @include easeOut;
             max-height: var(--carousel-height);

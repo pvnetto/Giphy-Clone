@@ -32,7 +32,7 @@ async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "
     let finalSearchTerm = channelSearchTerm;
     finalSearchTerm = extraTerm != undefined && extraTerm != "" ? finalSearchTerm + " " + extraTerm : finalSearchTerm;
 
-    pageLoader = new searchResults.SearchPageLoader(finalSearchTerm);
+    pageLoader = new searchResults.SearchPageLoader(finalSearchTerm, searchStickers);
     let firstSearchData = await pageLoader.InitLoader(pageLoader.pageSize);
 
     if (pageLoader.firstSearchResultSize >= 4) {

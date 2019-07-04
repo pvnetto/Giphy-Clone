@@ -3,6 +3,34 @@
 @import '_navigation';
 @import '_carousel';
 
+
+.tag {
+    @include easeOut;
+    // margin-left: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    color: white;
+    background: black;
+    border-radius: 10%;
+    text-decoration: none;
+
+    &:hover {
+        color: rgba($color: white, $alpha: 0.5);
+        text-decoration: none;
+    }
+}
+
+.flex-margin-right {
+    display: flex;
+    flex-direction: row;
+    
+    a, div {
+        margin-right: 0.5rem;
+    }
+}
+
 .daily-feed {
 
     &-container {
@@ -267,6 +295,7 @@
         height: 30px;
 
         @include gradientBg(to top right, blue, magenta);
+
     }
 
     &.active {
@@ -278,7 +307,7 @@
     &-trending {
         margin-left: 0.3rem;
         a {
-            margin: 0.4rem 0;
+            margin: 0.2rem 0;
             text-decoration: none;
             color: white;
         }

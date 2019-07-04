@@ -80,6 +80,16 @@ p, h2, h6 {
     color: #c23c8d;
 }
 
+.unloaded {
+    &::before {
+        display: block;
+        content: '';
+        padding-top: calc(100% * 2 / 3);
+
+        background-color: RGB(var(--card-color-2));
+    }
+}
+
 @mixin easeOut($time: 0.3s) {
     transition: all $time ease-out;
 }

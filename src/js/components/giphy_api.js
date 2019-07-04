@@ -45,7 +45,31 @@ async function AsyncSearch(search_txt, limit, offset) {
     return await searchJSON.data;
 }
 
+function RemoveUnloadedOnFinish() {
+    let closestUnloaded = this.closest('.unloaded');
+
+    if (closestUnloaded != undefined) {
+        closestUnloaded.classList.remove('unloaded');
+    }
+}
+
+function PopulateItemWithData(item, data, isLoadingStickers = false) {
+    let img = item.tagName == 'IMG' ? item : item.querySelector('img');
+    let a = item.tagName == 'A' ? item : item.querySelector('a');
+
+    img.onload = RemoveUnloadedOnFinish;
+    img.src = data.images.fixed_height.url;
+    a.href = `item.html?id=${data.id}`;
+
+    if (isLoadingStickers) {
+        img.classList.add('sticker');
+    }
+
+    return item;
+}
+
 exports.FetchItemByID = FetchItemByID;
 exports.FetchSearch = FetchSearch;
 exports.FetchTrending = FetchTrending;
 exports.AsyncSearch = AsyncSearch;
+exports.PopulateItemWithData = PopulateItemWithData;

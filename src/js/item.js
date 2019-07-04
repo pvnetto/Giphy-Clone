@@ -34,17 +34,16 @@ async function Init(searchStickers = false) {
 
     if (searchID != undefined) {
         let itemData = await giphy.FetchItemByID(searchID);
-        console.log(itemData);
         SetPageData(itemData);
 
         let splitTitle = itemData.title.split(' ');
-        let relatedSearchTerm = splitTitle[1];
+        let relatedSearchTerm = splitTitle.length > 1 ? splitTitle[1] : splitTitle[0];
 
         pageLoader = new searchResults.SearchPageLoader(relatedSearchTerm, searchStickers);
         await pageLoader.InitLoader(pageLoader.pageSize);
 
-        // scrollLoading.SetLoadingPromise(LoadPage);
-        // scrollLoading.ToggleLoading(false);
+        scrollLoading.SetLoadingPromise(LoadPage);
+        scrollLoading.ToggleLoading(false);
     }
 }
 

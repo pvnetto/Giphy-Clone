@@ -64,13 +64,11 @@ function PopulateFeed(feed, gifList, feedDate) {
     }
 
     for (let i = 0; i < DAILY_FEED_SIZE; i++) {
-        let img = items[i].querySelector('img');
-        let title = items[i].querySelector('.daily-feed-item-info h4');
-        let currentGif = gifList[i];
+        let currentGIF = gifList[i];
+        items[i] = giphy.PopulateItemWithData(items[i], currentGIF);
 
-        img.src = currentGif.images.fixed_height.url;
-        title.textContent = currentGif.title;
-        items[i].href = `item?id=${currentGif.id}`;
+        let title = items[i].querySelector('.daily-feed-item-info h4');
+        title.textContent = currentGIF.title;
 
         // Adding a random color to the current item
         let colorIndex = utils.RandomInt(1, 5);

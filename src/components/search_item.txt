@@ -1,6 +1,6 @@
 <div class="search-results-item">
-    <a href="">
-        <img src="assets/plain-blue-background.jpg" alt="" class="img-fluid">
+    <a class="unloaded" href="">
+        <img src="" alt="" class="img-fluid">
     </a>
     <div class="search-results-item-share d-flex flex-row align-items-center justify-content-end">
         <i class="fas fa-link"></i>

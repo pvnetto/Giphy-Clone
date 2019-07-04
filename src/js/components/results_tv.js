@@ -1,8 +1,10 @@
 const utils = require('./utils.js');
+const giphy = require('./giphy_api.js');
 
 // Results TV parameters
 const tv = document.querySelector('.search-results-tv');
 const tvImg = tv.querySelector('.img-fluid');
+let tvLink = tv.querySelector('a');
 const tvTitle = tv.querySelector('.search-results-tv-header h2');
 const tvPlayBtn = tv.querySelector('.fa-play');
 const tvPauseBtn = tv.querySelector('.fa-pause');
@@ -22,18 +24,19 @@ tvPauseBtn.addEventListener('click', ToggleTVAutoplay);
 tvPrevBtn.addEventListener('click', () => RefreshTV(-1));
 tvNextBtn.addEventListener('click', () => RefreshTV(1));
 
-exports.EnableTV = function (title, data, areResultsStickers = false) {
+exports.EnableTV = function (title, data, isLoadingStickers = false) {
     tv.classList.add('active');
     tvTitle.textContent = "#" + utils.CapitalizeFirstLetter(title) + " TV";
     tvData = data;
 
-    if (areResultsStickers) {
+    if (isLoadingStickers) {
         tvImg.classList.add('sticker');
     }
 
     ToggleTVAutoplay();
 }
 
+// TODO: Call autoplay only when the current image finishes loading
 function ToggleTVAutoplay() {
     if (!isTVPlaying) {
         tvDataIdx = utils.RandomInt(0, tvData.length);
@@ -54,6 +57,5 @@ function ToggleTVAutoplay() {
 
 function RefreshTV(val) {
     tvDataIdx = utils.LoopIndex(tvDataIdx + val, tvData.length);
-    current_tv_img = tvData[tvDataIdx];
-    tvImg.src = current_tv_img.images.fixed_height.url;
+    tvLink = giphy.PopulateItemWithData(tvLink, tvData[tvDataIdx]);
 }

@@ -7089,6 +7089,12 @@ p, h2, h6 {
 .fa-instagram {
   color: #c23c8d; }
 
+.unloaded::before {
+  display: block;
+  content: '';
+  padding-top: calc(100% * 2 / 3);
+  background-color: RGB(var(--card-color-2)); }
+
 nav {
   background-color: #111111;
   box-shadow: 0 5px rgba(0, 0, 0, 0.1); }
@@ -7147,15 +7153,15 @@ nav {
     flex-direction: row; }
     nav .theme-colors-item {
       margin: 0 0.6rem;
-      border: 3px solid white;
+      border: 2px solid white;
       width: 30px;
       height: 30px;
-      border-radius: 100%;
+      border-radius: 30%;
       cursor: pointer; }
       nav .theme-colors-item-primary {
         background-color: #111111; }
       nav .theme-colors-item-secondary {
-        background-color: beige; }
+        background-color: #6c757d; }
   nav .navbar-search .logo {
     transition: all 0.3s ease-out;
     max-width: 0; }
@@ -7229,7 +7235,11 @@ nav {
     display: inline-block;
     overflow: hidden;
     position: relative;
-    min-height: var(--carousel-height); }
+    min-height: var(--carousel-height);
+    background-clip: padding-box;
+    border-right: 0.2rem solid transparent; }
+    .custom-carousel-item a {
+      position: relative; }
     .custom-carousel-item img {
       transition: all 0.3s ease-out;
       max-height: var(--carousel-height);
@@ -7265,6 +7275,25 @@ nav {
   .custom-carousel-arrow.active {
     transition: all 0.3s ease-out;
     cursor: pointer; }
+
+.tag {
+  transition: all 0.3s ease-out;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background: black;
+  border-radius: 10%;
+  text-decoration: none; }
+  .tag:hover {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none; }
+
+.flex-margin-right {
+  display: flex;
+  flex-direction: row; }
+  .flex-margin-right a, .flex-margin-right div {
+    margin-right: 0.5rem; }
 
 .daily-feed-container {
   padding: 10px; }
@@ -7455,7 +7484,7 @@ nav {
 .gallery-sidenav-trending {
   margin-left: 0.3rem; }
   .gallery-sidenav-trending a {
-    margin: 0.4rem 0;
+    margin: 0.2rem 0;
     text-decoration: none;
     color: white; }
 
@@ -7489,15 +7518,6 @@ nav {
 
 .search-header {
   margin-bottom: 2rem; }
-  .search-header-tags .tag {
-    margin-left: 0.5rem;
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-    background: black;
-    border-radius: 10px;
-    text-decoration: none; }
   .search-header-options {
     margin-bottom: 0.8rem; }
     .search-header-options .btn {

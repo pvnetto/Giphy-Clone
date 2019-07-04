@@ -1,0 +1,10 @@
+<li class="custom-carousel-list-item">
+    <div class="custom-carousel-item" href="">
+        <a href="">
+            <img src="" alt="">
+        </a>
+        <div class="custom-carousel-item-info">
+            <p>#hashtag</p>
+        </div>
+    </div>
+</li>
