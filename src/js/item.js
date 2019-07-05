@@ -49,8 +49,6 @@ async function Init(searchStickers = false) {
         let itemData = await giphy.FetchItemByID(searchID);
         SetPageData(itemData);
 
-        console.log(itemData);
-
         let splitTitle = itemData.title.split(' ');
         let relatedSearchTerm = splitTitle.length > 1 ? splitTitle[1] : splitTitle[0];
 

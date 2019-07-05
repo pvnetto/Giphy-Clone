@@ -20,6 +20,18 @@ nav {
             }
         }
 
+        .btn {
+            padding: 0.3rem 1rem;
+            border-radius: 5%;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-image: linear-gradient(to right,  RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+            background-size: 300% 300%;
+            background-repeat: no-repeat;
+        }
+
         @for $x from 1 through 7 {
             .nav-item:nth-of-type(#{$x}) {
                 .nav-link {

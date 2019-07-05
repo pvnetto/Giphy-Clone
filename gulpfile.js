@@ -22,7 +22,7 @@ gulp.task('js', function () {
 /* Webpack compile task */
 gulp.task('compile-js', function () {
     return gulp.src(['src/js/index.js', 'src/js/search.js', 'src/js/reactions.js', 'src/js/entertainment.js',
-        'src/js/sports.js', 'src/js/artists.js', 'src/js/stickers.js', 'src/js/item.js'])       // Files to compile
+        'src/js/sports.js', 'src/js/artists.js', 'src/js/stickers.js', 'src/js/item.js', 'src/js/upload.js'])       // Files to compile
         .pipe(webpack(require('./webpack.config.js')))                                          // Config file declaring which files to compile, output folder and output names
         .pipe(gulp.dest('src/js/dist/'));                                                       // Output destination
 });

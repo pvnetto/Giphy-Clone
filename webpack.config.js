@@ -10,7 +10,8 @@ module.exports = {
         sports: './src/js/sports.js',
         artists: './src/js/artists.js',
         stickers: './src/js/stickers.js',
-        item: './src/js/item.js'
+        item: './src/js/item.js',
+        upload: './src/js/upload.js'
     },
     output: {
         filename: '[name].js',

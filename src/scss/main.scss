@@ -364,6 +364,35 @@
     }
 }
 
+.upload {
+    &-wrapper {
+        background: linear-gradient(to bottom right, RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+        background-size: 200% 200%;
+    
+        padding: 3rem 1rem;
+    
+        width: 100%;
+    }
+
+    &-options {
+        margin-top: 2rem;
+
+        &-area {
+            padding: 3rem;
+            background: rgba(white, 0.1);
+            
+            i {
+                font-size: 3.5rem;
+                margin-right: 2rem;
+            }
+
+            &-dashed {
+                border: 2px dashed rgba($color: white, $alpha: 0.5);
+            }
+        }
+    }
+}
+
 @import '_search';
 
 @import '_mobile';

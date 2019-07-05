@@ -7028,7 +7028,7 @@ a.text-dark:hover, a.text-dark:focus {
   .navbar .nav-item .nav-link {
     font-size: 1rem;
     font-weight: 600;
-    padding: 0.3rem 1rem;
+    padding: 0.2rem 1rem;
     margin: 0 0.1rem;
     color: white; }
 
@@ -7057,7 +7057,7 @@ p, h2, h6 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   text-decoration: none;
   color: white;
@@ -7097,7 +7097,14 @@ p, h2, h6 {
 
 .hide-txt {
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.mw-75 {
+  max-width: 75%; }
+
+.mw-50 {
+  max-width: 50%; }
 
 nav {
   background-color: #111111;
@@ -7111,6 +7118,14 @@ nav {
       background-size: 1000% 100%; }
     nav .navbar-nav .nav-link.active {
       background-size: 1000% 100%; }
+  nav .navbar-nav .btn {
+    padding: 0.3rem 1rem;
+    border-radius: 5%;
+    border: none; }
+  nav .navbar-nav .btn-secondary {
+    background-image: linear-gradient(to right, RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+    background-size: 300% 300%;
+    background-repeat: no-repeat; }
   nav .navbar-nav .nav-item:nth-of-type(1) .nav-link {
     background-position: calc((1 - 2) * 10%) 100%; }
   nav .navbar-nav .nav-item:nth-of-type(2) .nav-link {
@@ -7522,6 +7537,23 @@ nav {
     border-radius: 10%; }
   .item-sidenav-user.active {
     display: block; }
+
+.upload-wrapper {
+  background: linear-gradient(to bottom right, RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+  background-size: 200% 200%;
+  padding: 3rem 1rem;
+  width: 100%; }
+
+.upload-options {
+  margin-top: 2rem; }
+  .upload-options-area {
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.1); }
+    .upload-options-area i {
+      font-size: 3.5rem;
+      margin-right: 2rem; }
+    .upload-options-area-dashed {
+      border: 2px dashed rgba(255, 255, 255, 0.5); }
 
 .search-header {
   margin-bottom: 2rem; }
