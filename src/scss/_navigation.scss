@@ -12,24 +12,11 @@ nav {
         
             &:hover {
                 background-size: 1000% 100%;
-                
             }
         
             &.active {
                 background-size: 1000% 100%;
             }
-        }
-
-        .btn {
-            padding: 0.3rem 1rem;
-            border-radius: 5%;
-            border: none;
-        }
-
-        .btn-secondary {
-            background-image: linear-gradient(to right,  RGB(var(--card-color-2)), RGB(var(--card-color-3)));
-            background-size: 300% 300%;
-            background-repeat: no-repeat;
         }
 
         @for $x from 1 through 7 {
@@ -105,6 +92,20 @@ nav {
     }
 
     .navbar {
+
+        &-main {
+            .btn {
+                @include easeOut;
+                padding: 0.4rem 1rem;
+                border-radius: 0%;
+                opacity: 0.9;
+    
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        
         &-search {
             .logo {
                 @include easeOut;

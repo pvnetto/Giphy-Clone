@@ -7032,6 +7032,39 @@ a.text-dark:hover, a.text-dark:focus {
     margin: 0 0.1rem;
     color: white; }
 
+.btn-primary, .btn-secondary {
+  background-image: linear-gradient(to right, RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  border: none; }
+
+.close {
+  color: white; }
+  .close:hover {
+    color: white; }
+
+.modal-terms {
+  max-width: 400px; }
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+
+.modal-content {
+  background: #111111;
+  width: auto; }
+
+.modal-dialog {
+  position: relative;
+  display: table;
+  /* This is important */
+  overflow-y: visible;
+  overflow-x: visible;
+  width: auto;
+  max-width: 100%; }
+
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.5); }
+
 * {
   padding: 0;
   margin: 0;
@@ -7118,14 +7151,6 @@ nav {
       background-size: 1000% 100%; }
     nav .navbar-nav .nav-link.active {
       background-size: 1000% 100%; }
-  nav .navbar-nav .btn {
-    padding: 0.3rem 1rem;
-    border-radius: 5%;
-    border: none; }
-  nav .navbar-nav .btn-secondary {
-    background-image: linear-gradient(to right, RGB(var(--card-color-2)), RGB(var(--card-color-3)));
-    background-size: 300% 300%;
-    background-repeat: no-repeat; }
   nav .navbar-nav .nav-item:nth-of-type(1) .nav-link {
     background-position: calc((1 - 2) * 10%) 100%; }
   nav .navbar-nav .nav-item:nth-of-type(2) .nav-link {
@@ -7181,6 +7206,13 @@ nav {
         background-color: #111111; }
       nav .theme-colors-item-secondary {
         background-color: #6c757d; }
+  nav .navbar-main .btn {
+    transition: all 0.3s ease-out;
+    padding: 0.4rem 1rem;
+    border-radius: 0%;
+    opacity: 0.9; }
+    nav .navbar-main .btn:hover {
+      opacity: 1; }
   nav .navbar-search .logo {
     transition: all 0.3s ease-out;
     max-width: 0; }
@@ -7356,21 +7388,16 @@ nav {
     width: 100%;
     padding: 2rem 1rem 1rem 1rem;
     transition: all 0.3s ease-out;
-    background-image: linear-gradient(to top, RGBA(var(--card-color), 1), RGBA(var(--card-color), 0) 90%);
+    background-image: linear-gradient(to top, RGBA(var(--card-color), 0.3), RGBA(var(--card-color), 0) 90%);
     background-position: bottom;
     background-repeat: no-repeat; }
     .daily-feed-item-info h4 {
-      color: white;
-      font-weight: 600; }
-    .daily-feed-item-info p {
-      margin: 0; }
+      color: white; }
     .daily-feed-item-info-desc {
       transition: max-height 0.3s ease-out;
       max-height: 0;
       visibility: hidden;
       color: white; }
-    .daily-feed-item-info-date {
-      color: grey; }
   .daily-feed-item-card {
     width: 100%;
     height: 6px;
@@ -7547,6 +7574,7 @@ nav {
 .upload-options {
   margin-top: 2rem; }
   .upload-options-area {
+    position: relative;
     padding: 3rem;
     background: rgba(255, 255, 255, 0.1); }
     .upload-options-area i {
@@ -7554,6 +7582,28 @@ nav {
       margin-right: 2rem; }
     .upload-options-area-dashed {
       border: 2px dashed rgba(255, 255, 255, 0.5); }
+    .upload-options-area [type=file] {
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0; }
+
+.upload-item {
+  background: rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.4rem;
+  min-width: 400px; }
+  .upload-item button {
+    height: 60px;
+    width: 60px;
+    border-radius: 0;
+    font-size: 2rem; }
+  .upload-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; }
 
 .search-header {
   margin-bottom: 2rem; }

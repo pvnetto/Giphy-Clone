@@ -24,3 +24,47 @@ $font-family-base: 'Montserrat', sans-serif;
         }
     }
 }
+
+.btn-primary, .btn-secondary {
+    background-image: linear-gradient(to right,  RGB(var(--card-color-2)), RGB(var(--card-color-3)));
+    background-size: 300% 300%;
+    background-repeat: no-repeat;
+
+    border: none;
+}
+
+.close {
+    color: white;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.modal-terms {
+    max-width: 400px;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(white, 0.5);
+}
+
+.modal-content {
+    background: $primary;
+
+    width: auto;
+}
+
+
+.modal-dialog {
+    position: relative;
+    display: table; /* This is important */ 
+    overflow-y: visible;    
+    overflow-x: visible;
+    width: auto;
+    max-width: 100%;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(white, 0.5);
+}

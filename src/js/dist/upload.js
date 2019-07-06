@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/js/upload.js?");
+eval("// TODO: Handle file browsing\r\nconst fileInput = document.querySelector('[type=file]');\r\nfileInput.addEventListener('input', HandleFileSelection);\r\n\r\nconst uploadModal = document.getElementById('upload_modal');\r\nconst modalBody = uploadModal.querySelector('modal-body');\r\nconsole.log(uploadModal);\r\n\r\n$('#upload_modal').modal('show');\r\n\r\nfunction HandleFileSelection(e) {\r\n    $('#upload_modal').modal('show');\r\n\r\n    console.log(this.files);\r\n    for (let i = 0; i < this.files.length; i++) {\r\n        let path = (window.URL || window.webkitURL).createObjectURL(this.files[i]);\r\n\r\n        let modalImg = uploadModal.querySelector('img');\r\n        modalImg.src = path;\r\n    }\r\n}\r\n\r\n// TODO: Handle file drop\n\n//# sourceURL=webpack:///./src/js/upload.js?");
 
 /***/ })
 

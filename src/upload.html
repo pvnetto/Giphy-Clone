@@ -98,7 +98,7 @@
 
     <div class="container-fluid">
         <div class="container">
-            <div class="row">
+            <div class="row position-relative">
 
                 <!-- Item page content -->
                 <div class="col-12">
@@ -113,6 +113,7 @@
 
                             <div class="d-flex flex-row align-items-start">
                                 <div class="upload-options-area upload-options-area-dashed d-flex flex-row border-right-0">
+                                    <input type="file" accept=".gif" multiple>
                                     <i class="fas fa-file-archive"></i>
                                     <div class="d-flex flex-column">
                                         <h6 class="bold mb-2">BROWSER YOUR FILES</h6>
@@ -129,6 +130,7 @@
                                 </div>
                             </div>
 
+
                             <div class="upload-options-area mt-4">
                                 <h6 class="bold mb-2">DRAG AND DROP GIFS</h6>
 
@@ -141,6 +143,68 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div id="upload_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title bold">Uploading</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-column align-items-start">
+                                <div class="upload-item d-flex flex-row align-items-center w-75">
+                                    <img class="img-fluid" src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
+                                    <p class="ml-2">imgname.gif</p>
+                                    <button class="btn btn-danger ml-auto bold">X</button>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-start">
+                                <div class="upload-item d-flex flex-row align-items-center w-75">
+                                    <img class="img-fluid" src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
+                                    <p class="ml-2">imgname.gif</p>
+                                    <button class="btn btn-danger ml-auto bold">X</button>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-start">
+                                <div class="upload-item d-flex flex-row align-items-center w-75">
+                                    <img class="img-fluid" src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
+                                    <p class="ml-2">imgname.gif</p>
+                                    <button class="btn btn-danger ml-auto bold">X</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column align-items-start justify-content-start mt-4">
+                            <h6 class="bold">Add info</h6>
+                            <p>Enter tags and source for your GIFs.</p>
+
+                            <form class="w-100" action="">
+                                <label class="bold mt-4" for="text">SOURCE URL</label>
+                                <input class="form-control" type="text">
+                                <label class="bold mt-3" for="text">ADD TAGS</label>
+                                <input class="form-control" type="text">
+                            </form>
+                        </div>
+
+                        <p class="modal-terms mt-4 alt-text d-inline-block">By clicking "Upload" you agree to our terms of service, community guidelines, and our Privacy Policy.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Upload</button>
+                </div>
             </div>
         </div>
     </div>

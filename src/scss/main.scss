@@ -82,15 +82,10 @@
             width: 100%;
             padding: 2rem 1rem 1rem 1rem;
 
-            @include gradientBg(to top, RGBA(var(--card-color), 1), RGBA(var(--card-color), 0));
+            @include gradientBg(to top, RGBA(var(--card-color), 0.3), RGBA(var(--card-color), 0));
 
             h4 {
                 color: white;
-                font-weight: 600;
-            }
-
-            p {
-                margin: 0;
             }
 
             &-desc {
@@ -101,9 +96,6 @@
                 color: white;
             }
 
-            &-date {
-                color: grey;
-            }
         }
 
         &-card {
@@ -378,6 +370,7 @@
         margin-top: 2rem;
 
         &-area {
+            position: relative;
             padding: 3rem;
             background: rgba(white, 0.1);
             
@@ -389,6 +382,37 @@
             &-dashed {
                 border: 2px dashed rgba($color: white, $alpha: 0.5);
             }
+
+            [type=file] {
+                position: absolute;
+                overflow: hidden;
+
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                
+                opacity: 0;
+            }
+        }
+    }
+
+    &-item {
+        background: rgba(black, 0.3);
+        margin-bottom: 0.4rem;
+
+        min-width: 400px;
+
+        button {
+            height: 60px;
+            width: 60px;
+            border-radius: 0;
+
+            font-size: 2rem;
+        }
+
+        img {
+            @include imgCover(60px, 60px);
         }
     }
 }
