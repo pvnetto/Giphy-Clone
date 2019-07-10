@@ -88,7 +88,15 @@
 
 // Smartphones, width <= 500px
 @include mediaSm {
-    
+    .display-4 {
+        font-size: 1.6rem;
+    }
+
+    .item-container-options {
+        a {
+            margin-right: 1rem;
+        }
+    }
 }
 
 // Small smartphones, width <= 380px

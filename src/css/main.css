@@ -7746,3 +7746,9 @@ nav {
     width: 100%; }
   .upload-header-desc {
     max-width: 75%; } }
+
+@media screen and (max-width: 500px) {
+  .display-4 {
+    font-size: 1.6rem; }
+  .item-container-options a {
+    margin-right: 1rem; } }
