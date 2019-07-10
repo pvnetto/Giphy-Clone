@@ -6,7 +6,7 @@ HOME PAGE:
 
 
 SEARCH PAGE:
-	> Clickable images. They should redirect to their own page
+	> Clickable images. They should redirect to their own page		DONE
 	> Gif options:
 		- Copy to clipboard
 		- Share on facebook/twitter
@@ -28,4 +28,4 @@ REFACTOR:
 	> Refactor JS functions to allow them to be reused across multiple different JS files					DONE
 	> Refactor gradient backgrounds from trending, search page items, include them in a separate class
 	> Translate animations should have a mixin
-	> In general, avoid over specific styling, and try to do more generic classes
+	> In general, avoid over specific styling, and try to do more generic classes							DONE

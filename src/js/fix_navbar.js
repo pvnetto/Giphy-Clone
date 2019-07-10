@@ -1,4 +1,5 @@
 // Fixed nav parameters
+let navbarCollapseWidth = 1170;    // Lg
 const nav = document.querySelector('nav');
 const navSearch = nav.querySelector('.navbar-search');
 const distToTop = navSearch.offsetTop;
@@ -14,8 +15,15 @@ dropdownTrigger.addEventListener('mouseleave', HandleTriggerLeave);
 
 
 function FixNavBar() {
-    if (window.scrollY >= distToTop) {
-        document.body.style['padding-top'] = `${nav.offsetHeight - distToTop}px`;
+    let offsetFromTop = 0;
+    if (window.scrollY >= distToTop + offsetFromTop) {
+        if (window.innerWidth >= navbarCollapseWidth) {
+            document.body.style['padding-top'] = `${nav.offsetHeight - distToTop}px`;
+        }
+        else {
+            document.body.style['padding-top'] = `0px`;
+        }
+
         nav.classList.add('fixed-nav');
     }
     else {
@@ -33,13 +41,6 @@ function HandleTriggerEnter(e) {
     let arrowXPos = (this.offsetLeft - dropdownWindow.clientWidth / 2) + (this.clientWidth / 2) - 13;
     let arrow = dropdownWindow.querySelector('.arrow');
     arrow.style.setProperty('transform', `translate(${arrowXPos}px, -50%) rotate(45deg)`);
-
-    // let coords = {
-    //     top: (dropdownWindow.clientHeight / 2) + 10,
-    //     left: triggerCoords.left - navCoords.left - (dropdownWindow.clientWidth / 2) + (triggerCoords.width / 2)
-    // };
-
-    // dropdownWindow.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
 }
 
 function HandleTriggerLeave(e) {

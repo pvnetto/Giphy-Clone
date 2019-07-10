@@ -1,0 +1,74 @@
+@media (min-width: 992px) {
+    .navbar {
+        .nav-item {
+            .nav-link {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+// WideScreens, width >= 1171px
+@include mediaXL {
+    .navbar {
+        .nav-item {
+            .nav-link {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+// Desktops % Laptops, width <= 1170px
+@include mediaLg {
+
+    .navbar {
+        border-radius: 10px;
+
+        &-collapse {
+            padding: 0.2rem;    
+        }
+
+        .nav-item {
+            width: 100%;
+            .nav-link {
+                background-size: 1000% 2px;
+                padding: 0.1rem 0;
+                margin: 0.2rem 0;
+            }
+        }
+    }
+
+    .navbar {
+        &.fixed-nav {
+            position: relative;
+            z-index: 101;
+
+            .navbar {
+                &-search {
+                    .logo {
+                        max-width: 0;
+                        margin-right: 0;
+                    }
+                }
+                &-main {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+// Tablets & Small Laptops, width <= 768px
+@include mediaMd {
+}
+
+// Smartphones, width <= 500px
+@include mediaSm {
+
+}
+
+// Small smartphones, width <= 380px
+@include mediaXS {
+
+}

@@ -15,6 +15,7 @@ const TRENDING_RATING = 'G';
 
 // Daily feed parameters
 const dailyFeedContainers = document.querySelectorAll('.daily-feed');
+const NUM_STARTING_FEEDS = 3;
 const DAILY_FEED_SIZE = 10;
 let feedItemHTML;
 let searchOffset = 0;
@@ -27,18 +28,13 @@ let scrollDate = new Date();
 
 
 async function PopulateHomeFeed() {
-    let fetchSize = DAILY_FEED_SIZE * dailyFeedContainers.length;
-    let data = await giphy.FetchSearch(SEARCH_THEME, fetchSize, searchOffset);
+    let startFetchSize = DAILY_FEED_SIZE * NUM_STARTING_FEEDS;
+    let data = await giphy.FetchSearch(SEARCH_THEME, startFetchSize, searchOffset);
 
-    for (let i = 0; i < dailyFeedContainers.length; i++) {
-        let currentFeed = dailyFeedContainers[i];
+    for (let i = 0; i < NUM_STARTING_FEEDS; i++) {
         let feedData = data.slice(i * DAILY_FEED_SIZE, i * DAILY_FEED_SIZE + DAILY_FEED_SIZE);
-        PopulateFeed(currentFeed, feedData, scrollDate);
-
-        scrollDate.setDate(scrollDate.getDate() - 1);
+        LoadNewFeedWithData(feedData);
     }
-
-    searchOffset += data.length;
 }
 
 function PopulateFeed(feed, gifList, feedDate) {
@@ -77,6 +73,15 @@ function PopulateFeed(feed, gifList, feedDate) {
     }
 }
 
+function LoadNewFeedWithData(data) {
+    let newFeedItem = CreateFeedItem();
+    PopulateFeed(newFeedItem, data, scrollDate);
+    searchOffset += DAILY_FEED_SIZE;
+    scrollDate.setDate(scrollDate.getDate() - 1);
+
+    return newFeedItem;
+}
+
 function LoadNewFeed() {
     return giphy.FetchSearch(SEARCH_THEME, DAILY_FEED_SIZE, searchOffset)
         .then(data => {
@@ -96,9 +101,10 @@ function CreateFeedItem() {
 
 async function Init() {
     carousel.Init();
+
     feedItemHTML = await utils.LoadComponent("components/feed.html");
 
-    PopulateHomeFeed();
+    await PopulateHomeFeed();
 
     trending.InitializeTrending();
     scrollLoading.SetLoadingPromise(LoadNewFeed);
