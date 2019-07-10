@@ -2,6 +2,7 @@ const API_KEY = 'YEq174exoFhVhmvEOqMka3RtRh2KKZe8';
 const GIPHY_HOST = 'https://api.giphy.com';
 const SEARCH_GIFS_PATH = '/v1/gifs/search';
 const SEARCH_STICKERS_PATH = '/v1/stickers/search';
+const UPLOAD_URL = '//upload.giphy.com/v1/gifs';
 
 // key, limit (max num of records), offset, rating, format (json)
 const TRENDING_GIFS_PATH = '/v1/gifs/trending';
@@ -45,6 +46,47 @@ async function AsyncSearch(search_txt, limit, offset) {
     return await searchJSON.data;
 }
 
+function UploadMultipleItems(itemsURL, tags, sourceURL) {
+
+}
+
+function UploadItem(file, tags, sourceURL) {
+    let http = new XMLHttpRequest();
+    let url = UPLOAD_URL;
+    let params = `api_key=${API_KEY}&file=${file}&tags=${tags}&source_post_url=${sourceURL}`;
+    http.open('POST', url, true);
+
+    // Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // http.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/")
+    http.setRequestHeader('Access-Control-Allow-Credentials', true);
+    http.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    http.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    http.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+    // Call a function when the state changes.
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            alert(http.responseText);
+        }
+        else {
+            console.log("ReadyState: ", http.readyState);
+            console.log("Status: ", http.status);
+        }
+    }
+
+    http.send(params);
+
+    // const requestURL = UPLOAD_URL + `?api_key=${API_KEY}&source_image_url=${fileURL}&tags=${tags}&source_post_url=${sourceURL}`;
+
+    // return fetch(UPLOAD_URL, {
+    //     method: 'post'
+    // }).then(res => {
+    //     console.log(res);
+    //     return res;
+    // });
+}
+
 function RemoveUnloadedOnFinish() {
     let closestUnloaded = this.closest('.unloaded');
 
@@ -72,4 +114,5 @@ exports.FetchItemByID = FetchItemByID;
 exports.FetchSearch = FetchSearch;
 exports.FetchTrending = FetchTrending;
 exports.AsyncSearch = AsyncSearch;
+exports.UploadItem = UploadItem;
 exports.PopulateItemWithData = PopulateItemWithData;

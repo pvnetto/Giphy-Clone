@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
 
-                                <div class="upload-options-area upload-options-area-dashed d-flex flex-row">
+                                <div id="upload_drop" class="upload-options-area upload-options-area-dashed d-flex flex-row">
                                     <i class="fas fa-mouse-pointer"></i>
                                     <div class="d-flex flex-column">
                                         <h6 class="bold mb-2">DRAG AND DROP GIFS</h6>
@@ -132,7 +132,7 @@
 
 
                             <div class="upload-options-area mt-4">
-                                <h6 class="bold mb-2">DRAG AND DROP GIFS</h6>
+                                <h6 class="bold mb-2">UPLOAD FROM AN URL</h6>
 
                                 <form action="">
                                     <input placeholder="Copy and paste video, GIF or video URL" type="search" class="form-control" aria-label="Search" name="q">
@@ -158,30 +158,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex flex-column align-items-start">
-                                <div class="upload-item d-flex flex-row align-items-center w-75">
-                                    <img class="img-fluid" src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
-                                    <p class="ml-2">imgname.gif</p>
-                                    <button class="btn btn-danger ml-auto bold">X</button>
-                                </div>
-                            </div>
+                        <div class="d-flex flex-column modal-upload-container">
 
-                            <div class="d-flex flex-column align-items-start">
-                                <div class="upload-item d-flex flex-row align-items-center w-75">
-                                    <img class="img-fluid" src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
-                                    <p class="ml-2">imgname.gif</p>
-                                    <button class="btn btn-danger ml-auto bold">X</button>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column align-items-start">
-                                <div class="upload-item d-flex flex-row align-items-center w-75">
-                                    <img class="img-fluid" src="assets/after-business-hours-architecture-bar-34650.jpg" alt="">
-                                    <p class="ml-2">imgname.gif</p>
-                                    <button class="btn btn-danger ml-auto bold">X</button>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="d-flex flex-column align-items-start justify-content-start mt-4">
@@ -190,20 +168,19 @@
 
                             <form class="w-100" action="">
                                 <label class="bold mt-4" for="text">SOURCE URL</label>
-                                <input class="form-control" type="text">
+                                <input id="upload_source" class="form-control" type="text">
                                 <label class="bold mt-3" for="text">ADD TAGS</label>
-                                <input class="form-control" type="text">
+                                <input id="upload_tags" class="form-control" type="text">
                             </form>
                         </div>
 
-                        <p class="modal-terms mt-4 alt-text d-inline-block">By clicking "Upload" you agree to our terms of service, community guidelines, and our Privacy Policy.
-                        </p>
+                        <p class="modal-terms mt-4 alt-text d-inline-block">By clicking "Upload" you agree to Giphy's terms of service, community guidelines, and Privacy Policy.</p>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Upload</button>
+                    <button id="upload_btn" type="button" class="btn btn-primary">Upload</button>
                 </div>
             </div>
         </div>
