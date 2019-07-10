@@ -1,13 +1,12 @@
 .search {
     &-header {
-
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
 
         &-options {
             margin-bottom: 0.8rem;
 
             .btn {
-                padding: 0rem 1.5rem;
+                padding: 0rem 1rem;
             }
 
             &-type {
@@ -15,7 +14,6 @@
             }
 
             &-sort {
-                margin-right: 2rem;
                 a {
                     text-decoration: none;
                     margin-left: 0.8rem;
@@ -91,12 +89,12 @@
 
                 h2 {
                     font-weight: 600;
+                    font-size: 1.5rem;
                 }
 
                 i {
                     font-size: 1.2rem;
                     cursor: pointer;
-                    margin-left: 1rem;
                 }
             }
 

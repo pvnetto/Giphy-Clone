@@ -57,15 +57,38 @@
             }
         }
     }
+
+    .search {
+        &-results {
+            &-tv {
+                &-header {
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Tablets & Small Laptops, width <= 768px
 @include mediaMd {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .upload-options-area {
+        width: 100%;
+    }
+    
+    .upload-header-desc {
+        max-width: 75%;
+    }
 }
 
 // Smartphones, width <= 500px
 @include mediaSm {
-
+    
 }
 
 // Small smartphones, width <= 380px

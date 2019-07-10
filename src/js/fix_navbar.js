@@ -35,9 +35,6 @@ function FixNavBar() {
 function HandleTriggerEnter(e) {
     dropdownWindow.classList.add('active');
 
-    let triggerCoords = this.getBoundingClientRect();
-    let navCoords = nav.getBoundingClientRect();
-
     let arrowXPos = (this.offsetLeft - dropdownWindow.clientWidth / 2) + (this.clientWidth / 2) - 13;
     let arrow = dropdownWindow.querySelector('.arrow');
     arrow.style.setProperty('transform', `translate(${arrowXPos}px, -50%) rotate(45deg)`);

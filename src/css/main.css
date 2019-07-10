@@ -7602,22 +7602,20 @@ nav {
     object-fit: cover; }
 
 .search-header {
-  margin-bottom: 2rem; }
+  margin-bottom: 1rem; }
   .search-header-options {
     margin-bottom: 0.8rem; }
     .search-header-options .btn {
-      padding: 0rem 1.5rem; }
+      padding: 0rem 1rem; }
     .search-header-options-type {
       color: white; }
-    .search-header-options-sort {
-      margin-right: 2rem; }
-      .search-header-options-sort a {
-        text-decoration: none;
-        margin-left: 0.8rem;
-        color: grey; }
-        .search-header-options-sort a .active {
-          color: white;
-          font-weight: 600; }
+    .search-header-options-sort a {
+      text-decoration: none;
+      margin-left: 0.8rem;
+      color: grey; }
+      .search-header-options-sort a .active {
+        color: white;
+        font-weight: 600; }
     .search-header-options-autoplay i {
       transition: all 0.3s ease-out;
       padding: 0.5rem 0.8rem;
@@ -7662,11 +7660,11 @@ nav {
     transform: translateY(-90px);
     padding: 1rem 1.5rem; }
     .search-results-tv-header h2 {
-      font-weight: 600; }
+      font-weight: 600;
+      font-size: 1.5rem; }
     .search-results-tv-header i {
       font-size: 1.2rem;
-      cursor: pointer;
-      margin-left: 1rem; }
+      cursor: pointer; }
   .search-results-tv-carousel {
     transform: translateY(90px);
     padding: 1rem 1.2rem; }
@@ -7737,4 +7735,14 @@ nav {
       max-width: 0;
       margin-right: 0; }
     .navbar.fixed-nav .navbar-main {
-      display: block; } }
+      display: block; }
+  .search-results-tv-header h2 {
+    font-size: 1.2rem; } }
+
+@media screen and (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem; }
+  .upload-options-area {
+    width: 100%; }
+  .upload-header-desc {
+    max-width: 75%; } }
