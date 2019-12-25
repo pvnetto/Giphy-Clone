@@ -4,7 +4,7 @@ const nav = document.querySelector('nav');
 const navSearch = nav.querySelector('.navbar-search');
 const distToTop = navSearch.offsetTop;
 
-window.addEventListener('scroll', FixNavBar);
+window.addEventListener('scroll', StickNavbarToTop);
 
 // Hovering window parameters
 const dropdownTrigger = document.querySelector('.nav-item-trigger');
@@ -14,7 +14,7 @@ dropdownTrigger.addEventListener('mouseenter', HandleTriggerEnter);
 dropdownTrigger.addEventListener('mouseleave', HandleTriggerLeave);
 
 
-function FixNavBar() {
+function StickNavbarToTop() {
     let offsetFromTop = 0;
     if (window.scrollY >= distToTop + offsetFromTop) {
         if (window.innerWidth >= navbarCollapseWidth) {
