@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Geephy - GIF</title>
+    <title>Geephy - Stickers</title>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
         crossorigin="anonymous">
 </head>
@@ -22,7 +20,7 @@
                     <div class="col-6 d-flex align-items-center justify-content-start">
                         <div class="logo d-lg-none d-inline-block flex-item">
                             <a href="index.html">
-                                <img class="img-fluid" src="assets/document.png" alt=""> GEEPHY
+                                <img class="img-fluid" src="../assets/document.png" alt=""> GEEPHY
                             </a>
                         </div>
                     </div>
@@ -41,7 +39,7 @@
                         <li class="nav-item">
                             <div class="logo d-lg-inline-block d-none navbar-brand">
                                 <a href="index.html">
-                                    <img class="img-fluid" src="assets/document.png" alt=""> GEEPHY
+                                    <img class="img-fluid" src="../assets/document.png" alt=""> GEEPHY
                                 </a>
                             </div>
                         </li>
@@ -87,7 +85,7 @@
                                     <div class="col-lg-10 col-8 d-flex flex-row align-items-center">
                                         <div class="logo ">
                                             <a href="#">
-                                                <img class="img-fluid" src="assets/document.png" alt=""> GEEPHY
+                                                <img class="img-fluid" src="../assets/document.png" alt=""> GEEPHY
                                             </a>
                                         </div>
                                         <input placeholder="Search all the GIFs and Stickers" type="search" class="form-control" aria-label="Search" name="q">
@@ -116,50 +114,27 @@
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-
-                <!-- Item page sidenav -->
-                <div class="item-container-options col-md-3 col-0 d-md-block d-none">
+                <div class="col-md-3 col-0 d-md-block d-none">
                     <section>
                         <div class="d-flex flex-column gallery-sidenav">
-                            <div class="item-sidenav-user">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img class="img-fluid" src="" alt="">
-                                    </div>
-                                    <div class="col-6 d-flex align-items-center p-0">
-                                        <a href="" class="mt-2 alt-text bold hide-txt"></a>
-                                    </div>
+                            <img class="img-fluid sticker" src="https://media.giphy.com/media/VaHYBNBoSHrQQ/giphy.gif" alt="">
+                            <p class="mt-2 alt-text">Send some stickers to all your friends, and frenemies! They won't believe their eyes!</p>
+                            <h5 class="alt-text bold mt-4 mb-3">Follow us on:</h5>
 
-                                    <div class="col-12 mt-4">
-                                        <p class="alt-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse sequi reprehenderit
-                                            ipsam ex dolore cum sed, sint voluptatem eos repudiandae.</p>
-                                    </div>
-                                </div>
-
-                                <h5 class="alt-text bold mt-4 mb-3">Follow us on:</h5>
-
-                                <div class="gallery-media-icons">
-                                    <a href="">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-
-                                <hr>
-                            </div>
-
-                            <h6 class="alt-text bold mb-2">SOURCE</h6>
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <a class="item-container-src hide-txt" href="">
+                            <div class="gallery-media-icons">
+                                <a href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </div>
+
                             <hr>
+
                             <p class="alt-text bold upper mb-2">Trending now</p>
 
                             <div class="d-flex flex-column gallery-sidenav-trending">
@@ -180,19 +155,16 @@
                         </div>
                     </section>
                 </div>
-
-                <!-- Item page content -->
                 <div class="col-md-9 col-12">
 
                     <!-- Header section -->
                     <section class="gallery-header pb-0">
-                        <div class="row">
-                            <div class="col-sm-9 col-12">
+                        <div class="container-fluid">
+                            <div class="container">
                                 <div class="d-inline-block">
-                                    <h3 class="gallery-header-title bold"></h3>
+                                    <h2 class="display-4 gallery-header-title bold"></h2>
                                     <div class="d-flex flex-row mt-2">
                                         <p class="gallery-header-category alt-text bold"></p>
-
                                         <div class="ml-auto gallery-media-icons">
                                             <a href="">
                                                 <i class="fab fa-facebook-f"></i>
@@ -210,64 +182,86 @@
                         </div>
                     </section>
 
-                    <!-- Item section -->
-                    <section class="item-container">
-                        <div class="row">
-                            <div class="col-sm-9 col-12">
-                                <img class="item-container-img w-100 img-fluid" src="" alt="">
+                    <!-- Trending section -->
+                    <section>
+                        <div class="container-fluid">
+                            <div class="container">
+                                <div class="row trending custom-carousel">
+                                    <div class="col-12 pb-2">
+                                        <h6 class="alt-text bold">TRENDING GIFs</h6>
+                                    </div>
+                                    <div class="col-12 custom-carousel-wrapper">
+                                        <div class="custom-carousel-arrow custom-carousel-arrow-prev">
+                                            <img src="../assets/white-arrow.png" alt="">
+                                        </div>
+                                        <div class="custom-carousel-arrow custom-carousel-arrow-next">
+                                            <img src="../assets/white-arrow.png" alt="">
+                                        </div>
+                                        <div class="custom-carousel-container">
+                                            <ul class="custom-carousel-list">
 
-                                <div class="flex-margin-right mt-3">
-                                    <a href="" class="tag">#tag1</a>
-                                    <a href="" class="tag">#tag2</a>
-                                    <a href="" class="tag">#tag3</a>
-                                    <a href="" class="tag">#tag4</a>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item-container-options d-flex flex-sm-column flex-row col-sm-3 col-12 my-sm-0 my-2">
-                                <a href="">
-                                    <div class="d-flex flex-row align-items-center mb-1">
-                                        <i class="fas fa-heart mr-2"></i>
-                                        <p>Favorite</p>
-                                    </div>
-                                </a>
-                                <a href="">
-                                    <div class="d-flex flex-row align-items-center mb-1">
-                                        <i class="fas fa-link mr-2"></i>
-                                        <p>Copy link</p>
-                                    </div>
-                                </a>
-                                <a href="">
-                                    <div class="d-flex flex-row align-items-center mb-1">
-                                        <i class="fas fa-share-square mr-2"></i>
-                                        <p>Media</p>
-                                    </div>
-                                </a>
-                                <a href="">
-                                    <div class="d-flex flex-row align-items-center mb-1">
-                                        <i class="fas fa-code mr-2"></i>
-                                        <p>Embed</p>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                     </section>
 
                     <!-- Search results -->
                     <section class="pt-4">
-                        <h6 class="alt-text bold pb-2">RELATED GIFs</h6>
-                        <div class="row search-results px-3">
-                            <div class="col-md-4 col-12 p-0 search-results-col">
+                        <div class="container-fluid">
+                            <div class="container">
+                                <h6 class="alt-text bold pb-2">ALL THE STICKERS</h6>
+                                <div class="row search-results px-3">
+                                    <div class="col-md-3 col-12 p-0 search-results-col">
 
-                            </div>
-                            <div class="col-md-4 col-12 p-0 search-results-col">
+                                    </div>
+                                    <div class="col-md-3 col-12 p-0 search-results-col">
 
-                            </div>
-                            <div class="col-md-4 col-12 p-0 search-results-col">
+                                    </div>
+                                    <div class="col-md-6 col-12 p-0">
+                                        <div class="row m-0">
+                                            <div class="col-12 p-0">
+                                                <div class="search-results-item search-results-tv d-md-block d-none">
+                                                    <a href="">
+                                                        <img src="" alt="" class="img-fluid">
+                                                    </a>
+                                                    <div class="search-results-tv-header d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                                                        <h2>#Subject TV</h2>
+                                                        <div class="search-results-tv-header-media ml-lg-auto ml-0 mt-lg-0 mt-1 mr-lg-0 mr-auto">
+                                                            <i class="fas fa-link"></i>
+                                                            <i class="fab fa-facebook-f"></i>
+                                                            <i class="fab fa-twitter"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="search-results-tv-carousel d-flex flex-row align-items-center justify-content-end">
+                                                        <div class="search-results-tv-btn search-results-tv-prev">
+                                                            <img src="../assets/white-arrow.png" alt="">
+                                                        </div>
+                                                        <div class="search-results-tv-btn search-results-tv-autoplay">
+                                                            <i class="fas fa-play"></i>
+                                                            <i class="fas fa-pause active"></i>
+                                                        </div>
+                                                        <div class="search-results-tv-btn search-results-tv-forward">
+                                                            <img src="../assets/white-arrow.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12 p-0 search-results-col">
+
+                                            </div>
+                                            <div class="col-md-6 col-12 p-0 search-results-col">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
                     </section>
-
                 </div>
             </div>
         </div>

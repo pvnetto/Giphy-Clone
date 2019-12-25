@@ -23,7 +23,7 @@ const getEntries = function (context, extension) {
 };
 
 const htmlConfigs = [];
-const pages = getEntries('./src/', 'html');
+const pages = getEntries('./src/pages', 'html');
 for (const pathname in pages) {
     // Configured to generate the html file, define paths, etc.
     const conf = {
