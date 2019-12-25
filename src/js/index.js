@@ -1,6 +1,7 @@
 const SEARCH_THEME = 'cats';
 
 import InitializeTrending from './components/trending.js';
+import feedItemHTML from '../components/feed.html'
 
 // Modules
 const carousel = require('./components/carousel.js');
@@ -17,7 +18,6 @@ const TRENDING_RATING = 'G';
 const dailyFeedContainers = document.querySelectorAll('.daily-feed');
 const NUM_STARTING_FEEDS = 3;
 const DAILY_FEED_SIZE = 10;
-let feedItemHTML;
 let searchOffset = 0;
 
 
@@ -27,7 +27,7 @@ const todayDate = new Date();
 let scrollDate = new Date();
 
 
-async function PopulateHomeFeed() {
+const PopulateHomeFeed = async () => {
     let startFetchSize = DAILY_FEED_SIZE * NUM_STARTING_FEEDS;
     let data = await giphy.FetchSearch(SEARCH_THEME, startFetchSize, searchOffset);
 
@@ -37,7 +37,7 @@ async function PopulateHomeFeed() {
     }
 }
 
-function PopulateFeed(feed, gifList, feedDate) {
+const PopulateFeed = (feed, gifList, feedDate) => {
     let items = feed.querySelectorAll('.daily-feed-item');
     items = [...items];
 
@@ -74,7 +74,7 @@ function PopulateFeed(feed, gifList, feedDate) {
     }
 }
 
-function LoadNewFeedWithData(data) {
+const LoadNewFeedWithData = (data) => {
     let newFeedItem = CreateFeedItem();
     PopulateFeed(newFeedItem, data, scrollDate);
     searchOffset += DAILY_FEED_SIZE;
@@ -83,7 +83,7 @@ function LoadNewFeedWithData(data) {
     return newFeedItem;
 }
 
-function LoadNewFeed() {
+const LoadNewFeed = () => {
     return giphy.FetchSearch(SEARCH_THEME, DAILY_FEED_SIZE, searchOffset)
         .then(data => {
             PopulateFeed(CreateFeedItem(), data, scrollDate);
@@ -92,7 +92,7 @@ function LoadNewFeed() {
         });
 }
 
-function CreateFeedItem() {
+const CreateFeedItem = () => {
     let newFeedItem = document.createElement('section');
     newFeedItem.innerHTML = feedItemHTML;
     document.body.appendChild(newFeedItem);
@@ -100,10 +100,8 @@ function CreateFeedItem() {
     return newFeedItem;
 }
 
-async function Init() {
+const Init = async () => {
     carousel.Init();
-
-    feedItemHTML = await utils.LoadComponent("components/feed.html");
 
     await PopulateHomeFeed();
 

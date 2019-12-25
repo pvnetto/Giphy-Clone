@@ -13,17 +13,6 @@ exports.LoopIndex = function (idx, max) {
     return idx >= 0 ? idx % max : max - 1;
 }
 
-exports.LoadComponent = function (component_url) {
-    return fetch(component_url)
-        .then((response) => response.text())
-        .then((html) => {
-            return html;
-        })
-        .catch((error) => {
-            console.warn(error);
-        });
-}
-
 exports.GetQueryVariable = function (variable) {
     // window.location is the URL for the current page
     let query = window.location.search.substring(1);

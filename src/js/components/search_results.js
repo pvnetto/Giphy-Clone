@@ -1,8 +1,8 @@
 // Displays search results in columns of the same size
+import searchItemHTML from '../../components/search_item.txt'
 
 // Modules
 const giphy = require('./giphy_api.js');
-const utils = require('./utils.js');
 
 
 class SearchPageLoader {
@@ -12,7 +12,6 @@ class SearchPageLoader {
         this.searchOffset = startOffset;
         this.isLoadingStickers = isLoadingStickers;
         this.pageSize = pageSize;
-        this.searchItemHTML = undefined;
     }
 
     async InitLoader(firstSearchSize) {
@@ -40,9 +39,6 @@ class SearchPageLoader {
     }
 
     async PopulatePage(imgData) {
-        if (this.searchItemHTML == undefined) {
-            this.searchItemHTML = await utils.LoadComponent("./components/search_item.txt");
-        }
 
         for (let i = 0; i < this.pageSize && i < imgData.length; i++) {
             let smallestIdx;
@@ -60,7 +56,7 @@ class SearchPageLoader {
             }
 
             let newItem = document.createElement('div');
-            newItem.innerHTML = this.searchItemHTML;
+            newItem.innerHTML = searchItemHTML;
             newItem = giphy.PopulateItemWithData(newItem, imgData[i], this.isLoadingStickers);
 
             this.colHeights[smallestIdx] += parseInt(imgData[i].images.original.height);
@@ -70,4 +66,4 @@ class SearchPageLoader {
 
 }
 
-exports.SearchPageLoader = SearchPageLoader;
+export default SearchPageLoader;

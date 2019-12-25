@@ -1,9 +1,10 @@
+import InitializeTrending from './trending.js';
+import SearchPageLoader from './search_results.js';
+
 // Modules
 const giphy = require('./giphy_api.js');
 const scrollLoading = require('./scroll_loading.js');
-const trending = require('./trending.js');
 const resultsTV = require('./results_tv.js');
-const searchResults = require('./search_results.js');
 const carousel = require('./carousel.js');
 
 // Gallery parameters
@@ -13,14 +14,14 @@ const galleryHeaderCategory = document.querySelector('.gallery-header-category')
 // Page loader parameters
 let pageLoader;
 
-function LoadPage() {
+const LoadPage = () => {
     return pageLoader.LoadPage();
 }
 
-async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "") {
+const InitGallery = async (searchTerm, pageTitle, searchStickers = false, extraTerm = "") => {
     carousel.Init();
     // Initializing trending section
-    trending.InitializeTrending(searchStickers);
+    InitializeTrending(searchStickers);
 
     let channelSearchTerm = '@' + searchTerm;
 
@@ -32,7 +33,7 @@ async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "
     let finalSearchTerm = channelSearchTerm;
     finalSearchTerm = extraTerm != undefined && extraTerm != "" ? finalSearchTerm + " " + extraTerm : finalSearchTerm;
 
-    pageLoader = new searchResults.SearchPageLoader(finalSearchTerm, searchStickers);
+    pageLoader = new SearchPageLoader(finalSearchTerm, searchStickers);
     let firstSearchData = await pageLoader.InitLoader(pageLoader.pageSize);
 
     if (pageLoader.firstSearchResultSize >= 4) {
@@ -44,4 +45,4 @@ async function Init(searchTerm, pageTitle, searchStickers = false, extraTerm = "
     scrollLoading.ToggleLoading(false);
 }
 
-exports.Init = Init;
+export default InitGallery;
