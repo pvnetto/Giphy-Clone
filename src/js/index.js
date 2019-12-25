@@ -1,12 +1,12 @@
 const SEARCH_THEME = 'cats';
 
+import InitializeTrending from './components/trending.js';
 
 // Modules
 const carousel = require('./components/carousel.js');
 const giphy = require('./components/giphy_api.js');
 const scrollLoading = require('./components/scroll_loading.js');
 const utils = require('./components/utils.js');
-const trending = require('./components/trending.js');
 
 
 // Trending parameters
@@ -39,6 +39,7 @@ async function PopulateHomeFeed() {
 
 function PopulateFeed(feed, gifList, feedDate) {
     let items = feed.querySelectorAll('.daily-feed-item');
+    items = [...items];
 
     let headerTitle = feed.querySelector('.daily-feed-header h2');
     let headerTitleWeekday = headerTitle.querySelector('.weekday');
@@ -106,7 +107,7 @@ async function Init() {
 
     await PopulateHomeFeed();
 
-    trending.InitializeTrending();
+    InitializeTrending();
     scrollLoading.SetLoadingPromise(LoadNewFeed);
 }
 

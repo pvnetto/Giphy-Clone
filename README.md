@@ -12,12 +12,17 @@ cd project/save/path
 git clone https://github.com/pvnetto/Giphy-Replica.git
 cd Giphy-Replica
 npm install
-gulp
 ```
 
-This will create a local copy of the project in your machine, install all the dependencies and run all gulp tasks.
+This will create a local copy of the project in your machine and install all the dependencies.
 
-After running the project for the first time with npm install, you won't need to do it anymore when reopening the project. So if this is not the first time you're running it, all you have to do is go to the project's directory and run the gulp command to run all gulp tasks.
+## npm scripts
+
+### dev
+Runs the development environment for the project, using webpack dev server to serve the files.
+
+### build
+Creates a build for the project on the dist folder, ready for deployment.
 
 
 ## Roadmap
@@ -27,6 +32,3 @@ Features that I plan to implement.
 * [ ] Upload GIFs to Giphy through the Upload page
 * [ ] Search page options
 * [ ] Lazy loading images along with scroll
-* [ ] Fetch trending hashtags
-* [ ] Light page theme
-* [ ] Documentation

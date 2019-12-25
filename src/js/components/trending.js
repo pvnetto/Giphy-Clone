@@ -1,3 +1,6 @@
+import trendingItemHTML from '../../components/trending_item.txt';
+
+
 // Modules
 const giphy = require('./giphy_api.js');
 const carousel = require('./carousel.js');
@@ -11,9 +14,8 @@ const trendingList = trendingSection.querySelector('.custom-carousel-list');
 const TRENDING_RATING = 'G';
 const TRENDING_SIZE = 20;
 
-let trendingItemHTML;
 
-exports.InitializeTrending = async function (fetchStickers = false) {
+const InitializeTrending = async (fetchStickers = false) => {
     let trendingData = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING, fetchStickers)
     await PopulateTrendingSection(trendingData, fetchStickers);
 
@@ -22,10 +24,6 @@ exports.InitializeTrending = async function (fetchStickers = false) {
 }
 
 async function PopulateTrendingSection(data, isLoadingStickers) {
-    if (trendingItemHTML == undefined) {
-        trendingItemHTML = await utils.LoadComponent('./components/trending_item.txt');
-    }
-
     let trendingFragment = document.createDocumentFragment();
     for (let i = 0; i < TRENDING_SIZE; i++) {
         let newItem = document.createElement('div');
@@ -41,3 +39,5 @@ async function PopulateTrendingSection(data, isLoadingStickers) {
 
     trendingList.appendChild(trendingFragment);
 }
+
+export default InitializeTrending;
