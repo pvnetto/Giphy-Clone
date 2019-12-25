@@ -1,11 +1,10 @@
 import InitializeTrending from './trending.js';
 import SearchPageLoader from './search_results.js';
+import { InitAllCarousels } from './carousel';
 
 // Modules
-const giphy = require('./giphy_api.js');
 const scrollLoading = require('./scroll_loading.js');
 const resultsTV = require('./results_tv.js');
-const carousel = require('./carousel.js');
 
 // Gallery parameters
 const galleryHeaderTitle = document.querySelector('.gallery-header-title');
@@ -19,7 +18,7 @@ const LoadPage = () => {
 }
 
 const InitGallery = async (searchTerm, pageTitle, searchStickers = false, extraTerm = "") => {
-    carousel.Init();
+    InitAllCarousels();
     // Initializing trending section
     InitializeTrending(searchStickers);
 

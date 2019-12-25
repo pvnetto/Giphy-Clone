@@ -2,9 +2,9 @@ const SEARCH_THEME = 'cats';
 
 import InitializeTrending from './components/trending.js';
 import feedItemHTML from '../components/feed.html'
+import { InitAllCarousels } from './components/carousel.js';
 
 // Modules
-const carousel = require('./components/carousel.js');
 const giphy = require('./components/giphy_api.js');
 const scrollLoading = require('./components/scroll_loading.js');
 const utils = require('./components/utils.js');
@@ -101,11 +101,10 @@ const CreateFeedItem = () => {
 }
 
 const Init = async () => {
-    carousel.Init();
-
+    InitAllCarousels();
     await PopulateHomeFeed();
-
     InitializeTrending();
+
     scrollLoading.SetLoadingPromise(LoadNewFeed);
 }
 

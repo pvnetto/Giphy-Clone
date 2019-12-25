@@ -1,28 +1,43 @@
-function InitCarousel(customCarousel) {
+const InitAllCarousels = () => {
+    let customCarousels = document.querySelectorAll('.custom-carousel');
+
+    [...customCarousels].forEach(customCarousel => {
+        InitCarousel(customCarousel);
+    });
+}
+
+const InitCarousel = (customCarousel) => {
     let carouselList = customCarousel.querySelector('.custom-carousel-list');
     let carouselPrev = customCarousel.querySelector('.custom-carousel-arrow-prev');
     let carouselNext = customCarousel.querySelector('.custom-carousel-arrow-next');
 
     carouselList.addEventListener('scroll', ToggleTrendingArrows);
-    carouselNext.addEventListener('click', ScrollTrendingNext);
-    carouselPrev.addEventListener('click', ScrollTrendingPrev);
+    carouselNext.addEventListener('click', ScrollTrendingFwd);
+    carouselPrev.addEventListener('click', ScrollTrendingBck);
 }
 
-function DisableTrendingArrows() {
-    carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
-    carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');
-    carouselNext = carousel.querySelector('.custom-carousel-arrow-next');
+const ScrollTrendingFwd = function (e) {
+    let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
+    let carouselList = carousel.querySelector('.custom-carousel-list');
 
-    carouselPrev.classList.remove('active');
-    carouselNext.classList.remove('active');
+    let scrollSize = carouselList.clientWidth;
+    carouselList.scrollLeft += scrollSize;
 }
 
-function ToggleTrendingArrows() {
+const ScrollTrendingBck = function (e) {
+    let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
+    let carouselList = carousel.querySelector('.custom-carousel-list');
+
+    let scrollSize = carouselList.clientWidth;
+    carouselList.scrollLeft -= scrollSize;
+}
+
+const ToggleTrendingArrows = function (e) {
     if (this.closest) {
-        carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
-        carouselList = carousel.querySelector('.custom-carousel-list');
-        carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');
-        carouselNext = carousel.querySelector('.custom-carousel-arrow-next');
+        let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
+        let carouselList = carousel.querySelector('.custom-carousel-list');
+        let carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');
+        let carouselNext = carousel.querySelector('.custom-carousel-arrow-next');
 
         let max_scroll = carouselList.scrollWidth - carouselList.clientWidth;
 
@@ -42,34 +57,13 @@ function ToggleTrendingArrows() {
     }
 }
 
-function ScrollTrendingNext() {
-    carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
-    carouselList = carousel.querySelector('.custom-carousel-list');
+const DisableTrendingArrows = function () {
+    let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
+    let carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');
+    let carouselNext = carousel.querySelector('.custom-carousel-arrow-next');
 
-    let scrollSize = carouselList.clientWidth;
-    carouselList.scrollLeft += scrollSize;
-
-    ToggleTrendingArrows();
+    carouselPrev.classList.remove('active');
+    carouselNext.classList.remove('active');
 }
 
-function ScrollTrendingPrev() {
-    carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
-    carouselList = carousel.querySelector('.custom-carousel-list');
-
-    let scrollSize = carouselList.clientWidth;
-    carouselList.scrollLeft -= scrollSize;
-
-    ToggleTrendingArrows();
-}
-
-function Init() {
-    customCarousels = document.querySelectorAll('.custom-carousel');
-
-    [...customCarousels].forEach(customCarousel => {
-        InitCarousel(customCarousel);
-    });
-}
-
-exports.Init = Init;
-exports.ToggleTrendingArrows = ToggleTrendingArrows;
-exports.DisableTrendingArrows = DisableTrendingArrows;
+export { InitAllCarousels, ToggleTrendingArrows, DisableTrendingArrows };
