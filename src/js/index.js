@@ -1,19 +1,14 @@
 
 import InitializeTrending from './components/trending.js';
 import feedItemHTML from '../components/feed.html'
-import { InitAllCarousels } from './components/carousel.js';
+import { initAllCarousels } from './components/carousel.js';
 import { setScrollLoadingCallback } from './components/scroll_loading.js';
-
-// Modules
-const giphy = require('./components/giphy_api.js');
-const utils = require('./components/utils.js');
+import { fetchSearch, populateItemWithGIFData } from './components/giphy';
+import { randomInt } from './components/helpers';
 
 
 // Search parameters
 const SEARCH_THEME = 'cats';
-
-// Trending parameters
-const TRENDING_RATING = 'G';
 
 
 // Daily feed parameters
@@ -31,7 +26,7 @@ let scrollDate = new Date();
 
 const PopulateHomeFeed = async () => {
     let startFetchSize = DAILY_FEED_SIZE * NUM_STARTING_FEEDS;
-    let data = await giphy.FetchSearch(SEARCH_THEME, startFetchSize, searchOffset);
+    let data = await fetchSearch(SEARCH_THEME, startFetchSize, searchOffset);
 
     for (let i = 0; i < NUM_STARTING_FEEDS; i++) {
         let feedData = data.slice(i * DAILY_FEED_SIZE, i * DAILY_FEED_SIZE + DAILY_FEED_SIZE);
@@ -64,13 +59,13 @@ const PopulateFeed = (feed, gifList, feedDate) => {
 
     for (let i = 0; i < DAILY_FEED_SIZE; i++) {
         let currentGIF = gifList[i];
-        items[i] = giphy.PopulateItemWithData(items[i], currentGIF);
+        items[i] = populateItemWithGIFData(items[i], currentGIF);
 
         let title = items[i].querySelector('.daily-feed-item-info h4');
         title.textContent = currentGIF.title;
 
         // Adding a random color to the current item
-        let colorIndex = utils.RandomInt(1, 5);
+        let colorIndex = randomInt(1, 5);
         let colorClass = "card-color-" + colorIndex;
         items[i].classList.add(colorClass);
     }
@@ -86,7 +81,7 @@ const LoadNewFeedWithData = (data) => {
 }
 
 const LoadNewFeed = () => {
-    return giphy.FetchSearch(SEARCH_THEME, DAILY_FEED_SIZE, searchOffset)
+    return fetchSearch(SEARCH_THEME, DAILY_FEED_SIZE, searchOffset)
         .then(data => {
             PopulateFeed(CreateFeedItem(), data, scrollDate);
             searchOffset += DAILY_FEED_SIZE;
@@ -103,7 +98,7 @@ const CreateFeedItem = () => {
 }
 
 const Init = async () => {
-    InitAllCarousels();
+    initAllCarousels();
     await PopulateHomeFeed();
     InitializeTrending();
     setScrollLoadingCallback(LoadNewFeed);

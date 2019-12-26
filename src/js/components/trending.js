@@ -1,9 +1,6 @@
 import trendingItemHTML from '../../components/trending_item.txt';
-import { ToggleTrendingArrows, DisableTrendingArrows } from './carousel.js';
-
-
-// Modules
-const giphy = require('./giphy_api.js');
+import { toggleTrendingArrows, disableTrendingArrows } from './carousel.js';
+import { fetchTrending, populateItemWithGIFData } from './giphy';
 
 // Trending parameters
 const trendingSection = document.querySelector('.trending.custom-carousel');
@@ -15,11 +12,11 @@ const TRENDING_SIZE = 20;
 
 
 const InitializeTrending = async (fetchStickers = false) => {
-    let trendingData = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING, fetchStickers)
+    let trendingData = await fetchTrending(TRENDING_SIZE, TRENDING_RATING, fetchStickers)
     await PopulateTrendingSection(trendingData, fetchStickers);
 
-    trendingSection.addEventListener('mouseover', ToggleTrendingArrows);
-    trendingSection.addEventListener('mouseout', DisableTrendingArrows);
+    trendingSection.addEventListener('mouseover', toggleTrendingArrows);
+    trendingSection.addEventListener('mouseout', disableTrendingArrows);
 }
 
 async function PopulateTrendingSection(data, isLoadingStickers) {
@@ -28,7 +25,7 @@ async function PopulateTrendingSection(data, isLoadingStickers) {
         let newItem = document.createElement('div');
         newItem.innerHTML = trendingItemHTML;
         newItem = newItem.querySelector('.custom-carousel-list-item');  // Gets rid of createElement's div to avoid inheriting unwanted properties
-        newItem = giphy.PopulateItemWithData(newItem, data[i], isLoadingStickers);
+        newItem = populateItemWithGIFData(newItem, data[i], isLoadingStickers);
 
         let desc = newItem.querySelector('p');
         desc.textContent = data[i].title;

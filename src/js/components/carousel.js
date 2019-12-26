@@ -1,22 +1,22 @@
-const InitAllCarousels = () => {
+const initAllCarousels = () => {
     let customCarousels = document.querySelectorAll('.custom-carousel');
 
     [...customCarousels].forEach(customCarousel => {
-        InitCarousel(customCarousel);
+        initCarousel(customCarousel);
     });
 }
 
-const InitCarousel = (customCarousel) => {
+const initCarousel = (customCarousel) => {
     let carouselList = customCarousel.querySelector('.custom-carousel-list');
     let carouselPrev = customCarousel.querySelector('.custom-carousel-arrow-prev');
     let carouselNext = customCarousel.querySelector('.custom-carousel-arrow-next');
 
-    carouselList.addEventListener('scroll', ToggleTrendingArrows);
-    carouselNext.addEventListener('click', ScrollTrendingFwd);
-    carouselPrev.addEventListener('click', ScrollTrendingBck);
+    carouselList.addEventListener('scroll', toggleTrendingArrows);
+    carouselNext.addEventListener('click', scrollTrendingFwd);
+    carouselPrev.addEventListener('click', scrollTrendingBck);
 }
 
-const ScrollTrendingFwd = function (e) {
+const scrollTrendingFwd = function (e) {
     let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
     let carouselList = carousel.querySelector('.custom-carousel-list');
 
@@ -24,7 +24,7 @@ const ScrollTrendingFwd = function (e) {
     carouselList.scrollLeft += scrollSize;
 }
 
-const ScrollTrendingBck = function (e) {
+const scrollTrendingBck = function (e) {
     let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
     let carouselList = carousel.querySelector('.custom-carousel-list');
 
@@ -32,7 +32,7 @@ const ScrollTrendingBck = function (e) {
     carouselList.scrollLeft -= scrollSize;
 }
 
-const ToggleTrendingArrows = function (e) {
+const toggleTrendingArrows = function (e) {
     if (this.closest) {
         let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
         let carouselList = carousel.querySelector('.custom-carousel-list');
@@ -57,7 +57,7 @@ const ToggleTrendingArrows = function (e) {
     }
 }
 
-const DisableTrendingArrows = function () {
+const disableTrendingArrows = function () {
     let carousel = this.classList.contains('.custom-carousel') ? this : this.closest(".custom-carousel");
     let carouselPrev = carousel.querySelector('.custom-carousel-arrow-prev');
     let carouselNext = carousel.querySelector('.custom-carousel-arrow-next');
@@ -66,4 +66,4 @@ const DisableTrendingArrows = function () {
     carouselNext.classList.remove('active');
 }
 
-export { InitAllCarousels, ToggleTrendingArrows, DisableTrendingArrows };
+export { initAllCarousels, toggleTrendingArrows, disableTrendingArrows };

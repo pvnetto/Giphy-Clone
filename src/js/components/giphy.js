@@ -8,7 +8,8 @@ const UPLOAD_URL = '//upload.giphy.com/v1/gifs';
 const TRENDING_GIFS_PATH = '/v1/gifs/trending';
 const TRENDING_STICKERS_PATH = '/v1/stickers/trending';
 
-function FetchItemByID(searchID) {
+
+const fetchGIFByID = (searchID) => {
     const gifByIdPath = `/v1/gifs/${searchID}`;
     const requestURL = GIPHY_HOST + gifByIdPath + `?api_key=${API_KEY}&gif_id=${searchID}`;
 
@@ -17,15 +18,16 @@ function FetchItemByID(searchID) {
         .then(jsonData => jsonData.data);
 }
 
-function FetchSearch(searchTxt, limit, offset, searchStickers = false) {
+const fetchSearch = (searchTxt, limit, offset, searchStickers = false) => {
     let searchPath = searchStickers ? SEARCH_STICKERS_PATH : SEARCH_GIFS_PATH;
     const requestURL = GIPHY_HOST + searchPath + `?api_key=${API_KEY}&q=${searchTxt}&limit=${limit}&offset=${offset}`;
+
     return fetch(requestURL)
         .then(res => res.json())
         .then(jsonData => jsonData.data);
 }
 
-function FetchTrending(trendingSize, trendingRating, fetchStickers = false) {
+const fetchTrending = (trendingSize, trendingRating, fetchStickers = false) => {
     let trendingPath = fetchStickers ? TRENDING_STICKERS_PATH : TRENDING_GIFS_PATH;
     const requestURL = GIPHY_HOST + trendingPath + `?api_key=${API_KEY}&limit=${trendingSize}&rating=${trendingRating}`;
 
@@ -34,7 +36,7 @@ function FetchTrending(trendingSize, trendingRating, fetchStickers = false) {
         .then(gifs => gifs.data);
 }
 
-async function AsyncSearch(search_txt, limit, offset) {
+const fetchSearchAsync = async (search_txt, limit, offset) => {
     const requestURL = GIPHY_HOST + SEARCH_GIFS_PATH + `?api_key=${API_KEY}&q=${search_txt}&limit=${limit}&offset=${offset}`;
     const searchResponse = await fetch(requestURL);
     const searchJSON = await searchResponse.json();
@@ -46,11 +48,7 @@ async function AsyncSearch(search_txt, limit, offset) {
     return await searchJSON.data;
 }
 
-function UploadMultipleItems(itemsURL, tags, sourceURL) {
-
-}
-
-function UploadItem(file, tags, sourceURL) {
+const uploadFile = (file, tags, sourceURL) => {
     let http = new XMLHttpRequest();
     let url = UPLOAD_URL;
     let params = `api_key=${API_KEY}&file=${file}&tags=${tags}&source_post_url=${sourceURL}`;
@@ -76,18 +74,9 @@ function UploadItem(file, tags, sourceURL) {
     }
 
     http.send(params);
-
-    // const requestURL = UPLOAD_URL + `?api_key=${API_KEY}&source_image_url=${fileURL}&tags=${tags}&source_post_url=${sourceURL}`;
-
-    // return fetch(UPLOAD_URL, {
-    //     method: 'post'
-    // }).then(res => {
-    //     console.log(res);
-    //     return res;
-    // });
 }
 
-function RemoveUnloadedOnFinish() {
+function removeUnloadedOnFinish() {
     let closestUnloaded = this.closest('.unloaded');
 
     if (closestUnloaded != undefined) {
@@ -95,24 +84,17 @@ function RemoveUnloadedOnFinish() {
     }
 }
 
-function PopulateItemWithData(item, data, isLoadingStickers = false) {
+function populateItemWithGIFData(item, data, isLoadingStickers = false) {
     let img = item.tagName == 'IMG' ? item : item.querySelector('img');
     let a = item.tagName == 'A' ? item : item.querySelector('a');
 
-    img.onload = RemoveUnloadedOnFinish;
+    img.onload = removeUnloadedOnFinish;
     img.src = data.images.fixed_height.url;
     a.href = `item.html?id=${data.id}`;
 
-    if (isLoadingStickers) {
-        img.classList.add('sticker');
-    }
+    if (isLoadingStickers) img.classList.add('sticker');
 
     return item;
 }
 
-exports.FetchItemByID = FetchItemByID;
-exports.FetchSearch = FetchSearch;
-exports.FetchTrending = FetchTrending;
-exports.AsyncSearch = AsyncSearch;
-exports.UploadItem = UploadItem;
-exports.PopulateItemWithData = PopulateItemWithData;
+export { fetchGIFByID, fetchSearch, fetchSearchAsync, fetchTrending, uploadFile, populateItemWithGIFData };

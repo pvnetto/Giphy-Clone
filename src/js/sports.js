@@ -1,7 +1,7 @@
 import InitGallery from './components/gallery.js';
-const utils = require('./components/utils.js');
+import { capitalizeFirstLetter } from './components/helpers';
 
 let searchTerm = 'sports';
-let pageTitle = utils.CapitalizeFirstLetter(searchTerm) + ' GIFs';
+let pageTitle = capitalizeFirstLetter(searchTerm) + ' GIFs';
 
 InitGallery(searchTerm, pageTitle);

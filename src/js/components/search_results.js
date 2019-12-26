@@ -1,9 +1,6 @@
 // Displays search results in columns of the same size
 import searchItemHTML from '../../components/search_item.txt'
-
-// Modules
-const giphy = require('./giphy_api.js');
-
+import { fetchSearch, populateItemWithGIFData } from './giphy';
 
 class SearchPageLoader {
 
@@ -18,7 +15,7 @@ class SearchPageLoader {
         this.searchResultsCols = document.querySelectorAll('.search-results-col');
         this.colHeights = [...this.searchResultsCols].map(_ => 0);                  // Creates an element in the array for each column
 
-        let firstSearchData = await giphy.FetchSearch(this.searchTerm, firstSearchSize, this.searchOffset, this.isLoadingStickers);
+        let firstSearchData = await fetchSearch(this.searchTerm, firstSearchSize, this.searchOffset, this.isLoadingStickers);
 
         this.firstSearchResultSize = firstSearchData.length;
 
@@ -31,7 +28,7 @@ class SearchPageLoader {
     }
 
     LoadPage() {
-        return giphy.FetchSearch(this.searchTerm, this.pageSize, this.searchOffset, this.isLoadingStickers)
+        return fetchSearch(this.searchTerm, this.pageSize, this.searchOffset, this.isLoadingStickers)
             .then(gifData => {
                 this.PopulatePage(gifData);
                 this.searchOffset += this.pageSize >= gifData.length ? gifData.length : this.pageSize;
@@ -57,7 +54,7 @@ class SearchPageLoader {
 
             let newItem = document.createElement('div');
             newItem.innerHTML = searchItemHTML;
-            newItem = giphy.PopulateItemWithData(newItem, imgData[i], this.isLoadingStickers);
+            newItem = populateItemWithGIFData(newItem, imgData[i], this.isLoadingStickers);
 
             this.colHeights[smallestIdx] += parseInt(imgData[i].images.original.height);
             smallestCol.appendChild(newItem);

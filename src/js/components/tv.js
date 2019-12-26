@@ -1,5 +1,6 @@
-const utils = require('./utils.js');
-const giphy = require('./giphy_api.js');
+import { populateItemWithGIFData } from './giphy';
+import { capitalizeFirstLetter, randomInt, loopIndex } from './helpers';
+
 
 // Results TV parameters
 const tv = document.querySelector('.search-results-tv');
@@ -18,29 +19,29 @@ let tvDataIdx = 0;
 let autoplayRate = 5000;    // Given in milliseconds
 let autoplayInterval;
 
-tvPlayBtn.addEventListener('click', ToggleTVAutoplay);
-tvPauseBtn.addEventListener('click', ToggleTVAutoplay);
+tvPlayBtn.addEventListener('click', toggleTVAutoplay);
+tvPauseBtn.addEventListener('click', toggleTVAutoplay);
 
-tvPrevBtn.addEventListener('click', () => RefreshTV(-1));
-tvNextBtn.addEventListener('click', () => RefreshTV(1));
+tvPrevBtn.addEventListener('click', () => refreshTV(-1));
+tvNextBtn.addEventListener('click', () => refreshTV(1));
 
-exports.EnableTV = function (title, data, isLoadingStickers = false) {
+const startTV = (title, data, isLoadingStickers = false) => {
     tv.classList.add('active');
-    tvTitle.textContent = "#" + utils.CapitalizeFirstLetter(title) + " TV";
+    tvTitle.textContent = "#" + capitalizeFirstLetter(title) + " TV";
     tvData = data;
 
     if (isLoadingStickers) {
         tvImg.classList.add('sticker');
     }
 
-    ToggleTVAutoplay();
+    toggleTVAutoplay();
 }
 
 // TODO: Call autoplay only when the current image finishes loading
-function ToggleTVAutoplay() {
+const toggleTVAutoplay = () => {
     if (!isTVPlaying) {
-        tvDataIdx = utils.RandomInt(0, tvData.length);
-        autoplayInterval = setInterval(() => RefreshTV(1), autoplayRate);
+        tvDataIdx = randomInt(0, tvData.length);
+        autoplayInterval = setInterval(() => refreshTV(1), autoplayRate);
 
         tvPlayBtn.classList.remove('active');
         tvPauseBtn.classList.add('active');
@@ -55,7 +56,9 @@ function ToggleTVAutoplay() {
     isTVPlaying = !isTVPlaying;
 }
 
-function RefreshTV(val) {
-    tvDataIdx = utils.LoopIndex(tvDataIdx + val, tvData.length);
-    tvLink = giphy.PopulateItemWithData(tvLink, tvData[tvDataIdx]);
+const refreshTV = (scrollVal) => {
+    tvDataIdx = loopIndex(tvDataIdx + scrollVal, tvData.length);
+    tvLink = populateItemWithGIFData(tvLink, tvData[tvDataIdx]);
 }
+
+export { startTV };

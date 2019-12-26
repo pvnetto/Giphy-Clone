@@ -1,5 +1,5 @@
-const utils = require('./components/utils.js');
-const giphy = require('./components/giphy_api.js');
+import uploadItemHTML from '../components/upload_item.txt';
+import { uploadFile } from './components/giphy';
 
 // TODO: Handle file browsing
 const fileInput = document.querySelector('[type=file]');
@@ -12,9 +12,7 @@ const uploadModalTags = document.getElementById('upload_tags');
 const uploadModalSrc = document.getElementById('upload_source');
 const uploadBtn = document.getElementById('upload_btn');
 const uploadContainer = uploadModal.querySelector('.modal-upload-container');
-let uploadItemHTML;
 
-utils.LoadComponent('./components/upload_item.txt').then(data => uploadItemHTML = data);
 
 let selectedFiles = [];
 let uploadItems = [];
@@ -95,7 +93,7 @@ async function UploadItems() {
 
     reader.addEventListener("load", function () {
         var base64gif = reader.result; // your gif in base64 here
-        giphy.UploadItem(base64gif, tags, sourceTxt);
+        uploadFile(base64gif, tags, sourceTxt);
         // preview.src = base64gif;
         // document.getElementById('base64').innerHTML = base64gif;
     }, false);

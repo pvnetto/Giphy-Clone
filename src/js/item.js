@@ -1,8 +1,7 @@
-// Modules
-const giphy = require('./components/giphy_api.js');
-const searchResults = require('./components/search_results.js');
-const utils = require('./components/utils.js');
-const scrollLoading = require('./components/scroll_loading.js');
+import SearchPageLoader from './components/search_results';
+import { setScrollLoadingCallback } from './components/scroll_loading';
+import { fetchGIFByID } from './components/giphy';
+import { getQueryVariable } from './components/helpers';
 
 // Gallery parameters
 const galleryHeaderTitle = document.querySelector('.gallery-header-title');
@@ -18,7 +17,7 @@ const userAvatarImg = sidenavUser.querySelector('img');
 let pageLoader;
 
 
-function SetPageData(itemData) {
+const setPageData = (itemData) => {
     itemImg.src = itemData.images.fixed_height.url;
 
     // Initializing page header
@@ -37,27 +36,24 @@ function SetPageData(itemData) {
     }
 }
 
-function LoadPage() {
+const loadPage = () => {
     return pageLoader.LoadPage();
 }
 
-async function Init(searchStickers = false) {
+async function initItemPage(searchStickers = false) {
+    let searchID = getQueryVariable('id');
+    if (!searchID) return;
 
-    let searchID = utils.GetQueryVariable('id');
+    let itemData = await fetchGIFByID(searchID);
+    setPageData(itemData);
 
-    if (searchID != undefined) {
-        let itemData = await giphy.FetchItemByID(searchID);
-        SetPageData(itemData);
+    let splitTitle = itemData.title.split(' ');
+    let relatedSearchTerm = splitTitle.length > 1 ? splitTitle[1] : splitTitle[0];
 
-        let splitTitle = itemData.title.split(' ');
-        let relatedSearchTerm = splitTitle.length > 1 ? splitTitle[1] : splitTitle[0];
+    pageLoader = new SearchPageLoader(relatedSearchTerm, searchStickers);
+    await pageLoader.InitLoader(pageLoader.pageSize);
 
-        pageLoader = new searchResults.SearchPageLoader(relatedSearchTerm, searchStickers);
-        await pageLoader.InitLoader(pageLoader.pageSize);
-
-        scrollLoading.SetLoadingPromise(LoadPage);
-        scrollLoading.ToggleLoading(false);
-    }
+    setScrollLoadingCallback(loadPage);
 }
 
-Init();
+initItemPage();

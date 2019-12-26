@@ -1,8 +1,8 @@
-import InitGallery from './components/gallery.js';
-const utils = require('./components/utils.js');
+import InitGallery from './components/gallery';
+import { getQueryVariable, capitalizeFirstLetter } from './components/helpers';
 
 let searchTerm = 'reactions';
-let featuredTerm = utils.GetQueryVariable('featured');
-let pageTitle = featuredTerm != undefined ? utils.CapitalizeFirstLetter(featuredTerm) : 'Reaction GIFs';
+let featuredTerm = getQueryVariable('featured');
+let pageTitle = featuredTerm != undefined ? capitalizeFirstLetter(featuredTerm) : 'Reaction GIFs';
 
 InitGallery(searchTerm, pageTitle, false, featuredTerm);
