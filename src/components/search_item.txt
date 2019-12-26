@@ -1,12 +1,11 @@
 <div class="search-results-item">
-    <a class="unloaded" href="">
+    <div class="unloaded" href="">
+        <img src="" alt="" class="img-fluid">
+    </div>
+    <a href="">
         <img src="" alt="" class="img-fluid">
     </a>
-    <div class="search-results-item-share d-flex flex-row align-items-center justify-content-end">
-        <i class="fas fa-link"></i>
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-    </div>
+    <div class="search-results-item-share d-flex flex-row align-items-center justify-content-end"></div>
     <div class="search-results-item-info">
         <p>#cats</p>
     </div>

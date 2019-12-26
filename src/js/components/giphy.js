@@ -76,19 +76,10 @@ const uploadFile = (file, tags, sourceURL) => {
     http.send(params);
 }
 
-function removeUnloadedOnFinish() {
-    let closestUnloaded = this.closest('.unloaded');
-
-    if (closestUnloaded != undefined) {
-        closestUnloaded.classList.remove('unloaded');
-    }
-}
-
 function populateItemWithGIFData(item, data, isLoadingStickers = false) {
-    let img = item.tagName == 'IMG' ? item : item.querySelector('img');
     let a = item.tagName == 'A' ? item : item.querySelector('a');
+    let img = a.querySelector('img');
 
-    img.onload = removeUnloadedOnFinish;
     img.src = data.images.fixed_height.url;
     a.href = `item.html?id=${data.id}`;
 
