@@ -1,10 +1,9 @@
 import trendingItemHTML from '../../components/trending_item.txt';
+import { ToggleTrendingArrows, DisableTrendingArrows } from './carousel.js';
 
 
 // Modules
 const giphy = require('./giphy_api.js');
-const carousel = require('./carousel.js');
-const utils = require('./utils.js');
 
 // Trending parameters
 const trendingSection = document.querySelector('.trending.custom-carousel');
@@ -19,8 +18,8 @@ const InitializeTrending = async (fetchStickers = false) => {
     let trendingData = await giphy.FetchTrending(TRENDING_SIZE, TRENDING_RATING, fetchStickers)
     await PopulateTrendingSection(trendingData, fetchStickers);
 
-    trendingSection.addEventListener('mouseover', carousel.ToggleTrendingArrows);
-    trendingSection.addEventListener('mouseout', carousel.DisableTrendingArrows);
+    trendingSection.addEventListener('mouseover', ToggleTrendingArrows);
+    trendingSection.addEventListener('mouseout', DisableTrendingArrows);
 }
 
 async function PopulateTrendingSection(data, isLoadingStickers) {

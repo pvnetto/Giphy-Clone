@@ -1,9 +1,9 @@
 import InitializeTrending from './trending.js';
 import SearchPageLoader from './search_results.js';
 import { InitAllCarousels } from './carousel';
+import { setScrollLoadingCallback, toggleIsLoading } from './scroll_loading';
 
 // Modules
-const scrollLoading = require('./scroll_loading.js');
 const resultsTV = require('./results_tv.js');
 
 // Gallery parameters
@@ -40,8 +40,7 @@ const InitGallery = async (searchTerm, pageTitle, searchStickers = false, extraT
         resultsTV.EnableTV(searchTerm, firstSearchData.slice(0, tvContentSize));
     }
 
-    scrollLoading.SetLoadingPromise(LoadPage);
-    scrollLoading.ToggleLoading(false);
+    setScrollLoadingCallback(LoadPage);
 }
 
 export default InitGallery;

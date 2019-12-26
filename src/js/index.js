@@ -1,14 +1,16 @@
-const SEARCH_THEME = 'cats';
 
 import InitializeTrending from './components/trending.js';
 import feedItemHTML from '../components/feed.html'
 import { InitAllCarousels } from './components/carousel.js';
+import { setScrollLoadingCallback } from './components/scroll_loading.js';
 
 // Modules
 const giphy = require('./components/giphy_api.js');
-const scrollLoading = require('./components/scroll_loading.js');
 const utils = require('./components/utils.js');
 
+
+// Search parameters
+const SEARCH_THEME = 'cats';
 
 // Trending parameters
 const TRENDING_RATING = 'G';
@@ -104,8 +106,7 @@ const Init = async () => {
     InitAllCarousels();
     await PopulateHomeFeed();
     InitializeTrending();
-
-    scrollLoading.SetLoadingPromise(LoadNewFeed);
+    setScrollLoadingCallback(LoadNewFeed);
 }
 
 Init();

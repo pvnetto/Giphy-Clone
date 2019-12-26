@@ -1,54 +1,45 @@
 // Scroll loading parameters
-const loading_animation = document.querySelector('.loading-animation');
-const page_bottom_offset = 30;
+const loadingAnimation = document.querySelector('.loading-animation');
+const pageBottomOffset = 30;
 let isLoading = false;
 let loadingPromise;
 
-window.addEventListener('scroll', LoadOnScroll);
+window.addEventListener('scroll', loadOnScroll);
 
-async function LoadOnScroll() {
-    if (!isLoading && window.innerHeight + window.pageYOffset >= document.body.offsetHeight - page_bottom_offset) {
-        ToggleLoading(true);
+async function loadOnScroll() {
+    if (!isLoading && hasReachedBottomOfPage()) {
+        toggleIsLoading(true);
 
         if (loadingPromise != undefined) {
             await loadingPromise();
-            ToggleLoading(false);
         }
+
+        toggleIsLoading(false);
     }
 }
 
-exports.ToggleLoading = function (val) {
-    ToggleLoading(val);
+const hasReachedBottomOfPage = () => {
+    return window.innerHeight + window.pageYOffset >= document.body.offsetHeight - pageBottomOffset;
 }
 
-function ToggleLoading(val) {
-    ToggleLoadingAnimation(val);
+const toggleIsLoading = (val) => {
+    toggleLoadingAnimation(val);
     isLoading = val;
 }
 
-function ToggleLoadingAnimation(val) {
+const toggleLoadingAnimation = (val) => {
+    if (!loadingAnimation) return;
+
     if (val) {
-        if (loading_animation) {
-            loading_animation.classList.add('active');
-        }
-        else {
-            console.log("> No loading animation found...");
-        }
+        loadingAnimation.classList.add('active');
     }
     else {
-        if (loading_animation) {
-            loading_animation.classList.remove('active');
-        }
-        else {
-            console.log("> No loading animation found...");
-        }
+        loadingAnimation.classList.remove('active');
     }
 }
 
-exports.GetLoadingPromise = function () {
-    return loadingPromise;
-}
-
-exports.SetLoadingPromise = function (newPromise) {
+const setScrollLoadingCallback = (newPromise) => {
     loadingPromise = newPromise;
 }
+
+export { setScrollLoadingCallback };
