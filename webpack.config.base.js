@@ -92,8 +92,13 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif|obj)$/,
                 use: [
-                    'file-loader'
-                ]
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.txt$/i,
