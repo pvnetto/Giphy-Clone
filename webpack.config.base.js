@@ -53,7 +53,6 @@ module.exports = {
         artists: './src/js/artists.js',
         stickers: './src/js/stickers.js',
         item: './src/js/item.js',
-        upload: './src/js/upload.js'
     },
     output: {
         filename: 'js/[name].js',

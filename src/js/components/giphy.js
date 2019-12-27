@@ -48,34 +48,6 @@ const fetchSearchAsync = async (search_txt, limit, offset) => {
     return await searchJSON.data;
 }
 
-const uploadFile = (file, tags, sourceURL) => {
-    let http = new XMLHttpRequest();
-    let url = UPLOAD_URL;
-    let params = `api_key=${API_KEY}&file=${file}&tags=${tags}&source_post_url=${sourceURL}`;
-    http.open('POST', url, true);
-
-    // Send the proper header information along with the request
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // http.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/")
-    http.setRequestHeader('Access-Control-Allow-Credentials', true);
-    http.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-    http.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
-    http.setRequestHeader('Access-Control-Allow-Origin', '*');
-
-    // Call a function when the state changes.
-    http.onreadystatechange = function () {
-        if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText);
-        }
-        else {
-            console.log("ReadyState: ", http.readyState);
-            console.log("Status: ", http.status);
-        }
-    }
-
-    http.send(params);
-}
-
 function populateItemWithGIFData(item, data, isLoadingStickers = false) {
     const itemLink = item.tagName == 'A' ? item : item.querySelector('a');
     const itemImg = itemLink.querySelector('img');
@@ -97,4 +69,4 @@ function populateItemWithGIFData(item, data, isLoadingStickers = false) {
     return item;
 }
 
-export { fetchGIFByID, fetchSearch, fetchSearchAsync, fetchTrending, uploadFile, populateItemWithGIFData };
+export { fetchGIFByID, fetchSearch, fetchSearchAsync, fetchTrending, populateItemWithGIFData };
