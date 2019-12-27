@@ -1,4 +1,4 @@
-import InitGallery from './components/gallery.js';
+import InitGallery from './gallery';
 
 let searchTerm = 'stickers';
 let pageTitle = 'Stickers';

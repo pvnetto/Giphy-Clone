@@ -1,7 +1,7 @@
-import { setScrollLoadingCallback } from './components/scroll_loading';
-import SearchPageLoader from './components/search_results';
-import { startTV } from './components/tv';
-import { getQueryVariable } from './components/helpers';
+import { setScrollLoadingCallback } from '../components/scroll-loader';
+import SearchPageLoader from '../components/search-loader';
+import { startTV } from '../components/tv';
+import { getQueryVariable } from '../helpers';
 
 
 // Page header objects

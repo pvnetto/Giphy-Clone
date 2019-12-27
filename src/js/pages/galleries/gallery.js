@@ -1,8 +1,8 @@
-import InitializeTrending from './trending';
-import SearchPageLoader from './search_results';
-import { initAllCarousels } from './carousel';
-import { setScrollLoadingCallback, toggleIsLoading } from './scroll_loading';
-import { startTV } from './tv';
+import InitializeTrending from '../../components/trending';
+import SearchPageLoader from '../../components/search-loader';
+import { initAllCarousels } from '../../components/carousel';
+import { setScrollLoadingCallback, toggleIsLoading } from '../../components/scroll-loader';
+import { startTV } from '../../components/tv';
 
 
 // Gallery parameters

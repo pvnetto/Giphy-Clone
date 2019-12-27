@@ -1,5 +1,5 @@
-import InitGallery from './components/gallery.js';
-import { capitalizeFirstLetter } from './components/helpers';
+import InitGallery from './gallery.js';
+import { capitalizeFirstLetter } from '../../helpers';
 
 let searchTerm = 'entertainment';
 let pageTitle = capitalizeFirstLetter(searchTerm) + ' GIFs';

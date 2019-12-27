@@ -1,4 +1,4 @@
-import InitGallery from './components/gallery.js';
+import InitGallery from './gallery.js';
 
 let searchTerm = 'peekasso';
 let pageTitle = 'Artist GIFs';

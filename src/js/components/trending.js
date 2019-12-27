@@ -1,6 +1,6 @@
-import trendingItemHTML from '../../components/trending_item.txt';
+import trendingItemHTML from '../../templates/trending_item.txt';
 import { toggleTrendingArrows, disableTrendingArrows } from './carousel.js';
-import { fetchTrending, populateItemWithGIFData } from './giphy';
+import { fetchTrending, populateItemWithGIFData } from '../api/giphy';
 
 // Trending parameters
 const trendingSection = document.querySelector('.trending.custom-carousel');

@@ -1,6 +1,6 @@
 // Displays search results in columns of the same size
-import searchItemHTML from '../../components/search_item.txt'
-import { fetchSearch, populateItemWithGIFData } from './giphy';
+import searchItemHTML from '../../templates/search_item.txt'
+import { fetchSearch, populateItemWithGIFData } from '../api/giphy';
 
 class SearchPageLoader {
 

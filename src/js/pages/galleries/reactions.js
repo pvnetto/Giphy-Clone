@@ -1,5 +1,5 @@
-import InitGallery from './components/gallery';
-import { getQueryVariable, capitalizeFirstLetter } from './components/helpers';
+import InitGallery from './gallery';
+import { getQueryVariable, capitalizeFirstLetter } from '../../helpers';
 
 let searchTerm = 'reactions';
 let featuredTerm = getQueryVariable('featured');

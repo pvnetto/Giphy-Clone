@@ -1,7 +1,7 @@
-import SearchPageLoader from './components/search_results';
-import { setScrollLoadingCallback } from './components/scroll_loading';
-import { fetchGIFByID } from './components/giphy';
-import { getQueryVariable } from './components/helpers';
+import SearchPageLoader from '../components/search-loader';
+import { setScrollLoadingCallback } from '../components/scroll-loader';
+import { fetchGIFByID } from '../api/giphy';
+import { getQueryVariable } from '../helpers';
 
 // Gallery parameters
 const galleryHeaderTitle = document.querySelector('.gallery-header-title');

@@ -1,5 +1,5 @@
-import { populateItemWithGIFData } from './giphy';
-import { capitalizeFirstLetter, randomInt, loopIndex } from './helpers';
+import { populateItemWithGIFData } from '../api/giphy';
+import { capitalizeFirstLetter, randomInt, loopIndex } from '../helpers';
 
 
 // Results TV parameters

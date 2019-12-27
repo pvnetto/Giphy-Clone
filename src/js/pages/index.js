@@ -1,10 +1,10 @@
 
-import InitializeTrending from './components/trending.js';
-import feedItemHTML from '../components/feed.html'
-import { initAllCarousels } from './components/carousel.js';
-import { setScrollLoadingCallback } from './components/scroll_loading.js';
-import { fetchSearch, populateItemWithGIFData } from './components/giphy';
-import { randomInt } from './components/helpers';
+import InitializeTrending from '../components/trending';
+import feedItemHTML from '../../templates/feed.html'
+import { initAllCarousels } from '../components/carousel';
+import { setScrollLoadingCallback } from '../components/scroll-loader';
+import { fetchSearch, populateItemWithGIFData } from '../api/giphy';
+import { randomInt } from '../helpers';
 
 
 // Search parameters
