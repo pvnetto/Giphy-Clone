@@ -77,13 +77,22 @@ const uploadFile = (file, tags, sourceURL) => {
 }
 
 function populateItemWithGIFData(item, data, isLoadingStickers = false) {
-    let a = item.tagName == 'A' ? item : item.querySelector('a');
-    let img = a.querySelector('img');
+    const itemLink = item.tagName == 'A' ? item : item.querySelector('a');
+    const itemImg = itemLink.querySelector('img');
+    const imgData = data.images.fixed_height;
 
-    img.src = data.images.fixed_height.url;
-    a.href = `item.html?id=${data.id}`;
 
-    if (isLoadingStickers) img.classList.add('sticker');
+    const previewContainer = item.querySelector('.unloaded') || item.closest('.unloaded');
+    if (previewContainer) {
+        const aspectRatio = imgData.height / imgData.width;
+        previewContainer.style['padding-top'] = `calc(100% * ${aspectRatio})`;
+    }
+
+
+    itemImg.src = imgData.url;
+    itemLink.href = `item.html?id=${data.id}`;
+
+    if (isLoadingStickers) itemImg.classList.add('sticker');
 
     return item;
 }

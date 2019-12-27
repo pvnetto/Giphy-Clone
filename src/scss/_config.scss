@@ -81,14 +81,12 @@ p, h2, h6 {
 }
 
 .unloaded {
-    &::before {
-        display: block;
-        content: '';
-        padding-top: calc(100% * 2 / 3);
+    display: block;
+    content: '';
+    padding-top: calc(100% * 2 / 3);
 
-        background-color: transparent;
-        background-size: cover;
-    }
+    background-color: transparent;
+    background-size: cover;
 }
 
 .hide-txt {
