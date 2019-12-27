@@ -6,7 +6,6 @@
 
 .tag {
     @include easeOut;
-    // margin-left: 0.5rem;
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
     font-weight: 600;
@@ -80,20 +79,28 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            padding: 2rem 1rem 1rem 1rem;
 
-            @include gradientBg(to top, RGBA(var(--card-color), 0.3), RGBA(var(--card-color), 0));
+
+            &::before {
+                @include easeOut;
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+
+                background-image: linear-gradient(to top, RGBA(var(--card-color), 1), RGBA(var(--card-color), 0) 100%);
+                background-position: bottom;
+                background-repeat: no-repeat;
+
+                opacity: 0;
+            }
 
             h4 {
                 color: white;
-            }
-
-            &-desc {
-                transition: max-height 0.3s ease-out;
-                max-height: 0;
-
-                visibility: hidden;
-                color: white;
+                padding: 2rem 1rem 1rem 1rem;
+                z-index: 10;
             }
 
         }
@@ -121,8 +128,13 @@
                         max-height: 90px;
                         visibility: visible;
                     }
+                
+                    &::before {
+                        opacity: 1;
+                    }
                 }
             }
+            
 
             img {
                 transform: scale(1.2);
