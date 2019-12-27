@@ -1,4 +1,3 @@
-const API_KEY = 'YEq174exoFhVhmvEOqMka3RtRh2KKZe8';
 const GIPHY_HOST = 'https://api.giphy.com';
 const SEARCH_GIFS_PATH = '/v1/gifs/search';
 const SEARCH_STICKERS_PATH = '/v1/stickers/search';
@@ -8,6 +7,7 @@ const UPLOAD_URL = '//upload.giphy.com/v1/gifs';
 const TRENDING_GIFS_PATH = '/v1/gifs/trending';
 const TRENDING_STICKERS_PATH = '/v1/stickers/trending';
 
+const API_KEY = process.env.GIPHY_API_KEY;
 
 const fetchGIFByID = (searchID) => {
     const gifByIdPath = `/v1/gifs/${searchID}`;

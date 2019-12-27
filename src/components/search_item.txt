@@ -2,7 +2,7 @@
     <div class="unloaded" href="">
         <img src="" alt="" class="img-fluid">
     </div>
-    <a href="">
+    <a class="img-container" href="">
         <img src="" alt="" class="img-fluid">
     </a>
     <div class="search-results-item-share d-flex flex-row align-items-center justify-content-end"></div>

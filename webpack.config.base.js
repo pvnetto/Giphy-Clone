@@ -1,9 +1,12 @@
 const path = require('path');
 const glob = require('glob');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+dotenv.config();
 
 const getEntries = function (context, extension) {
     if (context[context.length - 1] !== '/') {
@@ -109,5 +112,10 @@ module.exports = {
     plugins: [
         ...htmlConfigs,
         new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                GIPHY_API_KEY: JSON.stringify(process.env.GIPHY_API_KEY)
+            }
+        }),
     ]
 };
