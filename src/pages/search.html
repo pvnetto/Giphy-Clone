@@ -116,17 +116,16 @@
 
                 <div class="row search-header-options">
                     <div class="col-12 d-flex flex-row align-items-center">
-                        <div class="search-header-options-type d-flex flex-md-row flex-column">
-                            <button type="button" class="btn btn-outline-success gifs-btn active">GIFs</button>
-                            <button type="button" class="btn btn-outline-danger stickers-btn ml-md-1 ml-0 mt-md-0 mt-1">Stickers</button>
+                        <div class="search-header-options-type d-flex flex-row">
+                            <a id="gif-link" href="">
+                                <button type="button" class="btn btn-outline-success gifs-btn active">GIFs</button>
+                            </a>
+                            <a id="sticker-link" href="">
+                                <button type="button" class="btn btn-outline-danger stickers-btn ml-1 mt-0">Stickers</button>
+                            </a>
                         </div>
 
                         <div class="ml-auto d-flex flex-row align-items-center">
-                            <div class="search-header-options-sort d-flex flex-row align-items-center">
-                                <p class="m-0">Sort: </p>
-                                <a href="?sort=relevant">Relevant</a>
-                                <a href="?sort=recent">Recent</a>
-                            </div>
                             <div class="search-header-options-autoplay d-flex flex-row align-items-center ml-4">
                                 <i class="fas fa-play play-btn active"></i>
                                 <i class="fas fa-pause pause-btn"></i>

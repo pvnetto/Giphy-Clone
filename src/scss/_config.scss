@@ -86,7 +86,7 @@ p, h2, h6 {
         content: '';
         padding-top: calc(100% * 2 / 3);
 
-        background-color: RGB(var(--card-color-2));
+        background-color: transparent;
         background-size: cover;
     }
 }

@@ -4,17 +4,17 @@ const nav = document.querySelector('nav');
 const navSearch = nav.querySelector('.navbar-search');
 const distToTop = navSearch.offsetTop;
 
-window.addEventListener('scroll', StickNavbarToTop);
+window.addEventListener('scroll', stickNavbarToTop);
 
 // Hovering window parameters
 const dropdownTrigger = document.querySelector('.nav-item-trigger');
 const dropdownWindow = document.querySelector('.menu-dropdown');
 
-dropdownTrigger.addEventListener('mouseenter', HandleTriggerEnter);
-dropdownTrigger.addEventListener('mouseleave', HandleTriggerLeave);
+dropdownTrigger.addEventListener('mouseenter', handleTriggerEnter);
+dropdownTrigger.addEventListener('mouseleave', handleTriggerLeave);
 
 
-function StickNavbarToTop() {
+function stickNavbarToTop() {
     let offsetFromTop = 0;
     if (window.scrollY >= distToTop + offsetFromTop) {
         if (window.innerWidth >= navbarCollapseWidth) {
@@ -32,7 +32,7 @@ function StickNavbarToTop() {
     }
 }
 
-function HandleTriggerEnter(e) {
+function handleTriggerEnter(e) {
     dropdownWindow.classList.add('active');
 
     let arrowXPos = (this.offsetLeft - dropdownWindow.clientWidth / 2) + (this.clientWidth / 2) - 13;
@@ -40,6 +40,6 @@ function HandleTriggerEnter(e) {
     arrow.style.setProperty('transform', `translate(${arrowXPos}px, -50%) rotate(45deg)`);
 }
 
-function HandleTriggerLeave(e) {
+function handleTriggerLeave(e) {
     dropdownWindow.classList.remove('active');
 }
