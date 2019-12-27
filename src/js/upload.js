@@ -1,13 +1,14 @@
 import uploadItemHTML from '../components/upload_item.txt';
 import { uploadFile } from './components/giphy';
 
+
 // TODO: Handle file browsing
 const fileInput = document.querySelector('[type=file]');
-fileInput.addEventListener('input', HandleFileSelection);
+fileInput.addEventListener('input', handleFileSelection);
 
 const uploadModal = document.getElementById('upload_modal');
 const uploadDropArea = document.getElementById('upload_drop');
-const uploadModalBody = uploadModal.querySelector('modal-body');
+const uploadModalBody = uploadModal.querySelector('.modal-body');
 const uploadModalTags = document.getElementById('upload_tags');
 const uploadModalSrc = document.getElementById('upload_source');
 const uploadBtn = document.getElementById('upload_btn');
@@ -15,32 +16,34 @@ const uploadContainer = uploadModal.querySelector('.modal-upload-container');
 
 
 let selectedFiles = [];
-let uploadItems = [];
+let uploadedItems = [];
 let numItems = 0;
 
-uploadDropArea.addEventListener('drop', HandleFileDrop);
-uploadDropArea.addEventListener('dragover', HandleDrag);
+uploadDropArea.addEventListener('drop', handleFileDrop);
+uploadDropArea.addEventListener('dragover', handleDrag);
 
-uploadBtn.addEventListener('click', UploadItems);
+uploadBtn.addEventListener('click', uploadItems);
 
-function HandleDrag(e) {
+function handleDrag(e) {
     e.preventDefault();
 }
 
-function HandleFileSelection(e) {
-    UpdateUploadModal(this.files);
+function handleFileSelection(e) {
+    updateUploadModal(this.files);
 }
 
-function HandleFileDrop(e) {
+function handleFileDrop(e) {
     e.preventDefault();
-    UpdateUploadModal(e.dataTransfer.files);
+    updateUploadModal(e.dataTransfer.files);
 }
 
-function UpdateUploadModal(files) {
+function updateUploadModal(files) {
     $('#upload_modal').modal('show');
 
+    clearUploadContainer();
+
     selectedFiles = [];
-    uploadItems = [];
+    uploadedItems = [];
     numItems = 0;
 
     let filesFragment = document.createDocumentFragment();
@@ -48,19 +51,12 @@ function UpdateUploadModal(files) {
         let path = (window.URL || window.webkitURL).createObjectURL(files[i]);
         selectedFiles.push(files[i]);
 
-        let uploadItem = document.createElement('div');
-        uploadItem.innerHTML = uploadItemHTML;
+        const uploadItem = createUploadItem(path, files[i]);
 
-        let uploadImg = uploadItem.querySelector('img');
-        uploadImg.src = path;
-
-        let uploadTitle = uploadItem.querySelector('p');
-        uploadTitle.textContent = files[i].name;
-
-        let uploadDeleteBtn = uploadItem.querySelector('button');
+        const uploadDeleteBtn = uploadItem.querySelector('button');
         uploadDeleteBtn.addEventListener('click', () => {
             selectedFiles[i] = undefined;
-            uploadItems[i].style.setProperty('display', 'none');
+            uploadedItems[i].style.setProperty('display', 'none');
             numItems--;
 
             if (numItems == 0) {
@@ -69,14 +65,37 @@ function UpdateUploadModal(files) {
         });
 
         filesFragment.appendChild(uploadItem);
-        uploadItems.push(uploadItem);
+        uploadedItems.push(uploadItem);
     }
 
     numItems = files.length;
     uploadContainer.appendChild(filesFragment);
 }
 
-async function UploadItems() {
+const createUploadItem = (path, file) => {
+    let uploadItem = document.createElement('div');
+    uploadItem.innerHTML = uploadItemHTML;
+    uploadItem = uploadItem.querySelector('.upload-item-container');
+
+    const uploadImg = uploadItem.querySelector('img');
+    uploadImg.src = path;
+
+    const uploadTitle = uploadItem.querySelector('p');
+    uploadTitle.textContent = file.name;
+
+    return uploadItem;
+}
+
+const clearUploadContainer = () => {
+    const activeItems = uploadContainer.querySelectorAll('.upload-item-container');
+    if (activeItems) {
+        [...activeItems].forEach(activeItem => {
+            uploadContainer.removeChild(activeItem);
+        })
+    }
+}
+
+async function uploadItems() {
     let fileToUpload = selectedFiles[0];
     let tags = uploadModalTags.value.split(',');
     tags = tags.map(tag => tag.trim(' '));
@@ -87,20 +106,5 @@ async function UploadItems() {
     console.log("Tags: ", tags);
     console.log("Source: ", sourceTxt);
 
-    var preview = document.querySelector('.preview');
-    // var file    = document.querySelector('input[type=file]').files[0];
-    var reader = new FileReader();
-
-    reader.addEventListener("load", function () {
-        var base64gif = reader.result; // your gif in base64 here
-        uploadFile(base64gif, tags, sourceTxt);
-        // preview.src = base64gif;
-        // document.getElementById('base64').innerHTML = base64gif;
-    }, false);
-
-    if (fileToUpload) {
-        reader.readAsBinaryString(fileToUpload);
-    }
-
-    // giphy.UploadItem(fileToUpload, tags, sourceTxt);
+    // uploadFile(base64gif, tags, sourceTxt);
 }

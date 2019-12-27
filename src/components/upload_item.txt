@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-start">
+<div class="d-flex flex-column align-items-start upload-item-container">
     <div class="upload-item d-flex flex-row align-items-center w-75">
         <img class="img-fluid" src="" alt="">
         <p class="ml-2">imgname.gif</p>
