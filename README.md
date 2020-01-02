@@ -2,7 +2,7 @@
 
 [Live Version](https://giphy-clone-js.herokuapp.com/index.html)
 
-The goal of this project is to replicate [Giphy's](https://developers.giphy.com/docs/api) website by using [their API](https://developers.giphy.com/docs/api), which has several endpoints that allows the user to fetch multiple kinds of data, and even upload GIFs via POST requests. I also replicate most of their design, with some slight modifications to fit the scope and limitations of the project. This is begin developed with HTML5, CSS3, JS, Bootstrap 4, SASS, npm, Gulp and webpack.
+The goal of this project is to replicate [Giphy's](https://developers.giphy.com/docs/api) website by using [their API](https://developers.giphy.com/docs/api), which has several endpoints that allows the user to fetch multiple kinds of data. I also replicate most of their design, with some modifications to fit the scope and limitations of the project. This application was made with HTML5, CSS3, JS, Bootstrap 4, SASS, npm, Gulp and webpack.
 
 
 ## Getting started
