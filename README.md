@@ -5,6 +5,10 @@
 The goal of this project is to replicate [Giphy's](https://developers.giphy.com/docs/api) website by using [their API](https://developers.giphy.com/docs/api), which has several endpoints that allows the user to fetch multiple kinds of data. I also replicate most of their design, with some modifications to fit the scope and limitations of the project. This application was made with HTML5, CSS3, JS, Bootstrap 4, SASS, npm, Gulp and webpack.
 
 
+## Layout
+
+[Figma draft](https://www.figma.com/file/T8tWBqI6KsINTJkvgYtkkwIU/Geephy).
+
 ## Getting started
 
 When running the project for the first time, use the following commands:
